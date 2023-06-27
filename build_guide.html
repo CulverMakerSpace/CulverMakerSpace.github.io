@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+   <title>Mr. Fender's CSP Website</title>
+    <link rel="icon" href="images/favicon.png" type="image/gif" sizes="16x16">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      img {
+        width: 50%;
+        min-width: 100px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.75);}
+    </style>
+  </head>
+
+  <body>
+    <div class="header">
+      <h1>Mr. Fender </h1>
+    </div>
+
+    <div class="navbar">
+      <div class="navlinks" id="topnav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Me</a>
+        <div class="dropdown">
+          <button class="dropdown_button" onclick="programsFunction()">Python Projects ▾</button>
+            <div class="dropdown_content" id="programs">
+              <a href="#grade">Grade Calculater</a>
+              <a href="#game">Game</a>
+              <a href="#gui">Command Line GUI</a>
+              <a href="#encoder">Encoder</a>
+              <a href="#create">AP Create Task</a>
+            </div>
+        </div>
+        <div class="dropdown">
+          <button class="dropdown_button" onclick="projectsFunction()">Other Projects ▾</button>
+            <div class="dropdown_content" id="projects">
+              <a class="active" href="build_guide.html">PC Build Guide</a>
+              <a href="#customer">Customer Site</a>
+            </div>
+        </div>
+        <a href="#blog">Blog</a>
+        <a href="#contact">Contact Me</a>
+        <a href="javascript:void(0);" style="font-size:13px;" class="icon" onclick="navbarFunction()">&#9776;</a>
+      </div>
+    </div>
+
+    <div class="main">
+      <br>
+      <br>
+      <h2>
+        This Page Is Coming Soon
+      </h2>
+      <br>
+      <br>
+      <img src="https://p.kindpng.com/picc/s/270-2708235_new-content-coming-soon-web-page-is-under.png" alt="Page under construction image.">
+      <br>
+      <br>
+    </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>
+        Copyright © 2018-2020 by Josh Fender. All rights reserved.
+      </p>
+    </div>
+
+    <script>
+      function programsFunction() {
+        var x = document.getElementById("programs");
+        if (x.className === "dropdown_content") {
+          x.className += " show";} 
+        else {
+          x.className = "dropdown_content";}}
+      
+
+      function projectsFunction() {
+        var x = document.getElementById("projects");
+        if (x.className === "dropdown_content") {
+          x.className += " show";} 
+        else {
+          x.className = "dropdown_content";}}
+
+
+      function navbarFunction() {
+        var x = document.getElementById("topnav");
+        if (x.className === "navlinks") {
+          x.className += " responsive";} 
+        else {
+          x.className = "navlinks";}}
+      
+
+      window.onclick = function(e) {
+        if (!e.target.matches('.dropdown_button')) {
+          var programBtn = document.getElementById("programs");
+          var projectBtn = document.getElementById("projects");
+          if (programBtn.classList.contains('show') || projectBtn.classList.contains('show')) {
+            programBtn.classList.remove('show'); 
+            projectBtn.classList.remove('show');}}}
+    </script>
+  </body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+   <title>Mr. Fender's CSP Website</title>
+    <link rel="icon" href="images/favicon.png" type="image/gif" sizes="16x16">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+
+  <body>
+    <div class="header">
+      <h1>Mr. Fender</h1>
+    </div>
+
+    <div class="navbar">
+      <div class="navlinks" id="topnav">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About Me</a>
+        <div class="dropdown">
+          <button class="dropdown_button" onclick="programsFunction()">Python Projects ▾</button>
+            <div class="dropdown_content" id="programs">
+              <a href="#grade">Grade Calculater</a>
+              <a href="#game">Game</a>
+              <a href="#gui">Command Line GUI</a>
+              <a href="#encoder">Encoder</a>
+              <a href="#create">AP Create Task</a>
+            </div>
+        </div>
+        <div class="dropdown">
+          <button class="dropdown_button" onclick="projectsFunction()">Student Pages ▾</button>
+            <div class="dropdown_content" id="students">
+              <a href="kevin.html">Kevin</a>
+              <a href="Marcel.html">Marcel</a>
+              <a href="Miguel.html">Miguel</a>
+            </div>
+        </div>
+        <a href="#blog">Blog</a>
+        <a href="#contact">Contact Me</a>
+        <a href="javascript:void(0);" style="font-size:13px;" class="icon" onclick="navbarFunction()">&#9776;</a>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="row">
+        <div class="col60">
+          <p>
+            Welcome to my example portfolio website! As we make our way through the year we will learn many things like how to create websites using HTML5, CSS, and Javascript. You will make use this knowledge to create your own personal websites to act as a portfolio to show off to the world your skills. As we move on past basic web design we will learn the programing language Python. With it, you will be able to develop games, apps, and tools. You will be able to post these projects to your website as well.
+          </p>
+          <p>
+            While there will be a few basic requirments to prove that you have mastered certain skills, it is my hope that the pages on this website and the programs yous post to your portfolio will be unique to you, giving you the opportunity to express your creativity and show off your new skills!
+          </p>
+          <p>
+            Just like any of the other projects we do in class, I encourage you to look at the source code and feel free to utilize any snippets you want. HOWEVER...<u>you must include coments in your code that provides a direct link to where you got the code, and a detialed description of what the code does.</u> If you can't explain the code in enough detail so Mrs. Fender understands what its function is, then you do not have a firm enough understanding to use it yourself.
+          </p>
+        </div>
+        <div class="col40">
+          <img src="images/josh_bw.png" alt="Black and white image of Mr. Fender standing in front of a chalk board filled with equations.">
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>
+        Copyright © 2018-2020 by Josh Fender. All rights reserved.
+      </p>
+    </div>
+
+    <script>
+      function programsFunction() {
+        var x = document.getElementById("programs");
+        if (x.className === "dropdown_content") {
+          x.className += " show";} 
+        else {
+          x.className = "dropdown_content";}}
+      
+
+      function projectsFunction() {
+        var x = document.getElementById("students");
+        if (x.className === "dropdown_content") {
+          x.className += " show";} 
+        else {
+          x.className = "dropdown_content";}}
+
+
+      function navbarFunction() {
+        var x = document.getElementById("topnav");
+        if (x.className === "navlinks") {
+          x.className += " responsive";} 
+        else {
+          x.className = "navlinks";}}
+      
+
+      window.onclick = function(e) {
+        if (!e.target.matches('.dropdown_button')) {
+          var programBtn = document.getElementById("programs");
+          var projectBtn = document.getElementById("projects");
+          if (programBtn.classList.contains('show') || projectBtn.classList.contains('show')) {
+            programBtn.classList.remove('show'); 
+            projectBtn.classList.remove('show');}}}
+    </script>
+  </body>
+</html>
