@@ -26,11 +26,16 @@
               <a href="#create">AP Create Task</a>
             </div>
         </div>
-        <div class="dropdown">
-          <button class="dropdown_button" onclick="projectsFunction()">Other Projects ▾</button>
-            <div class="dropdown_content" id="projects">
-              <a href="#build">PC Build Guide</a>
-              <a href="#customer">Customer Site</a>
+         <div class="dropdown">
+          <button class="dropdown_button" onclick="projectsFunction()">Student Pages ▾</button>
+            <div class="dropdown_content" id="students">
+              <a href="GabeEsparza.HTML">Gabe</a>
+              <a href="Marcel.html">Marcel</a>
+              <a href="Miguel.html">Miguel</a>
+              <a href="Robbie.html">Robbie</a>
+              <a href="Yaoyuchen.html">Yaoyuchen</a>
+              <a href="kevin.html">Kevin</a>
+              <a href="mia.html">Mia</a>
             </div>
         </div>
         <a href="#blog">Blog</a>
@@ -128,7 +133,7 @@
       
 
       function projectsFunction() {
-        var x = document.getElementById("projects");
+        var x = document.getElementById("students");
         if (x.className === "dropdown_content") {
           x.className += " show";} 
         else {
