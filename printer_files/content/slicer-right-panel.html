@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="content-style.css">
+  </head>
+
+  <body>
+    <h2>Interface: Right Side Panel</h2>
+      <div class="row">
+        <div class="col_50">
+          <img src="../images/right_side.png" alt="Right side panel">
+        </div>
+        <div class="col_50 col_p">
+          <p>Next we will look at the <strong>panel on the right</strong> side of the 
+            screen, which is the <strong>most important part of the program</strong>. 
+            It contains the fundamental settings used for every print job.
+            </br></br>
+            When setting up a print, change the settings in the following order.</p>
+        </div>
+      </div>
+          
+
+      <h3>Printer</h3>
+        <div class="row">
+          <div class="col_50">
+            <img src="../images/printer.png" alt="Printer selection">
+          </div>
+          <div class="col_50 col_p">
+            <p>Choose the printer for this job. You should always <strong>select the 
+              printer first</strong>, because it overrides all the other settings. For 
+              this training we will focus on the standard <strong>MK4S with a 0.4mm 
+              nozzle</strong>. <i>There are other printers and accessories available but 
+              those will require additional training before you are able to use them.</i></p>
+          </div>
+        </div>
+
+      <h3>Filament</h3>
+        <div class="row">
+          <div class="col_50">
+            <img src="../images/filament.png" alt="Filament selection">
+          </div>
+          <div class="col_50 col_p">
+            <p>Different materials require different settings (temperature, print speed, 
+              etc.), so it’s important to choose the correct one. We have many different 
+              colors of <strong>Overture PLA</strong> available for you to use in the 
+              makerspace.</p>
+          </div>
+        </div>
+        <div class="note"> 
+          If you need to use a different material other than the ones that are already 
+          avaiable in the lab, you need to confirm that it is ok before using it. 
+          <strong>Some materials like ABS are not allowed to be used in the space!</strong>
+        </div>
+        
+      <h3>Print Settings</h3>
+        <div class="row">
+          <div class="col_50">
+            <img src="../images/print_settings.png" alt="Print settings">
+          </div>
+          <div class="col_50 col_p">
+            <p>This section allows you to quickly select one of the presets for the given 
+              printer and filament. From the dropdown menu, you can choose from various print 
+              layer heights. Note that even though these presets are named after the layer 
+              height, each of them also includes many other different settings that influence 
+              the quality and print time. 
+              </br></br>
+              The lower the layer height, the better the details, but the print process will 
+              take significantly longer. The <strong>0.2 mm layer height</strong> usually offers 
+              a good tradeoff between quality and speed for most projects.</p>
+          </div>
+        </div>
+      
+      <h3>Supports</h3>
+        <div class="row">
+          <div class="col_50">
+            <img src="../images/failed.png" alt="Failed unsupported print">
+          </div>
+          <div class="col_50">
+            <p>A 3D printer cannot reliably print into thin air. Overhangs may require 
+              supports.</p>
+            <p>The parts of the model that are hanging or protruding “in the air” are 
+              called <strong>overhangs</strong>. Whether these overhangs are printable 
+              depends on their size and angle. Roughly speaking, 45° is okay (imagine 
+              the arms of the letter “Y”), but 90° (arms of the letter “T”) is not.
+            </p>
+          </div>
+        </div>
+      
+      <div class="row">
+        <div class="col_50">
+          <img src="../images/overhangs.png" alt="Overhang examples">
+        </div>
+        <div class="col_50 col_p">
+          <img src="../images/letters.png" alt="Letter overhang examples">
+        </div>
+      </div>
+      <p>Generating <strong>supports</strong>, i.e. printed “scaffolding” increases 
+        reliability when printing overhangs. It can be difficult for beginners to assess 
+        whether supports are needed. When downloading a model from sites like Printables, 
+        the model authors usually leave instructions about whether you should enable them 
+        or what other printer settings they recommend, so make sure to read the model 
+        descriptions!</p>
+      <div class="note">
+        Select <strong>Supports → Everywhere</strong> if you are unsure about the supports 
+        and there is no helpful comment on the model page.
+      </div>
+      <img src="../images/supports.png" alt="Supports setting">
+      <p>Many times, you can eliminate the need for supports by changing the orientation 
+        of the model.</p>
+
+      <h3>Infill</h3>
+      <div class="row">
+        <div class="col_50">
+          <img src="../images/infill_percents.png" alt="Infill percentages">
+        </div>
+        <div class="col_50 col_p">
+          <p>
+            Most prints are hollow with a supporting mesh inside called <strong>infill</strong>.
+            A value of 15–20% is usually a good balance.
+          </br></br>
+          Increasing perimeters is often more effective for strength than adding more infill.
+          </p>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col_50">
+          <img src="../images/grid.png" alt="Grid infill">
+        </div>
+        <div class="col_50 col_p">
+          <p>
+            <strong>Grid</strong> is reliable, quick to print, and works well for most nonfunctional parts.
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col_50">
+          <img src="../images/gyroid.png" alt="Gyroid infill">
+        </div>
+        <div class="col_50 col_p">
+          <p>
+            <strong>Gyroid</strong> provides strength in all directions and is useful for functional parts.
+          </p>
+        </div>
+      </div>
+
+      <h3>Brim</h3>
+      <img src="../images/infill_and_brim.png" alt="Infill and brim setting">
+      <div class="row">
+        <div class="col_15">
+          <img src="../images/brim.png" alt="Brim example">
+        </div>
+        <div class="col_85 col_p">
+          <p>
+            A brim extends outward from the base of the print, increasing bed contact and helping prevent warping.
+          </p>
+        </div>
+      </div>
+      <p>
+        A brim is easy to remove and uses only a small amount of extra filament.
+      </p>
+      <div class="note">
+        Use a brim for tall, narrow parts or when adhesion might be an issue.
+      </div>
+
+      <h3>Object List Panel</h3>
+      <img src="../images/object_list.png" alt="Object list panel">
+      <p>
+        The Object List shows all models currently placed on the print bed.
+      </p>
+      <img src="../images/object_manipulation.png" alt="Object manipulation panel">
+      <p>
+        This panel allows precise control of position, rotation, and scale.
+      </p>
+      <img src="../images/object_menu.png" alt="Object menu">
+      <div class="row">
+        <div class="col_15">
+          <img src="../images/object_settigns.png" alt="Object settings">
+        </div>
+        <div class="col_85 col_p">
+          <p>
+            Right-clicking an object opens additional settings.
+            We will focus on <strong>Infill</strong> and <strong>Layers and Perimeters</strong>.
+          </p>
+        </div>
+      </div>
+      <p>
+        For most prints:
+        15–20% Grid infill is sufficient.
+        Use Gyroid for stronger parts.
+      </p>
+      <p>
+        A layer height of <strong>0.20 mm</strong> works well for most prints.
+      </p>
+      <div class="note">
+        Use at least <strong>5 top layers</strong>, <strong>3 bottom layers</strong>, and <strong>2 perimeters</strong>.
+      </div>
+
+      <h3>Slice Button</h3>
+      <p>
+        The Slice button converts the model and selected settings into G-code for the printer.
+      </p>
+
+    <div class="image-overlay" id="overlay">
+      <img id="overlay-img" src="">
+    </div>
+
+    <script>
+      const overlay = document.getElementById("overlay");
+      const overlayImg = document.getElementById("overlay-img");
+
+      document.querySelectorAll("img").forEach(img => {
+        img.addEventListener("click", () => {
+          overlayImg.src = img.src;
+          overlay.classList.add("active");
+        });
+      });
+
+      overlay.addEventListener("click", () => {
+        overlay.classList.remove("active");
+      });
+    </script>
+
+  </body>
+</html>
