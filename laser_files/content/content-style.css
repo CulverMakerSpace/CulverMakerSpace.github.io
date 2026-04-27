@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #342b28;
+  background: white;
+}
+
+h2 {
+  color: #70162a;
+  font-size: 28px;
+  margin-top: 0;
+}
+
+h3 {
+  color: #70162a;
+  margin-top: 28px;
+}
+
+p, li {
+  color: #6a625e;
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+/* Images inside lesson content files */
+img,
+.lesson-image {
+  width: 90%;
+  max-width: 100%;
+  display: block;
+  margin: 24px auto;
+  border-radius: 12px;
+}
+
+.placeholder {
+  min-height: 650px;
+  margin-top: 32px;
+  padding: 20px;
+  border-radius: 14px;
+  background: linear-gradient(rgba(112,22,42,.05), rgba(112,22,42,0));
+}

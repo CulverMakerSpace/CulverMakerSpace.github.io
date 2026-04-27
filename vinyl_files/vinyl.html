@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vinyl Cutter | Pigott Makerspace Training</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="logo"><img src="../images/pigott_logo.png" alt=""></div>
+
+      <div class="sidebar-content">
+        <h2>Training Progress</h2>
+        <div class="progress">0%</div>
+
+        <div class="line"></div>
+
+          
+          
+          <a class="side-link active" href="#" onclick="loadLesson('content/vinyl-overview.html', this); return false;">
+            <img src="../images/vinyl.png" class="side-icon" alt="">
+            <span>Vinyl Cutter<br><small>Cricut</small></span>
+          </a>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="header">
+        <h1>Culver Academies Makerspace</h1>
+        <p>Learn. Create. Innovate.</p>
+
+        <nav class="top-nav">
+          <a class="button" href="../index.html">
+            <img src="../images/home.png" class="button-icon" alt="">
+            <span>Home</span>
+          </a>
+
+          <a class="button" href="../cad_files/cad.html">
+            <img src="../images/cad.png" class="button-icon" alt="">
+            <span>CAD</span>
+          </a>
+
+          <a class="button" href="../printer_files/printer.html">
+            <img src="../images/printer.png" class="button-icon" alt="">
+            <span>3D Printer</span>
+          </a>
+
+          <a class="button" href="../laser_files/laser.html">
+            <img src="../images/laser.png" class="button-icon" alt="">
+            <span>Laser Engraver</span>
+          </a>
+
+          <a class="button active" href="../vinyl_files/vinyl.html">
+            <img src="../images/vinyl.png" class="button-icon" alt="">
+            <span>Vinyl Cutter</span>
+          </a>
+        </nav>
+      </header>
+
+      <section class="card content" id="content-area">
+        <iframe id="lesson-frame" src="content/vinyl-overview.html" title="Lesson content"></iframe>
+      </section>
+
+      <footer class="card contact">
+        <img src="../images/mail.png" class="mail-icon" alt="">
+        <div>
+          <h2>Have questions?</h2>
+          <p>Please contact Mr. Fender: <a href="mailto:joshua.fender@culver.org">joshua.fender@culver.org</a></p>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    function clearActiveLinks() {
+      document.querySelectorAll(".side-link, .side-section a").forEach(function(link) {
+        link.classList.remove("active");
+      });
+    }
+
+    function openParentSection(link) {
+      const parentSection = link.closest("details");
+      if (parentSection) {
+        parentSection.open = true;
+      }
+    }
+
+    function loadLesson(filePath, clickedLink) {
+      document.getElementById("lesson-frame").src = filePath;
+
+      clearActiveLinks();
+
+      if (clickedLink) {
+        clickedLink.classList.add("active");
+        openParentSection(clickedLink);
+      }
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function resizeLessonFrame() {
+      const frame = document.getElementById("lesson-frame");
+      try {
+        const frameDoc = frame.contentDocument || frame.contentWindow.document;
+        frame.style.height = frameDoc.body.scrollHeight + 40 + "px";
+      } catch (error) {
+        frame.style.height = "900px";
+      }
+    }
+
+    window.addEventListener("DOMContentLoaded", function() {
+      const frame = document.getElementById("lesson-frame");
+      frame.addEventListener("load", resizeLessonFrame);
+    });
+  </script>
+
+</body>
+</html>
