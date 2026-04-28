@@ -4,11 +4,56 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" href="content-style.css">
 </head>
+
 <body>
-  <h2>Preparing the Print Sheet</h2>
-  <p>Placeholder for print sheet preparation.</p>
-  <div class="placeholder">
-    <p>This is a placeholder content file. Edit this file inside the content folder when you are ready.</p>
-  </div>
+
+<h2>Preparing print sheet</h2>
+
+<p>
+The first layer and its adhesion to the print surface is an absolutely crucial aspect of 3D printing. There are two factors playing a role. 
+</p>
+
+<img src="../images/first_layer.png" alt="First layer">
+
+<p>
+The print sheet should be completely clean for the first print layer to stick properly. These are (literally) the foundations of a successful print. Even little grease marks, like fingerprints, could compromise the adhesion. Use and IPA wet wipe to clean the sheet when you notice it is getting dirty. 
+</p>
+
+<video autoplay loop muted playsinline>
+  <source src="../videos/sheet_cleaning.webm" type="video/webm">
+</video>
+
+<p>
+Wipe it from one side to another, it's more effective than circular movements (you don't smear the grease over the surface that much).
+</p>
+
+<img src="../images/cleaning_warning.png" alt="Cleaning warning">
+
+<p>
+The other factor is that the nozzle has to lay down the melted filament material from a correct height - not too high, into thin air, but not too low, plowing into the print sheet either. When using older printer models, the user had to actively help the printer set the correct distance between the nozzle and the print sheet, or in other words, perform a first layer calibration, or Live Z adjustment (i.e. last-minute tweaks at the beginning of the actual print). Even though this process wasn't outright difficult, still, it definitely was the trickiest part of setting the printer up and as such, was a cause of about 90% of common print problems.
+
+The Prusa printers we have contain a component in the extruder called the loadcell. This component is responsible for an always perfect first layer. It works fully automatically, without any user intervention whatsoever.
+</p>
+
+<div class="image-overlay" id="overlay">
+  <img id="overlay-img" src="">
+</div>
+
+<script>
+  const overlay = document.getElementById("overlay");
+  const overlayImg = document.getElementById("overlay-img");
+
+  document.querySelectorAll("img").forEach(img => {
+    img.addEventListener("click", () => {
+      overlayImg.src = img.src;
+      overlay.classList.add("active");
+    });
+  });
+
+  overlay.addEventListener("click", () => {
+    overlay.classList.remove("active");
+  });
+</script>
+
 </body>
 </html>
