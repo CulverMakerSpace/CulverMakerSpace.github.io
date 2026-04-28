@@ -4,11 +4,126 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" href="content-style.css">
 </head>
+
 <body>
-  <h2>Starting a Print</h2>
-  <p>Placeholder for starting a print.</p>
-  <div class="placeholder">
-    <p>This is a placeholder content file. Edit this file inside the content folder when you are ready.</p>
-  </div>
+
+<h2>Starting the Printing Process</h2>
+
+<p>
+At last, we are closing in to the actual printing! We will select and print the model that you sliced and saved from the previous section from the USB drive.
+</p>
+
+<video autoplay loop muted playsinline>
+  <source src="../videos/usb_drive.webm" type="video/webm">
+</video>
+
+<p>
+The No USB menu option will then change to Print and immediately after, the file folder on the USB drive will automatically open. Use the control knob or the touch screen to navigate to the Print menu and select the file that you want to print.
+</p>
+
+<video autoplay loop muted playsinline>
+  <source src="../videos/select_file.webm" type="video/webm">
+</video>
+
+<p>
+You will see a preview of the model, the estimated print time, and the estimated amount of material required.
+</p>
+
+<img src="../images/print_screen_1.png" alt="Print screen 1">
+
+<p>
+Next you need to confirm that you have enough material to complete the print. Tap on the Creality logo on the spool holder and weight for the scale to zero itself. Gently lift the spool so that it is not hanging from the spool holder and make note of the displayed weight, you can ignore the negative sign in front of the number.
+</p>
+
+<video autoplay loop muted playsinline>
+  <source src="../videos/filament_weight.webm" type="video/webm">
+</video>
+
+<p>
+Subtract the weight of the empty spool from the displayed weight to determine how much plastic is on the spool. If you do not have enough filament to complete the print you will need to replace the spool with a more full one. If all of the preview information is correct and you have enough filament to complete the print, you then need to confirm that you have selected the correct model by pressing the Print icon, both the print sheet and the nozzle will start heating up and the screen will change to a progress monitor.
+</p>
+
+<img src="../images/print_screen_2.png" alt="Print screen 2">
+
+<p>
+While no direct user input is needed for the remainder of the printing process – it is still useful to understand the procedures performed by the printer so that you can better identify any problems with the printer.
+</p>
+
+<p>
+The nozzle won't go to the full printing temperature of the PLA material (230 °C) just yet, only to 170°C - this will help to melt potential remnants of filament stuck to the nozzle. The nozzle will then dab slightly against the print sheet to clean itself off. This is important for the following procedure - larger remnants of filament could interfere with the measurement.
+</p>
+
+<video autoplay loop muted playsinline>
+  <source src="../videos/nozzle_cleaning.webm" type="video/webm">
+</video>
+
+<p>
+The loadcell will now measure the distance (height) of a grid of points on the print sheet. You may notice that the measuring process could leave tiny dabs of leaked filament on the sheet - even though the heating is turned off during this process, the nozzle is still hot, so it leaks a bit. This is fine. Note that the loadcell only probes the area that will be used for the upcoming print task. Therefore, with other prints, the amount of probing points can differ from 9 points (3x3 grid) to a maximum of 49 points (7x7 grid).
+</p>
+
+<video autoplay loop muted playsinline>
+  <source src="../videos/probing_points.webm" type="video/webm">
+</video>
+
+<p>
+Even on a properly assembled printer, the bed will never be 100% perfect horizontal and straight. Following this probing process (called mesh bed leveling), the printer will "remember" any slight inaccuracies and properly compensate for them.
+</p>
+
+<p>
+Now, the nozzle will continue to heat, this time to the full printing temperature, i.e. 230 °C. During the heating process, the nozzle will leak filament. This is normal.
+</p>
+
+<video autoplay loop muted playsinline>
+  <source src="../videos/filament_leak.webm" type="video/webm">
+</video>
+
+<p>
+This excess filament will be wiped off the print sheet. This is called the purge line. The purpose of this step is also to stabilize the flow inside the nozzle.
+</p>
+
+<video autoplay loop muted playsinline>
+  <source src="../videos/purge_line.webm" type="video/webm">
+</video>
+
+<p>
+This concludes the whole pre-print routine. The printer will now start to create the first layer of the actual print. It is very important to remain with the printer and watch until the entire first layer is laid down. The first layer is critical in the printer completing a successful print. If a print fails, it is usually as a result of an issue with the first layer.
+</p>
+
+<video autoplay loop muted playsinline>
+  <source src="../videos/first_layer.webm" type="video/webm">
+</video>
+
+<p>
+Finally, let's explain the three main buttons you will always see on the LCD during the entire printing process: Tune, Pause and Stop. (If you instead see a 3D preview of the object that's being printed, you just need to press the knob to access the screen with these buttons.)
+</p>
+
+<img src="../images/print_controls.png" alt="Print controls">
+
+<ul>
+  <li>Stop - stops and cancels the entire print. You might have to stop a print if you notice some user mistake (such as incorrect filament color) or a printing issue (such as the object detaching itself from the print bed). This is the correct way to cancel a print - the printer will safely terminate the process, the axes will move to allow access to the bed, and all the heated elements will start to cool down.</li>
+  <li>Pause - the printing process will temporarily pause. The axes will move to allow access to the bed, which might be useful for inspecting objects that are not visible under the tool. The printer will wait indefinitely until you resume printing. The heat bed will still be hot to keep the object from detaching itself. However, the nozzle will cool down, so resuming the print will take a minute until it reaches printing temperature again.</li>
+  <li>Tune - allows you to adjust various printer settings that affect the printing process, such as overall printing speed or temperature. You should not touch these settings!</li>
+</ul>
+
+<div class="image-overlay" id="overlay">
+  <img id="overlay-img" src="">
+</div>
+
+<script>
+  const overlay = document.getElementById("overlay");
+  const overlayImg = document.getElementById("overlay-img");
+
+  document.querySelectorAll("img").forEach(img => {
+    img.addEventListener("click", () => {
+      overlayImg.src = img.src;
+      overlay.classList.add("active");
+    });
+  });
+
+  overlay.addEventListener("click", () => {
+    overlay.classList.remove("active");
+  });
+</script>
+
 </body>
 </html>
