@@ -193,40 +193,56 @@
         </div>
       </div>
 
-      <img src="../images/object_manipulation.png" alt="Object manipulation panel" style="width: 60%;">
+      <img src="../images/object_manipulation.png" alt="Object manipulation panel" style="width: 50%;">
 
       <p>If you make any adjustments to the scale or rotation, you can reverse them by 
         clicking the small circular arrow icon that appears next to the modified values in 
         the Object manipulation panel.</p>
 
-      <img src="../images/object_menu.png" alt="Object menu">
       <div class="row">
-        <div class="col_15">
+        <div class="col_50">
+          <img src="../images/object_menu.png" alt="Object menu" style="width: 50%;">
+          </br>
           <img src="../images/object_settigns.png" alt="Object settings">
         </div>
-        <div class="col_85 col_p">
-          <p>
-            Right-clicking an object opens additional settings.
-            We will focus on <strong>Infill</strong> and <strong>Layers and Perimeters</strong>.
-          </p>
+        <div class="col_50 col_p">
+          <p>Right-clicking on an object, either on the print plate or in the object list 
+            panel, will open a menu with additional settings that allow you to customize and 
+            edit your model. We will not go through most of these options in this training, 
+            but you are encouraged to explore them on your own and experiment with what they do.
+            </br></br>
+            The two options we will focus on are <strong>“Infill”</strong> and <strong>“Layers 
+            and Perimeters”</strong>. Selecting either of these will open a new panel below 
+            the object list.
+            </br></br>
+            The <strong>Infill</strong> panel gives you greater control over both the infill 
+            density and pattern. For most nonfunctional prints, <strong>15%–20% Grid infill
+            </strong> is a good default setting. For functional parts that require more 
+            strength, you can increase the infill to around <strong>40% using the Gyroid 
+            pattern</strong>. While you are free to experiment with different patterns, you 
+            should generally avoid going above 50% infill, as it provides little additional 
+            strength while significantly increasing print time and filament use.
+            </br></br>
+            The <strong>Layers and Perimeters</strong> panel allows you to adjust the number 
+            of top and bottom layers, the layer height, and the number of perimeters. The 
+            <strong>layer height</strong> has the greatest impact on print quality. You can 
+            adjust it between 0.10 mm and 0.30 mm, with <strong>0.20 mm</strong> being a 
+            reliable setting for most prints.</p>
         </div>
       </div>
-      <p>
-        For most prints:
-        15–20% Grid infill is sufficient.
-        Use Gyroid for stronger parts.
-      </p>
-      <p>
-        A layer height of <strong>0.20 mm</strong> works well for most prints.
-      </p>
+
       <div class="note">
-        Use at least <strong>5 top layers</strong>, <strong>3 bottom layers</strong>, and <strong>2 perimeters</strong>.
+        You must use at least <strong>5 top layers, 3 bottom layers, and 2 perimeters</strong>. 
+        Increasing these values to <strong>6–8 top and bottom layers and 4–6 perimeters</strong> 
+        can significantly improve the strength and durability of your part.
       </div>
 
       <h3>Slice Button</h3>
-      <p>
-        The Slice button converts the model and selected settings into G-code for the printer.
-      </p>
+        <img src="../images/slice.png" alt="Object settings" style="width: 50%;">
+        <p>The final option in the right-side panel is the <strong>Slice button</strong> at 
+          the bottom. This applies all of the settings you have selected for your model and 
+          converts it into G-code, which the printer uses to create the part. We will go into 
+          more detail about this process in a later section.</p>
 
     <div class="image-overlay" id="overlay">
       <img id="overlay-img" src="">
