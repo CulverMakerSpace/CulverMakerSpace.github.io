@@ -82,8 +82,7 @@
             <p>The parts of the model that are hanging or protruding “in the air” are 
               called <strong>overhangs</strong>. Whether these overhangs are printable 
               depends on their size and angle. Roughly speaking, 45° is okay (imagine 
-              the arms of the letter “Y”), but 90° (arms of the letter “T”) is not.
-            </p>
+              the arms of the letter “Y”), but 90° (arms of the letter “T”) is not.</p>
           </div>
         </div>
       
@@ -105,74 +104,101 @@
         Select <strong>Supports → Everywhere</strong> if you are unsure about the supports 
         and there is no helpful comment on the model page.
       </div>
-      <img src="../images/supports.png" alt="Supports setting">
+      <img src="../images/supports.png" alt="Supports setting" style="width: 50%;">
       <p>Many times, you can eliminate the need for supports by changing the orientation 
         of the model.</p>
 
       <h3>Infill</h3>
       <div class="row">
-        <div class="col_50">
-          <img src="../images/infill_percents.png" alt="Infill percentages">
+        <div class="col_15">
+          <img src="../images/infill_percents.png" alt="Infill percentages" style="width: 100%;">
         </div>
-        <div class="col_50 col_p">
+        <div class="col_85 col_p">
           <p>
             Most prints are hollow with a supporting mesh inside called <strong>infill</strong>.
             A value of 15–20% is usually a good balance.
           </br></br>
-          Increasing perimeters is often more effective for strength than adding more infill.
-          </p>
+          Increasing perimeters is often more effective for strength than adding more infill.</p>
         </div>
       </div>
       
       <div class="row">
+        <div class="col_50 col_p">
+          <p><strong>Grid</strong> is the standard infill pattern used in most preset settings. 
+            It is a reliable choice for many prints because it is quick to produce and uses 
+            relatively little filament. Grid works well as a default option, especially for 
+            nonfunctional parts where strength is not a primary concern.</p>
+        </div>
         <div class="col_50">
           <img src="../images/grid.png" alt="Grid infill">
         </div>
-        <div class="col_50 col_p">
-          <p>
-            <strong>Grid</strong> is reliable, quick to print, and works well for most nonfunctional parts.
-          </p>
-        </div>
       </div>
       <div class="row">
+        <div class="col_50 col_p">
+          <p><strong>Gyroid</strong> is an advanced infill pattern available in PrusaSlicer. 
+            It creates a smooth, continuous 3D structure that provides strength in all 
+            directions. Compared to simpler patterns, gyroid offers an excellent balance of 
+            strength, flexibility, and material use. It also reduces vibration and produces 
+            consistent support throughout the part. While it may take slightly longer to print 
+            than grid, gyroid is a great choice for functional parts or prints that need more 
+            durability and uniform strength.</p>
+        </div>
         <div class="col_50">
           <img src="../images/gyroid.png" alt="Gyroid infill">
-        </div>
-        <div class="col_50 col_p">
-          <p>
-            <strong>Gyroid</strong> provides strength in all directions and is useful for functional parts.
-          </p>
         </div>
       </div>
 
       <h3>Brim</h3>
-      <img src="../images/infill_and_brim.png" alt="Infill and brim setting">
-      <div class="row">
-        <div class="col_15">
-          <img src="../images/brim.png" alt="Brim example">
+        <div class="row">
+          <div class="col_50">
+            <img src="../images/infill_and_brim.png" alt="Infill and brim setting" style="width: 100%;">
+            </br>
+            <img src="../images/brim.png" alt="Brim example">         
+          </div>
+          <div class="col_50 col_p">
+            <p>The <strong>Brim</strong> option adds a thin layer of material that extends 
+              outward from the base of your print, creating a larger surface area that sticks 
+              to the build plate. This helps improve bed adhesion and reduces the chances of 
+              warping or the print coming loose, especially for parts with small footprints or 
+              sharp corners.
+              </br></br>
+              A brim is typically easy to remove after printing and uses only a small amount 
+              of extra filament. 
+              </br></br>
+              A brim is typically needed when printing tall or narrow parts, or when working 
+              with materials that are more prone to warping.</p>
+          </div>
         </div>
-        <div class="col_85 col_p">
-          <p>
-            A brim extends outward from the base of the print, increasing bed contact and helping prevent warping.
-          </p>
+        <div class="note">
+          If you are unsure, it is usually better to enable a brim than to risk the print failing 
+          due to poor bed adhesion.
         </div>
-      </div>
-      <p>
-        A brim is easy to remove and uses only a small amount of extra filament.
-      </p>
-      <div class="note">
-        Use a brim for tall, narrow parts or when adhesion might be an issue.
-      </div>
 
       <h3>Object List Panel</h3>
-      <img src="../images/object_list.png" alt="Object list panel">
-      <p>
-        The Object List shows all models currently placed on the print bed.
-      </p>
-      <img src="../images/object_manipulation.png" alt="Object manipulation panel">
-      <p>
-        This panel allows precise control of position, rotation, and scale.
-      </p>
+      <div class="row">
+        <div class="col_50">
+          <img src="../images/object_list.png" alt="Object list panel">
+        </div>
+        <div class="col_50 col_p">
+          <p>In the <strong>Object List panel</strong>, you will see all of the models 
+            currently placed on the print bed. For simple prints, this list may only contain 
+            a single item. For more complex projects, the list can include multiple parts 
+            and nested components.
+            </br></br>
+            Selecting a model, either directly on the print plate or by clicking its name in 
+            the Object List, will open a panel below the list with additional controls. This 
+            panel allows you to precisely adjust the <strong>position, rotation, and scale
+            </strong> of your model by entering exact values, rather than relying on dragging 
+            the object manually.</p>
+        </div>
+      </div>
+
+      <img src="../images/object_manipulation.png" alt="Object manipulation panel" style="width: 60%;">
+
+      <p>If you make any adjustments to the scale or rotation, you can reverse them by 
+        clicking the small circular arrow icon that appears next to the modified values in 
+        the Object manipulation panel.</p>
+
       <img src="../images/object_menu.png" alt="Object menu">
       <div class="row">
         <div class="col_15">
