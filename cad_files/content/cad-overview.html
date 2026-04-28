@@ -1,14 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="content-style.css">
-</head>
-<body>
-  <h2>CAD Training</h2>
-  <p>This is the splash page for CAD training.</p>
-  <div class="placeholder">
-    <p>This is a placeholder content file. Edit this file inside the content folder when you are ready.</p>
-  </div>
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="content-style.css">
+  </head>
+
+  <body>
+    <h2>CAD Training</h2>
+      <h3>Learn Fusion for CAD in 90 minutes</h3>
+        <p>This is an external course that was developed by Autodesk. Learn Fusion for CAD 
+          in 90 Minutes is a fast-paced, hands-on introduction for new users that builds core 
+          CAD skills through a guided bike pedal design project, covering part modeling, 
+          assemblies, drawings, and rendering through practical, project-based learning.</p>
+        <p><a href="https://www.autodesk.com/learn/ondemand/course/learn-fusion-for-cad-in-90-minutes" target="_blank">
+          Click here </a>to go to the Autodesk website where you will be able to complete the course.</p>
+
+      <img src="../images/fusion_for_beginners.png" alt="Fusion for beginners">
+  
+    <div class="image-overlay" id="overlay"><img id="overlay-img" src=""></div>
+    
+    <script>
+      const overlay=document.getElementById("overlay");
+      const overlayImg=document.getElementById("overlay-img");
+      document.querySelectorAll("img").forEach(img=>{img.addEventListener("click",()=>{overlayImg.src=img.src;overlay.classList.add("active");});});
+      overlay.addEventListener("click",()=>{overlay.classList.remove("active");});
+    </script>
+  </body>
 </html>

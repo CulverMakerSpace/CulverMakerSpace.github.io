@@ -86,6 +86,25 @@ video{
   cursor: default;
 }
 
+a {
+  color: #70162a;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #a11d3a;
+  text-decoration: underline;
+}
+
+a:visited {
+  color: #5a1222;
+}
+
+a:active {
+  color: #c72c48;
+}
+
 
 @media (max-width:800px){
   img,video{width:90%}
