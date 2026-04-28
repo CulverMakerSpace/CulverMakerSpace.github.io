@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>3D Printer | Pigott Center Training</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+  </head>
+
+  <body>
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="logo"><img src="../images/pigott_logo.png" alt=""></div>
+
+        <div class="sidebar-content">
+          <h2>Training Progress</h2>
+          <div class="progress">0%</div>
+
+          <div class="line"></div>
+            <a class="side-link active" href="#" onclick="loadLesson('content/printer-overview.html', this); return false;">
+              <img src="../images/printer.png" class="side-icon" alt="">
+              <span>3D Printer<br><small>(Prusa)</small></span>
+            </a>
+
+            <details class="side-section" open>
+              <summary>PrusaSlicer</summary>
+              <a href="#" onclick="loadLesson('content/slicer-introduction.html', this); return false;">Introduction</a>
+              <a href="#" onclick="loadLesson('content/slicer-setup.html', this); return false;">Initial Setup</a>
+              <a href="#" onclick="loadLesson('content/slicer-basic-workflow.html', this); return false;">Basic Workflow</a>
+              <a href="#" onclick="loadLesson('content/slicer-left-icon-bar.html', this); return false;">Left Icon Bar</a>
+              <a href="#" onclick="loadLesson('content/slicer-right-panel.html', this); return false;">Right Panel</a>
+              <a href="#" onclick="loadLesson('content/slicer-top-tabs.html', this); return false;">Top Tabs and Central Icon Bar</a>
+              <a href="#" onclick="loadLesson('content/slicer-slice-preview.html', this); return false;">Slice, Preview, and Export</a>
+            </details>
+
+            <details class="side-section">
+              <summary>MK4S Printer</summary>
+              <a href="#" onclick="loadLesson('content/printer-introduction.html', this); return false;">Introduction</a>
+              <a href="#" onclick="loadLesson('content/printer-components.html', this); return false;">Main Components</a>
+              <a href="#" onclick="loadLesson('content/printer-loading-filament.html', this); return false;">Loading Filament</a>
+              <a href="#" onclick="loadLesson('content/printer-print-sheet.html', this); return false;">Preparing the Print Sheet</a>
+              <a href="#" onclick="loadLesson('content/printer-menu-controls.html', this); return false;">Menu Controls</a>
+              <a href="#" onclick="loadLesson('content/printer-starting-print.html', this); return false;">Starting a Print</a>
+              <a href="#" onclick="loadLesson('content/printer-finishing-print.html', this); return false;">Finishing a Print</a>
+            </details>
+
+            <details class="side-section">
+              <summary>Design for 3D Printing</summary>
+              <a href="#" onclick="loadLesson('content/design-introduction.html', this); return false;">Introduction</a>
+              <a href="#" onclick="loadLesson('content/design-orientation.html', this); return false;">Part Orientation</a>
+              <a href="#" onclick="loadLesson('content/design-dimensional-accuracy.html', this); return false;">Dimensional Accuracy</a>
+              <a href="#" onclick="loadLesson('content/design-print-adhesion.html', this); return false;">Print Adhesion</a>
+              <a href="#" onclick="loadLesson('content/design-designed-supports.html', this); return false;">Designed Supports</a>
+              <a href="#" onclick="loadLesson('content/design-fillets-chamfers.html', this); return false;">Fillets and Chamfers</a>
+            </details>
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="header">
+          <h1>Culver Academies Makerspace</h1>
+          <p>Learn. Create. Innovate.</p>
+
+          <nav class="top-nav">
+            <a class="button" href="../index.html">
+              <img src="../images/home.png" class="button-icon" alt="">
+              <span>Home</span>
+            </a>
+
+            <a class="button" href="../cad_files/cad.html">
+              <img src="../images/cad.png" class="button-icon" alt="">
+              <span>CAD</span>
+            </a>
+
+            <a class="button active" href="../printer_files/printer.html">
+              <img src="../images/printer.png" class="button-icon" alt="">
+              <span>3D Printer</span>
+            </a>
+
+            <a class="button" href="../laser_files/laser.html">
+              <img src="../images/laser.png" class="button-icon" alt="">
+              <span>Laser Engraver</span>
+            </a>
+
+            <a class="button" href="../vinyl_files/vinyl.html">
+              <img src="../images/vinyl.png" class="button-icon" alt="">
+              <span>Vinyl Cutter</span>
+            </a>
+          </nav>
+        </header>
+
+        <section class="card content" id="content-area">
+          <iframe id="lesson-frame" src="content/printer-overview.html" title="Lesson content"></iframe>
+        </section>
+
+        <footer class="card contact">
+          <img src="../images/mail.png" class="mail-icon" alt="">
+          <div>
+            <h2>Have questions?</h2>
+            <p>Please contact Mr. Fender: <a href="mailto:joshua.fender@culver.org">joshua.fender@culver.org</a></p>
+          </div>
+        </footer>
+      </main>
+    </div>
+
+    <script>
+      function loadLesson(filePath, clickedLink) {
+        document.getElementById("lesson-frame").src = filePath;
+
+        localStorage.setItem("lastLesson", filePath);
+
+        document.querySelectorAll(".side-link, .side-section a").forEach(link => {
+          link.classList.remove("active");
+        });
+
+        if (clickedLink) {
+          clickedLink.classList.add("active");
+
+          const parentSection = clickedLink.closest("details");
+          if (parentSection) {
+            parentSection.open = true;
+          }
+        }
+      }
+
+      window.addEventListener("DOMContentLoaded", function() {
+        const savedLesson = localStorage.getItem("lastLesson");
+
+        if (savedLesson) {
+          document.getElementById("lesson-frame").src = savedLesson;
+        }
+      });
+    </script>
+  </body>
+</html>

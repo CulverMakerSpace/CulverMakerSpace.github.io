@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="content-style.css">
+</head>
+
+<body>
+
+<h2>Interface: Slice, Preview, and Export Model</h2>
+
+<p>
+We are now ready to slice the model. At the bottom of the right-side panel, click the “Slice Now” button. This will prompt the program to generate the G-code instructions that the printer will follow to produce your final part.
+</p>
+
+<img src="../images/slice.png" alt="Slice button"style="width: 50%;">
+
+<p>
+After slicing the model, the Object Manipulation panel and the Slice Now button will update. This new section provides important information about your print, including the estimated amount of filament required and the total print time.
+</p>
+
+<p>
+You should record the following values:
+</p>
+
+<ul>
+  <li>Used Filament (g) (including spool)</li>
+  <li>Estimated Printing Time (Normal Mode)</li>
+</ul>
+
+<p>
+In addition to these values, write down your name and the time you started the print on the sheet next to the machine you are using.
+</p>
+
+<img src="../images/sliced_info.png" alt="Sliced information"style="width: 50%;">
+
+<p>
+Depending on the complexity of the model and your hardware specifications, this might take a minute.
+</p>
+
+<h3>Preview Model:</h3>
+
+<p>
+The main workspace will automatically change to a view that shows all of the different layers of the print.  You can move the vertical slider on the right to preview the individual layers of the print. THIS IS VERY IMPORTANT!
+</p>
+
+<video autoplay loop muted playsinline>
+  <source src="../videos/slice_and_inspect.webm" type="video/webm">
+</video>
+
+<p>
+Reviewing the sliced model can help you identify potential problems before printing. Look for issues such as unsupported overhangs, missing sections, or areas where the model is not fully flat on the build plate. If you notice any of these problems, go back and correct them, then slice the model again.
+</p>
+
+<div class="row">
+  <div class="col_15">
+    <img src="../images/view_select.png" alt="View select icons"style="width: 100%;">
+  </div>
+
+  <div class="col_85 col_p">
+    <p>
+    Using these icons in the lower-left corner of your screen, you can toggle between the 3D editor view (i.e. how did the scene look like before clicking Slice Now) and the sliced G-code Preview.
+    </p>
+  </div>
+</div>
+
+<h3>Export</h3>
+
+<p>
+After checking the G-code preview, you can click save the G-code to be transferred to the printer. The preferred method is to first insert a USB drive into the computer. Then you can click the button in the far-right bottom corner of the window to export the G-code directly to the USB. Otherwise, you can use the Export G-code to save the file to your computer, which you can then transfer to the printer later.
+</p>
+
+<img src="../images/export.png" alt="Export G-code"style="width: 50%;">
+
+<p>
+Now, you just have to prepare your printer (i.e., clean the print bed and load the correct filament) and start the print!
+</p>
+
+<div class="image-overlay" id="overlay">
+  <img id="overlay-img" src="">
+</div>
+
+<script>
+  const overlay = document.getElementById("overlay");
+  const overlayImg = document.getElementById("overlay-img");
+
+  document.querySelectorAll("img").forEach(img => {
+    img.addEventListener("click", () => {
+      overlayImg.src = img.src;
+      overlay.classList.add("active");
+    });
+  });
+
+  overlay.addEventListener("click", () => {
+    overlay.classList.remove("active");
+  });
+</script>
+
+</body>
+</html>

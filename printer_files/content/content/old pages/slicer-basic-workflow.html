@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="content-style.css">
+</head>
+
+<body>
+
+<h2>Basic Workflow</h2>
+
+<p>
+  The following pages explore some of PrusaSlicer’s many features, which allow you to customize your prints in a variety of ways. Understanding these tools gives you a high level of control over the printing process and can significantly improve the quality of your results.
+</p>
+
+<p>
+  That said, the software can feel overwhelming at first, especially for beginners. To make the process more manageable, we will start by guiding you step by step through PrusaSlicer’s basic workflow before building toward a few of the more advanced features.
+</p>
+
+<div class="lesson-section">
+  <h3>Import the Model</h3>
+
+  <p>
+    Before you can print anything, you need a 3D model. You can either download models from online libraries like Printables or Thingiverse, or create your own using CAD software such as Autodesk Fusion.
+  </p>
+
+  <p>First, you need to save your model to a location on your computer that you can easily find.</p>
+
+  <p>There are several ways to import the model into PrusaSlicer:</p>
+
+  <ul>
+    <li>Click <strong>Add</strong> to open your file explorer and import your file (recommended).</li>
+    <li>Go to <strong>File → Import → Import STL/3MF/STEP/OBJ/AMF...</strong></li>
+    <li>Drag and drop a file directly into the PrusaSlicer window.</li>
+  </ul>
+
+  <img src="../images/import_model.png" class="zoomable" alt="Importing a model">
+
+  <p>Regardless of whichever method you choose, the model will end up on your print plate.</p>
+</div>
+
+<div class="lesson-section">
+  <h3>Inspect the Model</h3>
+
+  <p>
+    Before proceeding it is important to inspect your model from all angles to make sure that it imported correctly.
+  </p>
+
+  <p><strong>Left-click and drag</strong> to rotate the view.</p>
+  <video autoplay loop muted playsinline>
+    <source src="../videos/rotating_view.webm" type="video/webm">
+  </video>
+
+  <p><strong>Right-click and drag</strong> to pan the view.</p>
+  <video autoplay loop muted playsinline>
+    <source src="../videos/panning_view.webm" type="video/webm">
+  </video>
+
+  <p><strong>Scroll with the mouse wheel</strong> to zoom in and out.</p>
+  <video autoplay loop muted playsinline>
+    <source src="../videos/zooming_view.webm" type="video/webm">
+  </video>
+</div>
+
+<div class="lesson-section">
+  <h3>Position the Model</h3>
+
+  <p>
+    To ensure a successful print, your model should typically have its largest flat surface touching the print bed.
+  </p>
+
+  <p>
+    If the model imported at an angle that is not optimal for printing you can use the rotate tool to manually adjust its orientation, or you can select the <strong>Place on Face</strong> tool, then click one of the highlighted faces to quickly snap the model into the correct position.
+  </p>
+
+  <video autoplay loop muted playsinline>
+    <source src="../videos/place_on_face1.webm" type="video/webm">
+  </video>
+
+  <p>
+    You can optionally move the model around with your mouse, but leaving it in the middle of the printing surface is usually best. The exact position on the plate does not matter as long as no part of the model is out of the printing area. In that case, the program will warn you, and the model will turn blue.
+  </p>
+</div>
+
+<div class="lesson-section">
+  <h3>Select the Printer, Filament, and Preset Settings</h3>
+
+  <p>Now, you have to specify three settings from the right panel (preferably in this order):</p>
+
+  <ol>
+    <li><strong>Printer</strong></li>
+    <li><strong>Filament</strong></li>
+    <li><strong>Print settings</strong></li>
+  </ol>
+
+  <img src="../images/printer.png" class="zoomable" alt="Printer setting">
+
+  <p>
+    You will primarily have access to Prusa MK4S printers with HF0.4mm nozzles. We do have additional printers and accessories in the makerspace, but those require additional training to be able to use them.
+  </p>
+
+  <img src="../images/filament_warning.png" class="zoomable" alt="Filament warning">
+
+  <p>
+    The Print settings primarily affect the layer height, which is typically between 0.10 and 0.28 mm. Smaller layer heights offer more detail but take longer to print. A good choice is typically one of the 0.20mm profiles, which provide a good balance of speed and quality for most use cases.
+  </p>
+
+  <img src="../images/print_settings.png" class="zoomable" alt="Print settings">
+</div>
+
+<div class="lesson-section">
+  <h3>Enable Supports</h3>
+
+  <p>
+    A 3D printer cannot reliably print into thin air. Choose whether to generate supports, i.e. printed “scaffolding” which increases reliability when printing overhangs.
+  </p>
+
+  <div class="note">
+    Select <strong>Supports → Everywhere</strong> if you are unsure. This may increase print time, but helps prevent failures.
+  </div>
+
+  <img src="../images/supports.png" class="zoomable" alt="Supports">
+</div>
+
+<div class="lesson-section">
+  <h3>Brim and Infill</h3>
+
+  <p>
+    You also have the option to change the object's infill density. The default value of 15% is sufficient for most prints.
+  </p>
+
+  <p>
+    If only a small part of your object is touching the print bed, you might want to enable brim — a thin outline around the base that increases contact area and helps adhesion.
+  </p>
+
+  <img src="../images/infill_and_brim.png" class="zoomable" alt="Infill and brim">
+</div>
+
+<div class="lesson-section">
+  <h3>Slice and Preview</h3>
+
+  <p>
+    Click <strong>Slice now</strong> to generate a preview of the print.
+  </p>
+
+  <div class="note">
+    <strong>VERY IMPORTANT:</strong> Use the layer slider to inspect the print. This often reveals problems before printing.
+  </div>
+
+  <video autoplay loop muted playsinline>
+    <source src="../videos/slice_and_inspect.webm" type="video/webm">
+  </video>
+</div>
+
+<div class="lesson-section">
+  <h3>Export and Print</h3>
+
+  <p>
+    After checking the preview, export the G-code. The preferred method is to insert a USB drive and export directly to it.
+  </p>
+
+  <img src="../images/export.png" class="zoomable" alt="Export G-code">
+
+  <p>
+    Finally, prepare your printer (clean the bed and load filament) and start the print.
+  </p>
+</div>
+
+<!-- Zoom Overlay -->
+<div class="image-overlay" id="overlay">
+  <img id="overlay-img" src="">
+</div>
+
+<script>
+  const overlay = document.getElementById("overlay");
+  const overlayImg = document.getElementById("overlay-img");
+
+  document.querySelectorAll(".zoomable").forEach(img => {
+    img.addEventListener("click", () => {
+      overlayImg.src = img.src;
+      overlay.classList.add("active");
+    });
+  });
+
+  overlay.addEventListener("click", () => {
+    overlay.classList.remove("active");
+  });
+</script>
+
+</body>
+</html>

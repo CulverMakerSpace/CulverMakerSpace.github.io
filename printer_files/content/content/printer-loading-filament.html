@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="content-style.css">
+</head>
+
+<body>
+
+<h2>Loading filament</h2>
+
+<p>
+First, we need to remove any filament that is already in the printer. Go to the Filament menu and choose the Unload Filament option.
+</p>
+
+<video autoplay loop muted playsinline>
+  <source src="../videos/unload_1.webm" type="video/webm">
+</video>
+
+<p>
+To remove the filament from the extruder, the nozzle has to heat up first. The exact temperature depends on the material that is loaded into the machine. Wait until the nozzle heats up. The drive gear will start retracting automatically after the correct temperature is reached.
+</p>
+
+<video autoplay loop muted playsinline>
+  <source src="../videos/unload_2.webm" type="video/webm">
+</video>
+
+<p>
+Once the extruder stops unloading the filament, remove it from the machine by hand.
+</p>
+
+<video autoplay loop muted playsinline>
+  <source src="../videos/unload_3.webm" type="video/webm">
+</video>
+
+<p>
+Cut 1-2 inches off of the end of the filament using the cutters to make it easier to reload the filament in the future. Neatly wind the filament back onto the spool and carefully secure it so that it does not tangle.
+</p>
+
+<img src="../images/cut.png" alt="Cutting filament" style="width: 50%;">
+
+<div class="image-overlay" id="overlay">
+  <img id="overlay-img" src="">
+</div>
+
+<script>
+  const overlay = document.getElementById("overlay");
+  const overlayImg = document.getElementById("overlay-img");
+
+  document.querySelectorAll("img").forEach(img => {
+    img.addEventListener("click", () => {
+      overlayImg.src = img.src;
+      overlay.classList.add("active");
+    });
+  });
+
+  overlay.addEventListener("click", () => {
+    overlay.classList.remove("active");
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="content-style.css">
+</head>
+
+<body>
+
+<h2>Interface: Central Icon Bar and Top Tabs</h2>
+
+<p>
+Now we will continue with the middle upper edge of the window. you will find the central icon bar, which contains a variety of tools for interacting with your models. While there are many useful buttons available, we will focus on just two for this training: Add and Arrange All. Most of the other buttons are pretty self explanatory if you hover your mouse over it without clicking, You are encouraged to research and experiment with the other buttons if you would like.
+</p>
+
+<img src="../images/central_panel.png" alt="Central icon bar">
+
+<h3>Add:</h3>
+
+<div class="row">
+  <div class="col_15">
+    <img src="../images/add.png" alt="Add button">
+  </div>
+
+  <div class="col_85 col_p">
+    <p>
+    As we have already discussed in earlier pages, the Add button allows you to import a model file from your computer and place it onto the print bed. This is typically the first step in preparing a print. Note that you can print models from more different files at once.
+    </p>
+  </div>
+</div>
+
+<h3>Arrange all:</h3>
+
+<div class="row">
+  <div class="col_15">
+    <img src="../images/arrange_all.png" alt="Arrange all button">
+  </div>
+
+  <div class="col_85 col_p">
+    <p>
+    Using this button, you can automatically arrange all models in your project across up to nine print beds. The software optimizes the placement to minimize unnecessary nozzle movement and improve printing efficiency.
+    </p>
+  </div>
+</div>
+
+<img src="../images/advanced_arrange.png" alt="Advanced arrange settings" style="width: 50%;">
+
+<p>
+If you right-click the Auto Arrange button, a small window with additional settings will appear. In this menu, you can adjust the minimum distance between models and from the edge of the print bed. You can also enable rotation, which allows the software to better fit models onto the bed by rotating them as needed. Keep in mind that enabling rotation can increase computation time, especially when arranging a large number of models.
+</p>
+
+<h3>Top tabs:</h3>
+
+<img src="../images/top_tabs.png" alt="Top tabs" style="width: 100%;">
+
+<p>
+Under these tabs, you will find a wide range of additional settings that allow for even greater control over your prints. However, changing many of these settings can lead to print failures or potentially damage the machines.
+</p>
+
+<p>
+You are welcome to explore these options, but do not make any changes unless you have been given specific instructions.
+</p>
+
+<div class="image-overlay" id="overlay">
+  <img id="overlay-img" src="">
+</div>
+
+<script>
+  const overlay = document.getElementById("overlay");
+  const overlayImg = document.getElementById("overlay-img");
+
+  document.querySelectorAll("img").forEach(img => {
+    img.addEventListener("click", () => {
+      overlayImg.src = img.src;
+      overlay.classList.add("active");
+    });
+  });
+
+  overlay.addEventListener("click", () => {
+    overlay.classList.remove("active");
+  });
+</script>
+
+</body>
+</html>
