@@ -1,13 +1,6 @@
-/*
-Pigott Makerspace Training Site
-Simple editable version with PNG icons.
-
-What changed in this polished version:
-1. Button icons sit next to the text.
-2. Icons stay aligned across all buttons.
-3. Icons slide slightly on hover.
-4. The active page has a maroon highlight bar.
-*/
+/* Pigott Makerspace Training Site
+   Permanent layout rebuild: body owns the page scroll, sidebar owns nav scroll,
+   and content cards/iframes grow naturally without nested scrollbars. */
 
 :root {
   --maroon: #70162a;
@@ -15,41 +8,61 @@ What changed in this polished version:
   --white: #ffffff;
   --text: #342b28;
   --muted: #6a625e;
+  --sidebar: #6a625e;
+  --shadow: 0 10px 20px rgba(52, 43, 40, 0.18);
+  --sidebar-width: 225px;
+  --content-width: 1125px;
 }
 
 * { box-sizing: border-box; }
 
+html {
+  min-height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
 body {
+  min-height: 100%;
   margin: 0;
+  overflow-x: hidden;
+  overflow-y: visible;
   font-family: Arial, Helvetica, sans-serif;
   background: var(--offwhite);
   color: var(--text);
 }
 
+img, video, iframe { max-width: 100%; }
+
+/* Root shell: the page owns the vertical scroll.
+   On desktop, the sidebar is fixed and the main column is offset with margin-left. */
 .layout {
-  display: flex;
+  display: block;
   min-height: 100vh;
 }
 
-/* Only this left sidebar is sticky and independently scrollable */
+/* Sidebar is fixed to the viewport on desktop and is the only internal scroll area. */
 .sidebar {
-  box-shadow: 10px 0px 10px rgba(52,43,40,.2);
-  width: 225px;
-  min-width: 225px;
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: var(--sidebar-width);
+  min-width: var(--sidebar-width);
   height: 100vh;
-  position: sticky;
-  top: 0;
-  background: var(--muted);
-  color: var(--white);
-  border-radius: 0 18px 18px 0;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
-  border-style: solid;
-  border-width: 1px;
-  border-color: rgb(175, 175, 175);
+  background: var(--sidebar);
+  color: var(--white);
+  border: 1px solid rgb(175, 175, 175);
+  border-left: 0;
+  border-radius: 0 18px 18px 0;
+  box-shadow: 10px 0 10px rgba(52, 43, 40, 0.2);
+  z-index: 20;
 }
 
 .logo {
-  height: 160px;
+  flex: 0 0 160px;
   background: var(--white);
   color: var(--maroon);
   font-size: 23px;
@@ -58,11 +71,29 @@ body {
   padding-top: 10px;
 }
 
-.sidebar-content {
-  height: calc(100vh - 200px);
-  overflow-y: auto;
-  padding: 30px 15px 5px;
+.logo img {
+  max-width: 90%;
+  max-height: 135px;
+  object-fit: contain;
 }
+
+.sidebar-content {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 30px 15px 16px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.45) transparent;
+}
+
+.sidebar-content::-webkit-scrollbar { width: 10px; }
+.sidebar-content::-webkit-scrollbar-track { background: transparent; }
+.sidebar-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.45);
+  border-radius: 10px;
+}
+.sidebar-content::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.7); }
 
 .sidebar h2 {
   font-size: 19px;
@@ -70,219 +101,302 @@ body {
 }
 
 .progress {
-  background: rgba(255,255,255,.78);
-  color: var(--maroon);
   height: 40px;
+  padding-top: 10px;
   border-radius: 10px;
+  background: rgba(255, 255, 255, 0.78);
+  color: var(--maroon);
   text-align: center;
   font-weight: bold;
-  padding-top: 10px;
 }
 
 .line {
   height: 3px;
-  background: rgba(255,255,255,.42);
   margin: 30px 0 20px;
+  background: rgba(255, 255, 255, 0.42);
 }
 
 .side-link {
   display: flex;
   align-items: center;
   gap: 15px;
+  margin-bottom: 10px;
+  padding: 8px 0;
+  border-left: 5px solid transparent;
+  border-radius: 8px;
   color: white;
   text-decoration: none;
   font-size: 16px;
   font-weight: bold;
   line-height: 1.25;
-  margin-bottom: 10px;
-  padding: 8px 0px 8px 0px;
-  border-left: 5px solid transparent;
-  border-radius: 8px;
 }
 
-.side-link:hover,
-.side-link.active {
+.side-link:hover, .side-link.active {
   border-left-color: white;
-  background: rgba(255,255,255,.10);
+  background: rgba(255, 255, 255, 0.10);
 }
 
 .side-icon {
   width: 45px;
   height: 45px;
   object-fit: contain;
-  transition: transform .18s ease;
+  transition: transform 0.18s ease;
 }
 
-.side-link:hover .side-icon {
-  transform: translateX(4px);
-}
+.side-link:hover .side-icon { transform: translateX(4px); }
 
 .side-link small {
+  display: inline-block;
+  margin-top: 2px;
+  color: rgba(255, 255, 255, 0.85);
   font-size: 12px;
+  font-weight: bold;
 }
 
-/* Sidebar scrollbar (Chrome, Edge, Safari) */
-.sidebar-content::-webkit-scrollbar {
-  width: 10px;
-}
-
-.sidebar-content::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.sidebar-content::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,0.4);
+.side-section {
+  margin: 14px 0 0;
   border-radius: 10px;
-}
-
-.sidebar-content::-webkit-scrollbar-thumb:hover {
-  background: rgba(255,255,255,0.7);
-}
-
-/* Firefox scrollbar */
-.sidebar-content {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255,255,255,0.4) transparent;
-}
-
-
-.main {
-  flex: 1;
-  padding: 15px 30px;
-}
-
-.header {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.header h1 {
-  color: var(--maroon);
-  font-size: 54px;
-  line-height: 1;
-  margin: 0;
-}
-
-.header p {
-  color: var(--muted);
-  font-size: 36px;
-  font-weight: bold;
-  margin: 5px 0 20px;
-}
-
-.top-nav {
-  max-width: 1125px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 15px;
-}
-
-.button {
-  min-height: 55px;
-  background: var(--white);
-  color: var(--maroon);
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(52,43,40,.20);
-  padding: 5px 5px;
-  display: flex;
-  flex-direction: row;        /* Icon next to text */
-  align-items: center;
-  justify-content: flex-start; /* Keeps icons aligned */
-  gap: 10px;
-  text-align: left;
-  position: relative;
+  background: rgba(255, 255, 255, 0.08);
   overflow: hidden;
 }
 
-/* Active-page highlight bar */
+.side-section summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 12px;
+  border-left: 5px solid transparent;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.side-section summary::-webkit-details-marker { display: none; }
+.side-section summary::after {
+  content: "+";
+  float: right;
+  font-size: 20px;
+  line-height: 16px;
+}
+.side-section[open] summary::after { content: "−"; }
+
+.side-section.complete summary::before {
+  content: "✓";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+.side-section[open] summary {
+  border-left-color: white;
+  background: rgba(255, 255, 255, 0.10);
+}
+
+.side-section a {
+  display: block;
+  padding: 9px 12px 9px 28px;
+  border-left: 5px solid transparent;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 1.25;
+}
+
+.side-section a:hover, .side-section a.active {
+  border-left-color: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.side-section a.complete::after, .side-link.complete::after {
+  content: "✓";
+  margin-left: 8px;
+  color: white;
+  font-weight: bold;
+}
+
+/* Main column: offset for the fixed sidebar. Never height-lock or overflow-scroll this area. */
+.main {
+  min-width: 0;
+  min-height: 100vh;
+  margin-left: var(--sidebar-width);
+  padding: 15px 30px 30px;
+  overflow: visible;
+}
+
+.header {
+  max-width: var(--content-width);
+  margin: 0 auto 20px;
+  text-align: center;
+}
+
+.header h1 {
+  margin: 0;
+  color: var(--maroon);
+  font-size: 54px;
+  line-height: 1;
+}
+
+.header p {
+  margin: 5px 0 20px;
+  color: var(--muted);
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.top-nav {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 15px;
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+
+.button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  min-height: 55px;
+  padding: 5px;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--white);
+  color: var(--maroon);
+  box-shadow: 0 5px 15px rgba(52, 43, 40, 0.20);
+  text-align: left;
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
 .button::before {
   content: "";
-  width: 6px;
-  height: 100%;
-  background: var(--maroon);
   position: absolute;
   left: 0;
   top: 0;
+  width: 6px;
+  height: 100%;
+  background: var(--maroon);
   opacity: 0;
 }
 
-.button.active::before {
-  opacity: 1;
+.button:hover, .button.active {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(52, 43, 40, 0.24);
 }
+
+.button.active::before { opacity: 1; }
 
 .button-icon {
   width: 32px;
   height: 32px;
-  min-width: 32px;            /* Keeps all text aligned */
-  object-fit: contain;
+  min-width: 32px;
   margin-left: 8px;
-  transition: transform .18s ease;
+  object-fit: contain;
+  transition: transform 0.18s ease;
 }
 
-.button span {
-  line-height: 1.15;
-  font-size: 14px;
-}
-
-.button:hover,
-.button.active {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(52,43,40,.24);
-}
-
-.button:hover .button-icon {
-  transform: translateX(4px);
-}
+.button:hover .button-icon { transform: translateX(4px); }
+.button span { font-size: 14px; line-height: 1.15; }
 
 .card {
-  background: var(--white);
+  max-width: var(--content-width);
+  margin-left: auto;
+  margin-right: auto;
   border-radius: 18px;
-  box-shadow: 0 10px 20px rgba(52,43,40,.18);
+  background: var(--white);
+  box-shadow: var(--shadow);
 }
 
+/* Content cards grow with content. No internal scrollbar. */
 .content {
-  max-width: 1125px;
-  min-height: 880px;
-  margin: 0 auto;
+  width: 100%;
+  min-height: 0;
+  height: auto;
   padding: 25px;
+  overflow: visible;
 }
 
 .content h2 {
+  margin-top: 0;
   color: var(--maroon);
   font-size: 28px;
-  margin-top: 0;
 }
 
-.content p {
+.content h3 { color: var(--text); }
+
+.content p, .content ul {
   color: var(--muted);
   font-size: 18px;
   line-height: 1.55;
 }
 
-.content ul {
-  color: var(--muted);
-  font-size: 18px;
-  line-height: 1.25;
-}
+.content ul { line-height: 1.35; }
 
 .placeholder {
   min-height: 650px;
   margin-top: 32px;
   padding: 20px;
   border-radius: 14px;
-  background: linear-gradient(rgba(112,22,42,.05), rgba(112,22,42,0));
+  background: linear-gradient(rgba(112, 22, 42, 0.05), rgba(112, 22, 42, 0));
 }
 
+/* Iframe lessons: JS resizes height to content, so no inner iframe scrollbar. */
+#lesson-frame {
+  display: block;
+  width: 100%;
+  min-height: 850px;
+  height: 850px;
+  border: 0;
+  overflow: hidden;
+}
+
+#content-area img, .content img {
+  display: block;
+  width: min(90%, 1000px);
+  max-width: 100%;
+  height: auto;
+  margin: 24px auto;
+  border-radius: 12px;
+}
+
+.lesson-complete-panel {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 20px;
+  padding: 16px;
+  border-radius: 14px;
+  background: var(--offwhite);
+  color: var(--muted);
+  font-weight: bold;
+}
+
+.complete-button {
+  cursor: pointer;
+  border: 0;
+  border-radius: 10px;
+  padding: 11px 16px;
+  background: var(--maroon);
+  color: white;
+  font-weight: bold;
+}
+
+.complete-button:hover { filter: brightness(1.08); }
+
 .contact {
-  max-width: 1125px;
-  margin: 20px auto 0;
-  padding: 15px 30px;
   display: flex;
   align-items: center;
   gap: 44px;
+  margin-top: 20px;
+  padding: 15px 30px;
 }
 
 .mail-icon {
@@ -292,125 +406,80 @@ body {
 }
 
 .contact h2 {
-  color: var(--maroon);
   margin: 0 0 8px;
+  color: var(--maroon);
 }
 
 .contact p {
+  margin: 0 0 8px;
   color: var(--muted);
   font-size: 18px;
   font-weight: bold;
-  margin: 0 0 8px;
 }
 
 .contact a {
   color: var(--maroon);
   font-size: 18px;
+  font-style: italic;
   font-weight: bold;
   text-decoration: none;
-  font-style: italic;
 }
 
+/* Mobile/tablet: sidebar becomes normal content and uses page scroll. */
 @media (max-width: 945px) {
-  .layout { display: block; }
+  .layout {
+    display: block;
+    min-height: 100vh;
+  }
 
   .sidebar {
+    position: relative;
+    inset: auto;
     width: 100%;
     height: auto;
-    position: relative;
+    min-width: 0;
     border-radius: 0;
   }
 
   .logo {
+    flex-basis: 160px;
     height: 160px;
-    padding-top: 10px;
   }
 
   .sidebar-content {
-    height: auto;
+    max-height: none;
+    overflow: visible;
   }
 
-  .top-nav {
-    grid-template-columns: 1fr 1fr;
+  .main {
+    margin-left: 0;
+    padding: 15px;
   }
-
-  .header h1 {
-    font-size: 42px;
+  .top-nav { grid-template-columns: 1fr 1fr; }
+  .header h1 { font-size: 42px; }
+  .header p { font-size: 28px; }
+  .lesson-complete-panel {
+    align-items: flex-start;
+    flex-direction: column;
   }
 }
 
 
-/* Collapsible sidebar menu */
-.side-section {
-  margin: 14px 0 0;
-  border-radius: 10px;
-  background: rgba(255,255,255,.08);
-  overflow: hidden;
+/* Permanent scrollbar guardrails:
+   - body/html handle the main page scroll
+   - fixed sidebar + .sidebar-content handle left navigation scroll
+   - lesson cards and iframe wrappers never create nested scrollbars */
+.card,
+.content,
+.main,
+#content-area {
+  overflow: visible;
 }
 
-.side-section summary {
-  cursor: pointer;
-  list-style: none;
-  padding: 12px 12px;
-  font-size: 16px;
-  font-weight: bold;
-  color: white;
-  border-left: 5px solid transparent;
+body {
+  overflow-y: auto;
 }
 
-.side-section summary::-webkit-details-marker {
-  display: none;
-}
-
-.side-section summary::after {
-  content: "+";
-  float: right;
-  font-size: 20px;
-  line-height: 16px;
-}
-
-.side-section[open] summary::after {
-  content: "−";
-}
-
-.side-section[open] summary {
-  border-left-color: white;
-  background: rgba(255,255,255,.10);
-}
-
-.side-section a {
-  display: block;
-  color: white;
-  text-decoration: none;
-  font-size: 14px;
-  line-height: 1.25;
-  padding: 9px 12px 9px 28px;
-  border-left: 5px solid transparent;
-}
-
-.side-section a:hover,
-.side-section a.active {
-  background: rgba(255,255,255,.12);
-  border-left-color: rgba(255,255,255,.75);
-}
-
-/* Iframe lesson loader */
-#lesson-frame {
-  width: 100%;
-  min-height: 850px;
-  border: 0;
-  display: block;
-}
-
-.content {
-  overflow: hidden;
-}
-
-/* Images placed directly inside the main content area */
-#content-area img {
-  width: 90%;
-  max-width: 100%;
-  display: block;
-  margin: 24px auto;
-  border-radius: 12px;
+.sidebar-content {
+  overscroll-behavior: contain;
 }
