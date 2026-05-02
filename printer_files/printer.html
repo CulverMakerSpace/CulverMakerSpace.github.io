@@ -68,11 +68,7 @@
       </header>
 
       <section class="card content" id="content-area">
-        <iframe id="lesson-frame" src="content/printer-overview.html" title="Lesson content"></iframe>
-        <div class="lesson-complete-panel">
-          <button class="complete-button" type="button" onclick="markCurrentLessonComplete()">Mark Current Page Complete</button>
-          <span id="current-lesson-status">This page is not complete yet.</span>
-        </div>
+        <iframe id="lesson-frame" class="lesson-frame" src="content/printer-overview.html" title="Lesson content"></iframe>
       </section>
 
       <footer class="card contact">
@@ -85,142 +81,8 @@
     </main>
   </div>
 
-  <script>
-    const SECTION_LESSONS = {
-      overview: ["printer-overview"],
-      slicer: [
-        "slicer-introduction",
-        "slicer-setup",
-        "slicer-basic-workflow",
-        "slicer-left-icon-bar",
-        "slicer-right-panel",
-        "slicer-top-tabs",
-        "slicer-slice-preview"
-      ],
-      mk4s: [
-        "printer-introduction",
-        "printer-components",
-        "printer-loading-filament",
-        "printer-print-sheet",
-        "printer-menu-controls",
-        "printer-starting-print",
-        "printer-finishing-print"
-      ],
-      design: [
-        "design-introduction",
-        "design-orientation",
-        "design-dimensional-accuracy",
-        "design-print-adhesion",
-        "design-designed-supports",
-        "design-fillets-chamfers"
-      ]
-    };
-
-    const PRUSA_LESSONS = Object.values(SECTION_LESSONS).flat();
-
-    let currentLessonId = "printer-overview";
-
-    function lessonIdFromPath(filePath) {
-      return filePath.split("/").pop().replace(".html", "");
-    }
-
-    function getCompletedPages() {
-      try {
-        return JSON.parse(localStorage.getItem("completedPages")) || [];
-      } catch (error) {
-        return [];
-      }
-    }
-
-    function saveCompletedPages(completedPages) {
-      localStorage.setItem("completedPages", JSON.stringify(completedPages));
-    }
-
-    function isLessonComplete(lessonId) {
-      return getCompletedPages().includes(lessonId);
-    }
-
-    function getPercentComplete(lessonList) {
-      if (!lessonList.length) return 0;
-      const completed = getCompletedPages();
-      const completedCount = lessonList.filter(lessonId => completed.includes(lessonId)).length;
-      return Math.round((completedCount / lessonList.length) * 100);
-    }
-
-    function isSectionComplete(sectionKey) {
-      const lessons = SECTION_LESSONS[sectionKey] || [];
-      return lessons.length > 0 && lessons.every(lessonId => isLessonComplete(lessonId));
-    }
-
-    function markLessonComplete(lessonId) {
-      const completed = getCompletedPages();
-      if (!completed.includes(lessonId)) {
-        completed.push(lessonId);
-        saveCompletedPages(completed);
-      }
-      updateProgressDisplay();
-    }
-
-    function markCurrentLessonComplete() {
-      markLessonComplete(currentLessonId);
-    }
-
-    function updateProgressDisplay() {
-      const percent = getPercentComplete(PRUSA_LESSONS);
-      document.getElementById("printer-progress").textContent = `${percent}%`;
-      document.getElementById("printer-section-progress").textContent = `${percent}% complete`;
-
-      document.querySelectorAll("[data-lesson-id]").forEach(link => {
-        const lessonId = link.dataset.lessonId;
-        link.classList.toggle("complete", isLessonComplete(lessonId));
-      });
-
-      document.querySelectorAll("[data-section]").forEach(section => {
-        const sectionKey = section.dataset.section;
-        section.classList.toggle("complete", isSectionComplete(sectionKey));
-      });
-
-      const status = document.getElementById("current-lesson-status");
-      if (status) {
-        status.textContent = isLessonComplete(currentLessonId)
-          ? "This page is complete."
-          : "This page is not complete yet.";
-      }
-    }
-
-    function setActiveLessonLink(filePath, clickedLink) {
-      document.querySelectorAll(".side-link, .side-section a").forEach(link => {
-        link.classList.remove("active");
-      });
-
-      let linkToActivate = clickedLink || document.querySelector(`[data-lesson-id="${lessonIdFromPath(filePath)}"]`);
-
-      if (linkToActivate) {
-        linkToActivate.classList.add("active");
-        const parentSection = linkToActivate.closest("details");
-        if (parentSection) parentSection.open = true;
-      }
-    }
-
-    function loadLesson(filePath, clickedLink) {
-      document.getElementById("lesson-frame").src = filePath;
-      localStorage.setItem("lastLesson", filePath);
-      currentLessonId = lessonIdFromPath(filePath);
-      setActiveLessonLink(filePath, clickedLink);
-      updateProgressDisplay();
-    }
-
-    window.addEventListener("DOMContentLoaded", function() {
-      const savedLesson = localStorage.getItem("lastLesson") || "content/printer-overview.html";
-      document.getElementById("lesson-frame").src = savedLesson;
-      currentLessonId = lessonIdFromPath(savedLesson);
-      setActiveLessonLink(savedLesson, null);
-      updateProgressDisplay();
-    });
-
-    // This lets future quiz buttons inside iframe lesson pages mark progress with:
-    // window.parent.markLessonComplete("slicer-basic-workflow");
-    window.markLessonComplete = markLessonComplete;
-  </script>
+  <script src="js/progress-tracker.js"></script>
+  <script src="js/iframe-resizer.js"></script>
+  <script src="js/lesson-loader.js"></script>
 </body>
 </html>

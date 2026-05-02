@@ -1,29 +1,29 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="content-style.css">
-</head>
-
-<body>
-
-<h2>Prusa MK4S 3D Printers</h2>
-
-<p>
+<meta charset="utf-8"/>
+<link href="content-style.css" rel="stylesheet"/>
+<title>Printer Introduction</title></head>
+<body><main class="lesson-content"><h2>Prusa MK4S 3D Printers</h2><p>
 3D printing, also known as additive manufacturing, is a process of constructing physical objects from a digital file made using computer-aided design (CAD) software or a 3D scanner. Unlike traditional subtractive manufacturing, which removes material from a block, 3D printing builds objects layer by layer, depositing materials such as plastics, metals, or resins until the final object is complete. 
-</p>
-
-<p>
+</p><p>
 You will primarily have access to Prusa MK4S printers in our makerspace. The main goal of this section is to make the usage of these printers as simple, streamlined, and accessible as possible.
-</p>
-
-<img src="../images/mk4s.png" alt="Prusa MK4S printer">
-
-<div class="image-overlay" id="overlay">
-  <img id="overlay-img" src="">
+</p><img alt="Prusa MK4S printer" src="../images/mk4s.png"/>
+<section class="quick-check" data-lesson-id="printer-introduction">
+<h2>Quick Check</h2>
+<p class="quick-check-intro">Answer all questions correctly to mark this page complete.</p>
+<div class="quiz-question" data-correct="A">
+<p>1. Have you read through this lesson and reviewed the important information?</p>
+<button data-answer="A" type="button">Yes, I have reviewed this page.</button>
+<button data-answer="B" type="button">No, I have not reviewed it yet.</button>
+<button data-answer="C" type="button">I am not sure.</button>
+<p aria-live="polite" class="feedback"></p>
 </div>
-
-<script>
+</section>
+</main><div class="image-overlay" id="overlay">
+<img id="overlay-img" src=""/>
+</div><script>
   const overlay = document.getElementById("overlay");
   const overlayImg = document.getElementById("overlay-img");
 
@@ -37,7 +37,5 @@ You will primarily have access to Prusa MK4S printers in our makerspace. The mai
   overlay.addEventListener("click", () => {
     overlay.classList.remove("active");
   });
-</script>
-
-</body>
+</script><script src="../js/quiz-handler.js"></script></body>
 </html>

@@ -1,102 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="content-style.css">
-  </head>
 
-  <body>
-    <h2>Interface: Left Icon Bar</h2>
-      <p>Over the next several pages, we will describe PrusaSlicer’s user 
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<link href="content-style.css" rel="stylesheet"/>
+<title>Slicer Left Icon Bar</title></head>
+<body><main class="lesson-content"><h2>Interface: Left Icon Bar</h2><p>Over the next several pages, we will describe PrusaSlicer’s user 
         interface (UI). Each page will introduce one part of the program’s UI 
-        and its most important aspects.</p>
-      <p>We will start with the <strong>icon bar on the left</strong> side of the 
+        and its most important aspects.</p><p>We will start with the <strong>icon bar on the left</strong> side of the 
         window. This houses various tools used for manipulating your imported 
         objects. To use any of these tools, you must <strong>select an object 
-        first</strong>.</p>
-  
-      <h3>Move</h3>
-        <div class="row">
-          <div class="col_15">
-            <img src="../images/move.png" alt="Move tool">
-          </div>
-          <div class="col_85 col_p">
-            <p>By dragging the little boxes, you can move the model in each of the 
+        first</strong>.</p><h3>Move</h3><div class="row">
+<div class="col_15">
+<img alt="Move tool" src="../images/move.png"/>
+</div>
+<div class="col_85 col_p">
+<p>By dragging the little boxes, you can move the model in each of the 
               three axes. You can also drag the object directly with your mouse by 
               pressing and holding the left mouse button.</p>
-          </div>
-        </div>
-
-        <video autoplay loop muted playsinline><source src="../videos/moving.webm" type="video/webm"></video>
-
-        <p>When you pull any part of the model out of the boundaries of the print 
+</div>
+</div><video autoplay="" loop="" muted="" playsinline=""><source src="../videos/moving.webm" type="video/webm"/></video><p>When you pull any part of the model out of the boundaries of the print 
           volume, it will turn blue. <strong>PrusaSlicer will not allow you to slice 
-          an object while it is blue</strong>.</p>
-        <p>Also, note that you can't leave the model hanging in the air; it will just 
+          an object while it is blue</strong>.</p><p>Also, note that you can't leave the model hanging in the air; it will just 
           drop back onto the plate. However, you can pull it under the plate - this 
           is called <strong>Sinking</strong>. The program will then ignore the part 
           under the plate and only slice the part above. This works as a simple 
           cutting tool. The effect is then noted under that particular model as 
           "Sinking". To put the object back on the plate, click the icon next to the 
-          <strong>Position values in the Object manipulation panel</strong>.</p>
-
-        <img src="../images/sinking.png" alt="Sinking example">
-      
-      <h3>Scale</h3>
-        <div class="row">
-          <div class="col_15">
-            <img src="../images/scale.png" alt="Scale tool"></div>
-          <div class="col_85 col_p">
-            <p>Drag the boxes to change the object's size . Use the <strong>orange 
+          <strong>Position values in the Object manipulation panel</strong>.</p><img alt="Sinking example" src="../images/sinking.png"/><h3>Scale</h3><div class="row">
+<div class="col_15">
+<img alt="Scale tool" src="../images/scale.png"/></div>
+<div class="col_85 col_p">
+<p>Drag the boxes to change the object's size . Use the <strong>orange 
               boxes in the corners</strong> to maintain the same proportions. 
               The other boxes will stretch or squeeze the model non-uniformly.</p>
-          </div>
-        </div>
-
-        <video autoplay loop muted playsinline><source src="../videos/scaling.webm" type="video/webm"></video>
-      
-      <h3>Rotate</h3>
-        <div class="row">
-          <div class="col_15">
-            <img src="../images/rotate.png" alt="Rotate tool"></div>
-          <div class="col_85 col_p">
-            <p>Click and drag the red, green, or blue blocks to rotate the model. 
+</div>
+</div><video autoplay="" loop="" muted="" playsinline=""><source src="../videos/scaling.webm" type="video/webm"/></video><h3>Rotate</h3><div class="row">
+<div class="col_15">
+<img alt="Rotate tool" src="../images/rotate.png"/></div>
+<div class="col_85 col_p">
+<p>Click and drag the red, green, or blue blocks to rotate the model. 
               Move your mouse along <strong>white the guide lines to snap to fixed 
               increments </strong>or you can freeley rotate the model by dragging 
               outside of the lines.</p>
-          </div>
-        </div>
-
-        <video autoplay loop muted playsinline><source src="../videos/rotating.webm" type="video/webm"></video>
-      
-      <h3>Place on Face</h3>
-        <div class="row">
-          <div class="col_15">
-            <img src="../images/place_on_face.png" alt="Place on Face tool">
-          </div>
-          <div class="col_85 col_p">
-            <p>Choose which surface you would like to align with the print bed, and 
+</div>
+</div><video autoplay="" loop="" muted="" playsinline=""><source src="../videos/rotating.webm" type="video/webm"/></video><h3>Place on Face</h3><div class="row">
+<div class="col_15">
+<img alt="Place on Face tool" src="../images/place_on_face.png"/>
+</div>
+<div class="col_85 col_p">
+<p>Choose which surface you would like to align with the print bed, and 
               the object will automatically snap to that orientation.</p>
-          </div>
-        </div>
-
-        <video autoplay loop muted playsinline><source src="../videos/place_on_face2.webm" type="video/webm"></video>
-      
-      <h3>Other Tools</h3>
-        <div class="row">
-          <div class="col_15">
-            <img src="../images/other_tools.png" alt="Other tools" style="width: 50%; height: auto;">
-          </div>
-          <div class="col_85 col_p">
-            <p>You are encouraged to research and experiment with the other tools 
+</div>
+</div><video autoplay="" loop="" muted="" playsinline=""><source src="../videos/place_on_face2.webm" type="video/webm"/></video><h3>Other Tools</h3><div class="row">
+<div class="col_15">
+<img alt="Other tools" src="../images/other_tools.png" style="width: 50%; height: auto;"/>
+</div>
+<div class="col_85 col_p">
+<p>You are encouraged to research and experiment with the other tools 
               found in this panel. However, they will not be covered as part of 
               this training.</p>
-          </div>
-        </div>
-
-  <div class="image-overlay" id="overlay"><img id="overlay-img" src=""></div>
-
-<script>
+</div>
+</div>
+<section class="quick-check" data-lesson-id="slicer-left-icon-bar">
+<h2>Quick Check</h2>
+<p class="quick-check-intro">Answer all questions correctly to mark this page complete.</p>
+<div class="quiz-question" data-correct="A">
+<p>1. Have you read through this lesson and reviewed the important information?</p>
+<button data-answer="A" type="button">Yes, I have reviewed this page.</button>
+<button data-answer="B" type="button">No, I have not reviewed it yet.</button>
+<button data-answer="C" type="button">I am not sure.</button>
+<p aria-live="polite" class="feedback"></p>
+</div>
+</section>
+</main><div class="image-overlay" id="overlay"><img id="overlay-img" src=""/></div><script>
       const overlay = document.getElementById("overlay");
       const overlayImg = document.getElementById("overlay-img");
 
@@ -110,6 +87,5 @@
       overlay.addEventListener("click", () => {
         overlay.classList.remove("active");
       });
-    </script>
-  </body>
+    </script><script src="../js/quiz-handler.js"></script></body>
 </html>

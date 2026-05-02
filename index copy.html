@@ -80,6 +80,67 @@
     </main>
   </div>
 
-  <script src="printer_files/js/progress-tracker.js"></script>
+  <script>
+    const COURSE_SECTIONS = {
+      cad: [],
+      prusa: [
+        "printer-overview",
+        "slicer-introduction",
+        "slicer-setup",
+        "slicer-basic-workflow",
+        "slicer-left-icon-bar",
+        "slicer-right-panel",
+        "slicer-top-tabs",
+        "slicer-slice-preview",
+        "printer-introduction",
+        "printer-components",
+        "printer-loading-filament",
+        "printer-print-sheet",
+        "printer-menu-controls",
+        "printer-starting-print",
+        "printer-finishing-print",
+        "design-introduction",
+        "design-orientation",
+        "design-dimensional-accuracy",
+        "design-print-adhesion",
+        "design-designed-supports",
+        "design-fillets-chamfers"
+      ],
+      laser: [],
+      vinyl: []
+    };
+
+    function getCompletedPages() {
+      try {
+        return JSON.parse(localStorage.getItem("completedPages")) || [];
+      } catch (error) {
+        return [];
+      }
+    }
+
+    function getSectionPercent(sectionPages) {
+      if (!sectionPages.length) return 0;
+      const completed = getCompletedPages();
+      const completedCount = sectionPages.filter(page => completed.includes(page)).length;
+      return Math.round((completedCount / sectionPages.length) * 100);
+    }
+
+    function updateHomeProgress() {
+      const cadPercent = getSectionPercent(COURSE_SECTIONS.cad);
+      const prusaPercent = getSectionPercent(COURSE_SECTIONS.prusa);
+      const laserPercent = getSectionPercent(COURSE_SECTIONS.laser);
+      const vinylPercent = getSectionPercent(COURSE_SECTIONS.vinyl);
+
+      document.getElementById("cad-progress").textContent = `${cadPercent}% complete`;
+      document.getElementById("prusa-progress").textContent = `${prusaPercent}% complete`;
+      document.getElementById("laser-progress").textContent = `${laserPercent}% complete`;
+      document.getElementById("vinyl-progress").textContent = `${vinylPercent}% complete`;
+
+      const allPages = Object.values(COURSE_SECTIONS).flat();
+      document.getElementById("overall-progress").textContent = `${getSectionPercent(allPages)}%`;
+    }
+
+    window.addEventListener("DOMContentLoaded", updateHomeProgress);
+  </script>
 </body>
 </html>
