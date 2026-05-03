@@ -1,14 +1,95 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<link href="content-style.css" rel="stylesheet"/>
-<title>Slicer Setup</title></head>
-<body><main class="lesson-content"><h2>Intial Slicer Setup</h2><p>Placeholder for printer menu controls.</p><div class="placeholder">
-<p>This is a placeholder content file. Edit this file inside the content folder when you are ready.</p>
-</div>
-<section class="quick-check" data-lesson-id="slicer-setup">
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="content-style.css">
+</head>
+
+<body>
+
+<h2>Initial Setup</h2>
+
+<p>
+The first time you launch PrusaSlicer on a new computer, you will need to complete an initial setup. This process only needs to be done once per machine.
+</p>
+
+<p>
+After the setup is complete, the slicer will automatically reload your saved settings each time you open it. However, if you use a different computer in the future, you will need to go through the setup process again on that device.
+</p>
+
+<img src="../images/slicer_welcome.png" alt="Slicer welcome">
+
+<p>
+You do not need to create an account or login, just click next on this screen.
+</p>
+
+<img src="../images/skip_login.png" alt="Skip login">
+
+<p>
+Only select Prusa FFF from the online sources screen.
+</p>
+
+<img src="../images/printer_source.png" alt="Printer source">
+
+<p>
+Scroll down to the MK4 Family section and select the “Original Prusa MK4S: 0.4 mm nozzle”.
+Note - Do not select the HF 0.4 mm nozzle!
+</p>
+
+<img src="../images/printer_select.png" alt="Printer select">
+
+<p>
+Do not make any changes to this screen, just click next.
+</p>
+
+<img src="../images/custom_setup.png" alt="Custom setup">
+
+<p>
+On the filament selection screen you first need to click the None button.
+</p>
+
+<img src="../images/none.png" alt="None selected">
+
+<p>
+Now select (All) > PLA > Overture > Overture PLA
+</p>
+
+<img src="../images/filament_profiles.png" alt="Filament profiles">
+
+<p>
+Do not make any changes to this screen, just click next.
+</p>
+
+<img src="../images/updates.png" alt="Updates">
+
+<p>
+Do not make any changes to this screen, just click next.
+</p>
+
+<img src="../images/downloads.png" alt="Downloads">
+
+<p>
+Do not make any changes to this screen, just click next.
+</p>
+
+<img src="../images/reloads.png" alt="Reloads">
+
+<p>
+Click the two boxes to associate both .3mf files and .stl files to PrusaSlicer
+</p>
+
+<img src="../images/files.png" alt="File associations">
+
+<p>
+Change the view mode to Advanced.
+</p>
+
+<img src="../images/view_mode.png" alt="View mode">
+
+<p>
+Now you can click Finish to complete the setup process!
+</p>
+<section class="quick-check" data-lesson-id="slicer-top-tabs">
 <h2>Quick Check</h2>
 <p class="quick-check-intro">Answer all questions correctly to mark this page complete.</p>
 <div class="quiz-question" data-correct="A">
@@ -19,5 +100,21 @@
 <p aria-live="polite" class="feedback"></p>
 </div>
 </section>
-</main><script src="../js/quiz-handler.js"></script></body>
+</main><div class="image-overlay" id="overlay">
+<img id="overlay-img" src=""/>
+</div><script>
+  const overlay = document.getElementById("overlay");
+  const overlayImg = document.getElementById("overlay-img");
+
+  document.querySelectorAll("img").forEach(img => {
+    img.addEventListener("click", () => {
+      overlayImg.src = img.src;
+      overlay.classList.add("active");
+    });
+  });
+
+  overlay.addEventListener("click", () => {
+    overlay.classList.remove("active");
+  });
+</script><script src="../js/quiz-handler.js"></script></body>
 </html>
