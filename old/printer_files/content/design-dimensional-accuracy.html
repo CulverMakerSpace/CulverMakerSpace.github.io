@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<link href="content-style.css" rel="stylesheet"/>
+<title>Design Dimensional Accuracy</title></head>
+<body><main class="lesson-content"><h2>Dimensional Accuracy</h2><h3>Printer Resolution</h3><p>
+3D printers have different resolutions in the vertical and horizontal axis. These resolutions directly affect the dimensional accuracy of the printed part itself.
+</p><p>
+The horizontal resolution (or XY resolution, parallel to the print surface) is limited by the nozzle diameter. Nozzles on printers vary in size, with the common standard nozzle orifice size being 0.40mm, such as the ones that are installed on our Prusa machines. Smaller or bigger diameter nozzles are also available - such as the 0.25 or 0.6 mm nozzle.
+</p><img alt="nozzles" src="../images/nozzles.png"/><p>
+The vertical resolution is limited by the layer height. The smaller it is, the smoother the printed surface will be. But the layer height also directly affects the print time.
+</p><img alt="layers" src="../images/layers.png"/><p>
+Generally, the vertical resolution will be significantly higher than the horizontal resolution. As a result, the print orientation has a big impact on aesthetic qualities as well as dimensional accuracy.
+</p><p>
+A good rule of thumb to follow is that the range of acceptable layer heights for a printer is between 25%-75% of the nozzle width. For our printers this would be layer heights between 0.1mm-0.3mm with the most common layer height being 0.2mm. When designing your parts keep these dimensions in mind. No horizonal feature should be smaller than two times diameter of the nozzle (~0.8mm) and no vertical future should be smaller than two times the layer height (~0.4mm).
+</p><h3>Tolerances and Allowances</h3><p>
+Recall that tolerances describe the amount of variation between a designed dimension and the actual printed part. While modern 3D printers can be very accurate, there will always be some small variation in the final result. For example, you might design a cube to be 10 mm × 10 mm × 10 mm, but the printed part could measure 9.5 mm × 10.1 mm × 10.0 mm. This variation is normal and must be accounted for when designing parts.
+</p><p>
+Allowances (often called clearances) are intentional gaps designed between parts that need to fit together. These help account for tolerances and determine how easily parts can be assembled or separated or their “fit”.
+</p><p>
+There are three common types of fits used in design:
+</p><ul>
+<li>Interference (Press) Fit<br/>
+  Parts are slightly larger than the space they fit into. Assembly requires force, and disassembly is difficult or may damage the parts.</li>
+<li>Transition (Sliding) Fit<br/>
+  Parts slide together with some resistance but can still be assembled and disassembled without excessive force.</li>
+<li>Clearance (Loose) Fit<br/>
+  Parts fit together easily with noticeable space between them and can move freely once assembled.</li>
+</ul><table>
+<tr>
+<th>Fit Type</th>
+<th>Gap (per side)</th>
+</tr>
+<tr>
+<td>Press Fit</td>
+<td>~0.05 mm</td>
+</tr>
+<tr>
+<td>Tight Transition Fit</td>
+<td>~0.10 mm</td>
+</tr>
+<tr>
+<td>Loose Transition Fit</td>
+<td>~0.15 mm</td>
+</tr>
+<tr>
+<td>Clearence Fit</td>
+<td>≥ 0.20 mm</td>
+</tr>
+</table><p>
+Printer variability and material choice both affect how parts fit together. Different printers—and even the same printer on different days—can produce slightly different results. Materials such as PLA, PETG, and ABS also behave differently, which can impact final dimensions.
+</p><p>
+Print orientation is another important factor. Parts printed vertically versus horizontally can have different tolerances due to layer lines and how the material is deposited.
+</p><p>
+In addition, holes tend to print slightly undersized, while pegs and external features often print slightly oversized.
+</p><p>
+It is critical to take all of these factors into consideration during the design process. When fit is critical, you should print small test pieces to verify tolerances before committing to a final design.
+</p>
+<section class="quick-check" data-lesson-id="design-dimensional-accuracy">
+<h2>Quick Check</h2>
+<p class="quick-check-intro">Answer all questions correctly to mark this page complete.</p>
+<div class="quiz-question" data-correct="A">
+<p>1. Have you read through this lesson and reviewed the important information?</p>
+<button data-answer="A" type="button">Yes, I have reviewed this page.</button>
+<button data-answer="B" type="button">No, I have not reviewed it yet.</button>
+<button data-answer="C" type="button">I am not sure.</button>
+<p aria-live="polite" class="feedback"></p>
+</div>
+</section>
+</main><div class="image-overlay" id="overlay">
+<img id="overlay-img" src=""/>
+</div><script>
+  const overlay = document.getElementById("overlay");
+  const overlayImg = document.getElementById("overlay-img");
+
+  document.querySelectorAll("img").forEach(img => {
+    img.addEventListener("click", () => {
+      overlayImg.src = img.src;
+      overlay.classList.add("active");
+    });
+  });
+
+  overlay.addEventListener("click", () => {
+    overlay.classList.remove("active");
+  });
+</script><script src="../js/quiz-handler.js"></script></body>
+</html>

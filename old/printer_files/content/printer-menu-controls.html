@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<link href="content-style.css" rel="stylesheet"/>
+<title>Printer Menu Controls</title></head>
+<body><main class="lesson-content"><h2>Prusa menu controls</h2><p>
+We are finally almost ready to begin our first print. But before we start, we need to learn how to control the printer. Let's just go very quickly through the basic menu - almost everything is pretty self-explanatory.
+</p><img alt="Main screen" src="../images/main_screen.png"/><p>
+This is how the main “home" screen of the menu looks like. The upper right corner shows time, in the middle, there are 6 menu options, and at the bottom of the screen, you can see nozzle temperature, heat bed temperature, and type of material loaded into the printer. During a preheat, the temperatures will be in the format "current temperature/target temperature".
+</p><p>
+Please note that the printer has no way of detecting the filament material. It relies on the information given by the user when using the Load Filament function.
+</p><p>
+Before we start, keep in mind that the vast majority of the menu options are only useful for troubleshooting or testing purposes. For regular printing, you only ever need the Print and Filament menus.
+</p><h3>No USB/Print</h3><p>
+This menu item reads No USB when the USB slot is empty, and changes to Print when a USB drive is inserted. Pretty self-explanatory: here you choose what files you want to print.
+</p><h3>Preheat</h3><video autoplay="" loop="" muted="" playsinline="">
+<source src="../videos/preheat_menu.webm" type="video/webm"/>
+</video><p>
+Through this menu, you can preheat the nozzle and the heatbed to a certain temperature, as per the chosen filament material. Under normal circumstances, you don't have to enter this menu at all - when printing, the correct preheat settings are always already included in the print file, and when loading a new filament, you choose the correct temperature through the Load Filament option. That means that this menu option is primarily needed just for cleaning, part replacement, or testing.
+</p><h3>Filament</h3><img alt="Filament screen" src="../images/filament_screen.png"/><p>
+Here, you can Load or Unload Filament, Change Filament (which is just the two previous options one after another) or Purge Filament (i.e. get rid of the remnants of the previous filament color - normally, this is already included in the Load Filament procedure, though).
+</p><h3>Control</h3><img alt="Control menu" src="../images/control.png"/><p>
+This menu contains a lot of testing/troubleshooting options, like disabling the motors or setting fan speed. Again, you will not normally need to use most of these functions.
+</p><h3>Settings</h3><video autoplay="" loop="" muted="" playsinline="">
+<source src="../videos/settings.webm" type="video/webm"/>
+</video><p>
+Again, this menu contains a vast number of options, including serious actions such as a full factory reset. Please do not make any changes to these settings unless specifically instructed to do so.
+</p><h3>Info</h3><img alt="Info menu" src="../images/info.png"/><p>
+The last menu option features a lot of various metrics and statistics - from a firmware version to a circuit board temperature.
+In the Statistics option of the Print Statistics submenu, you can see some fun numbers - how many meters of filament your printer already consumed, and how many meters (later kilometers) the individual axes traveled.
+</p><h3>Moving the Z-axis</h3><p>
+Last but not least, there is one important control feature that you can access without the menu, just by using the control knob. Press and hold the control knob for a few seconds, then release it. This screen will appear.
+</p><video autoplay="" loop="" muted="" playsinline="">
+<source src="../videos/z_axis_adjust.webm" type="video/webm"/>
+</video><p>
+Now, you can twist the knob to move the extruder up and down (you can't move it lower than the initial position, though - this prevents the risk of plowing the nozzle into the print sheet accidentally).
+</p><video autoplay="" loop="" muted="" playsinline="">
+<source src="../videos/z_axis_moving.webm" type="video/webm"/>
+</video><p>
+The main reason you might want to move the extruder out of the way is for cleaning or removing the print sheet, or when you want to inspect the nozzle from below.
+</p><img alt="Z axis warning" src="../images/z_axis_warning.png"/>
+<section class="quick-check" data-lesson-id="printer-menu-controls">
+<h2>Quick Check</h2>
+<p class="quick-check-intro">Answer all questions correctly to mark this page complete.</p>
+<div class="quiz-question" data-correct="A">
+<p>1. Have you read through this lesson and reviewed the important information?</p>
+<button data-answer="A" type="button">Yes, I have reviewed this page.</button>
+<button data-answer="B" type="button">No, I have not reviewed it yet.</button>
+<button data-answer="C" type="button">I am not sure.</button>
+<p aria-live="polite" class="feedback"></p>
+</div>
+</section>
+</main><div class="image-overlay" id="overlay">
+<img id="overlay-img" src=""/>
+</div><script>
+  const overlay = document.getElementById("overlay");
+  const overlayImg = document.getElementById("overlay-img");
+
+  document.querySelectorAll("img").forEach(img => {
+    img.addEventListener("click", () => {
+      overlayImg.src = img.src;
+      overlay.classList.add("active");
+    });
+  });
+
+  overlay.addEventListener("click", () => {
+    overlay.classList.remove("active");
+  });
+</script><script src="../js/quiz-handler.js"></script></body>
+</html>

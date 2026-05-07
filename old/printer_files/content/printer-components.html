@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<link href="content-style.css" rel="stylesheet"/>
+<title>Printer Components</title></head>
+<body><main class="lesson-content"><h2>Main components</h2><p>
+Now let's take a brief look at the printer and its main components. We will describe everything more in detail later, as it will be much easier to comprehend once you actually see the printer running. For now, we only describe things you more or less need to know (or at least locate) for setting up the first print.
+</p><img alt="Main components" src="../images/main_components.png"/><ul>
+<li>Spool holder - holds the filament spool.</li>
+<li>Extruder (sometimes called the print head or E-axis) or "Nextruder", which is the name for Prusa’s particular design. This is where the actual printing is done. Printing material (filament) is inserted from above through a small hole, melted by a heater block, and extruded through a nozzle. There are two ventilator fans. The filament is moved in and out of the extruder by a drive gear system. The gear is hidden inside - from the outside, you can see just the idler lock and the planetary gearbox front plate.</li>
+<li>Power supply unit - The on/off button is located here.</li>
+<li>Print bed - a heated base and a removable steel sheet on top of it. This is where the printed object will materialize.</li>
+<li>Display box - With an LCD display and a controlling knob. The USB drive slot is on the right side.</li>
+</ul><h3>X, Y, and Z axes</h3><p>
+In the 3D printing world, for describing the 3-dimensional space, the Cartesian coordinate system is widely used, i.e. we talk about the X, Y, and Z axes.
+</p><ul>
+<li>X is the left-right,</li>
+<li>Y is the front-rear,</li>
+<li>Z is the up-down.</li>
+</ul><video autoplay="" loop="" muted="" playsinline="">
+<source src="../videos/xyz_video.webm" type="video/webm"/>
+</video>
+<section class="quick-check" data-lesson-id="printer-components">
+<h2>Quick Check</h2>
+<p class="quick-check-intro">Answer all questions correctly to mark this page complete.</p>
+<div class="quiz-question" data-correct="A">
+<p>1. Have you read through this lesson and reviewed the important information?</p>
+<button data-answer="A" type="button">Yes, I have reviewed this page.</button>
+<button data-answer="B" type="button">No, I have not reviewed it yet.</button>
+<button data-answer="C" type="button">I am not sure.</button>
+<p aria-live="polite" class="feedback"></p>
+</div>
+</section>
+</main><div class="image-overlay" id="overlay">
+<img id="overlay-img" src=""/>
+</div><script>
+  const overlay = document.getElementById("overlay");
+  const overlayImg = document.getElementById("overlay-img");
+
+  document.querySelectorAll("img").forEach(img => {
+    img.addEventListener("click", () => {
+      overlayImg.src = img.src;
+      overlay.classList.add("active");
+    });
+  });
+
+  overlay.addEventListener("click", () => {
+    overlay.classList.remove("active");
+  });
+</script><script src="../js/quiz-handler.js"></script></body>
+</html>

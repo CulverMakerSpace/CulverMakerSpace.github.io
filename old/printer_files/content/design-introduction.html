@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<link href="content-style.css" rel="stylesheet"/>
+<title>Design Introduction</title></head>
+<body><main class="lesson-content"><h2>Design Principles for 3D Printing</h2><p>
+In this section, we will take a look at the various limitations of 3D printing technology and how it affects your design decisions. We will then cover various techniques to get around these limitations and show you tips and tricks to get the most out of your 3D printed designs. Using the techniques described in this course will make your designs easier to print, look better, require less post-processing, be stronger where it matters and overall more versatile. When starting out a design for a project, there are many aspects that need to be taken into consideration which will play a big role in the final result of your printed object.
+</p><p>
+Is your part going to be load-bearing or is it just a showpiece? Does it fit in the build volume of your printer as one piece or will it need to be split into smaller parts? What is the best print orientation for the model? Asking yourself questions like these before you start designing will save you a lot of time later on.
+</p><img alt="Optimized vs not optimized" src="../images/optimized_vs_not.png"/>
+<section class="quick-check" data-lesson-id="design-introduction">
+<h2>Quick Check</h2>
+<p class="quick-check-intro">Answer all questions correctly to mark this page complete.</p>
+<div class="quiz-question" data-correct="A">
+<p>1. Have you read through this lesson and reviewed the important information?</p>
+<button data-answer="A" type="button">Yes, I have reviewed this page.</button>
+<button data-answer="B" type="button">No, I have not reviewed it yet.</button>
+<button data-answer="C" type="button">I am not sure.</button>
+<p aria-live="polite" class="feedback"></p>
+</div>
+</section>
+</main><div class="image-overlay" id="overlay">
+<img id="overlay-img" src=""/>
+</div><script>
+  const overlay = document.getElementById("overlay");
+  const overlayImg = document.getElementById("overlay-img");
+
+  document.querySelectorAll("img").forEach(img => {
+    img.addEventListener("click", () => {
+      overlayImg.src = img.src;
+      overlay.classList.add("active");
+    });
+  });
+
+  overlay.addEventListener("click", () => {
+    overlay.classList.remove("active");
+  });
+</script><script src="../js/quiz-handler.js"></script></body>
+</html>

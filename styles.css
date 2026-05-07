@@ -1,11 +1,7 @@
-/* Pigott Makerspace Training Site
-   Permanent layout rebuild: body owns the page scroll, sidebar owns nav scroll,
-   and content cards/iframes grow naturally without nested scrollbars. */
-
 :root {
   --maroon: #70162a;
   --offwhite: #f7f2ec;
-  --white: #ffffff;
+  --white: #fff;
   --text: #342b28;
   --muted: #6a625e;
   --sidebar: #6a625e;
@@ -15,91 +11,70 @@
 }
 
 * { box-sizing: border-box; }
-
-html {
-  min-height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
+html { min-height: 100%; overflow-x: hidden; overflow-y: auto; }
 body {
   min-height: 100%;
   margin: 0;
   overflow-x: hidden;
-  overflow-y: visible;
+  overflow-y: auto;
   font-family: Arial, Helvetica, sans-serif;
   background: var(--offwhite);
   color: var(--text);
 }
-
 img, video, iframe { max-width: 100%; }
 
-/* Root shell: the page owns the vertical scroll.
-   On desktop, the sidebar is fixed and the main column is offset with margin-left. */
-.layout {
-  display: block;
+.layout { display: block; min-height: 100vh; }
+.main {
+  min-width: 0;
   min-height: 100vh;
+  margin-left: var(--sidebar-width);
+  padding: 15px 30px 30px;
+  overflow: visible;
 }
 
-/* Sidebar is fixed to the viewport on desktop and is the only internal scroll area. */
 .sidebar {
   position: fixed;
   inset: 0 auto 0 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
   width: var(--sidebar-width);
   min-width: var(--sidebar-width);
   height: 100vh;
   height: 100dvh;
-  display: flex;
-  flex-direction: column;
   overflow: hidden;
-  background: var(--sidebar);
-  color: var(--white);
   border: 1px solid rgb(175, 175, 175);
   border-left: 0;
   border-radius: 0 18px 18px 0;
+  background: var(--sidebar);
+  color: var(--white);
   box-shadow: 10px 0 10px rgba(52, 43, 40, 0.2);
-  z-index: 20;
 }
-
 .logo {
   flex: 0 0 160px;
+  padding-top: 10px;
   background: var(--white);
   color: var(--maroon);
+  text-align: center;
   font-size: 23px;
   font-weight: bold;
-  text-align: center;
-  padding-top: 10px;
 }
-
-.logo img {
-  max-width: 90%;
-  max-height: 135px;
-  object-fit: contain;
-}
-
+.logo img { max-width: 90%; max-height: 135px; object-fit: contain; }
 .sidebar-content {
   flex: 1 1 auto;
   min-height: 0;
-  overflow-y: auto;
-  overflow-x: hidden;
   padding: 30px 15px 16px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.45) transparent;
 }
-
 .sidebar-content::-webkit-scrollbar { width: 10px; }
 .sidebar-content::-webkit-scrollbar-track { background: transparent; }
-.sidebar-content::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.45);
-  border-radius: 10px;
-}
+.sidebar-content::-webkit-scrollbar-thumb { border-radius: 10px; background: rgba(255, 255, 255, 0.45); }
 .sidebar-content::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.7); }
-
-.sidebar h2 {
-  font-size: 19px;
-  margin: 0 0 18px;
-}
-
+.sidebar h2 { margin: 0 0 18px; font-size: 19px; }
 .progress {
   height: 40px;
   padding-top: 10px;
@@ -109,12 +84,7 @@ img, video, iframe { max-width: 100%; }
   text-align: center;
   font-weight: bold;
 }
-
-.line {
-  height: 3px;
-  margin: 30px 0 20px;
-  background: rgba(255, 255, 255, 0.42);
-}
+.line { height: 3px; margin: 30px 0 20px; background: rgba(255, 255, 255, 0.42); }
 
 .side-link {
   display: flex;
@@ -130,21 +100,13 @@ img, video, iframe { max-width: 100%; }
   font-weight: bold;
   line-height: 1.25;
 }
-
-.side-link:hover, .side-link.active {
+.side-link:hover, .side-link.active, .lesson-title, .section-title {
   border-left-color: white;
   background: rgba(255, 255, 255, 0.10);
 }
-
-.side-icon {
-  width: 45px;
-  height: 45px;
-  object-fit: contain;
-  transition: transform 0.18s ease;
-}
-
+.lesson-title, .section-title { cursor: default; user-select: none; pointer-events: none; }
+.side-icon { width: 45px; height: 45px; object-fit: contain; transition: transform 0.18s ease; }
 .side-link:hover .side-icon { transform: translateX(4px); }
-
 .side-link small {
   display: inline-block;
   margin-top: 2px;
@@ -153,32 +115,38 @@ img, video, iframe { max-width: 100%; }
   font-weight: bold;
 }
 
-.side-section {
-  margin: 14px 0 0;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.08);
-  overflow: hidden;
-}
-
-.side-section summary {
-  cursor: pointer;
-  list-style: none;
-  padding: 12px;
+.side-overview, .side-section summary {
+  display: block;
+  padding: 12px 14px;
   border-left: 5px solid transparent;
   color: white;
   font-size: 16px;
   font-weight: bold;
+  line-height: 1.25;
 }
-
+.side-overview {
+  margin: 14px 0 10px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  text-decoration: none;
+  cursor: pointer;
+}
+.side-overview:hover, .side-overview.active {
+  border-left-color: white;
+  background: rgba(255, 255, 255, 0.16);
+}
+.side-section {
+  margin: 14px 0 0;
+  overflow: hidden;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08);
+}
+.side-section summary { cursor: pointer; list-style: none; }
 .side-section summary::-webkit-details-marker { display: none; }
-.side-section summary::after {
-  content: "+";
-  float: right;
-  font-size: 20px;
-  line-height: 16px;
-}
+.side-section summary::after { content: "+"; float: right; font-size: 20px; line-height: 16px; }
+.side-section[open] summary { border-left-color: white; background: rgba(255, 255, 255, 0.10); }
 .side-section[open] summary::after { content: "−"; }
-
+.side-section summary:hover { border-left-color: white; background: rgba(255, 255, 255, 0.10); }
 .side-section.complete summary::before {
   content: "✓";
   display: inline-flex;
@@ -193,11 +161,6 @@ img, video, iframe { max-width: 100%; }
   font-size: 12px;
   font-weight: bold;
 }
-.side-section[open] summary {
-  border-left-color: white;
-  background: rgba(255, 255, 255, 0.10);
-}
-
 .side-section a {
   display: block;
   padding: 9px 12px 9px 28px;
@@ -207,48 +170,12 @@ img, video, iframe { max-width: 100%; }
   font-size: 14px;
   line-height: 1.25;
 }
+.side-section a:hover, .side-section a.active { border-left-color: rgba(255, 255, 255, 0.75); background: rgba(255, 255, 255, 0.12); }
+.side-section a.complete::after, .side-link.complete::after { content: "✓"; margin-left: 8px; color: white; font-weight: bold; }
 
-.side-section a:hover, .side-section a.active {
-  border-left-color: rgba(255, 255, 255, 0.75);
-  background: rgba(255, 255, 255, 0.12);
-}
-
-.side-section a.complete::after, .side-link.complete::after {
-  content: "✓";
-  margin-left: 8px;
-  color: white;
-  font-weight: bold;
-}
-
-/* Main column: offset for the fixed sidebar. Never height-lock or overflow-scroll this area. */
-.main {
-  min-width: 0;
-  min-height: 100vh;
-  margin-left: var(--sidebar-width);
-  padding: 15px 30px 30px;
-  overflow: visible;
-}
-
-.header {
-  max-width: var(--content-width);
-  margin: 0 auto 20px;
-  text-align: center;
-}
-
-.header h1 {
-  margin: 0;
-  color: var(--maroon);
-  font-size: 54px;
-  line-height: 1;
-}
-
-.header p {
-  margin: 5px 0 20px;
-  color: var(--muted);
-  font-size: 36px;
-  font-weight: bold;
-}
-
+.header { max-width: var(--content-width); margin: 0 auto 20px; text-align: center; }
+.header h1 { margin: 0; color: var(--maroon); font-size: 54px; line-height: 1; }
+.header p { margin: 5px 0 20px; color: var(--muted); font-size: 36px; font-weight: bold; }
 .top-nav {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -256,7 +183,6 @@ img, video, iframe { max-width: 100%; }
   max-width: var(--content-width);
   margin: 0 auto;
 }
-
 .button {
   position: relative;
   display: flex;
@@ -275,34 +201,17 @@ img, video, iframe { max-width: 100%; }
   font-weight: bold;
   transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
-
 .button::before {
   content: "";
   position: absolute;
-  left: 0;
-  top: 0;
+  inset: 0 auto 0 0;
   width: 6px;
-  height: 100%;
   background: var(--maroon);
   opacity: 0;
 }
-
-.button:hover, .button.active {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(52, 43, 40, 0.24);
-}
-
+.button:hover, .button.active { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(52, 43, 40, 0.24); }
 .button.active::before { opacity: 1; }
-
-.button-icon {
-  width: 32px;
-  height: 32px;
-  min-width: 32px;
-  margin-left: 8px;
-  object-fit: contain;
-  transition: transform 0.18s ease;
-}
-
+.button-icon { width: 32px; height: 32px; min-width: 32px; margin-left: 8px; object-fit: contain; transition: transform 0.18s ease; }
 .button:hover .button-icon { transform: translateX(4px); }
 .button span { font-size: 14px; line-height: 1.15; }
 
@@ -310,36 +219,16 @@ img, video, iframe { max-width: 100%; }
   max-width: var(--content-width);
   margin-left: auto;
   margin-right: auto;
+  overflow: visible;
   border-radius: 18px;
   background: var(--white);
   box-shadow: var(--shadow);
 }
-
-/* Content cards grow with content. No internal scrollbar. */
-.content {
-  width: 100%;
-  min-height: 0;
-  height: auto;
-  padding: 25px;
-  overflow: visible;
-}
-
-.content h2 {
-  margin-top: 0;
-  color: var(--maroon);
-  font-size: 28px;
-}
-
+.content, #content-area { width: 100%; min-height: 0; height: auto; padding: 25px; overflow: visible; }
+.content h2 { margin-top: 0; color: var(--maroon); font-size: 28px; }
 .content h3 { color: var(--text); }
-
-.content p, .content ul {
-  color: var(--muted);
-  font-size: 18px;
-  line-height: 1.55;
-}
-
+.content p, .content ul { color: var(--muted); font-size: 18px; line-height: 1.55; }
 .content ul { line-height: 1.35; }
-
 .placeholder {
   min-height: 650px;
   margin-top: 32px;
@@ -347,27 +236,8 @@ img, video, iframe { max-width: 100%; }
   border-radius: 14px;
   background: linear-gradient(rgba(112, 22, 42, 0.05), rgba(112, 22, 42, 0));
 }
-
-/* Iframe lessons: JS resizes height to content, so no inner iframe scrollbar. */
-#lesson-frame,
-.lesson-frame {
-  display: block;
-  width: 100%;
-  min-height: 420px;
-  height: auto;
-  border: 0;
-  overflow: hidden;
-}
-
-#content-area img, .content img {
-  display: block;
-  width: min(90%, 1000px);
-  max-width: 100%;
-  height: auto;
-  margin: 24px auto;
-  border-radius: 12px;
-}
-
+.lesson-frame, #lesson-frame { display: block; width: 100%; min-height: 420px; height: auto; overflow: hidden; border: 0; }
+.content img, #content-area img { display: block; width: min(90%, 1000px); max-width: 100%; height: auto; margin: 24px auto; border-radius: 12px; }
 .lesson-complete-panel {
   display: flex;
   align-items: center;
@@ -379,146 +249,24 @@ img, video, iframe { max-width: 100%; }
   color: var(--muted);
   font-weight: bold;
 }
-
-.complete-button {
-  cursor: pointer;
-  border: 0;
-  border-radius: 10px;
-  padding: 11px 16px;
-  background: var(--maroon);
-  color: white;
-  font-weight: bold;
-}
-
+.complete-button { cursor: pointer; border: 0; border-radius: 10px; padding: 11px 16px; background: var(--maroon); color: white; font-weight: bold; }
 .complete-button:hover { filter: brightness(1.08); }
 
-.contact {
-  display: flex;
-  align-items: center;
-  gap: 44px;
-  margin-top: 20px;
-  padding: 15px 30px;
-}
+.contact { display: flex; align-items: center; gap: 44px; margin-top: 20px; padding: 15px 30px; }
+.mail-icon { width: 74px; height: 74px; object-fit: contain; }
+.contact h2 { margin: 0 0 8px; color: var(--maroon); }
+.contact p { margin: 0 0 8px; color: var(--muted); font-size: 18px; font-weight: bold; }
+.contact a { color: var(--maroon); font-size: 18px; font-style: italic; font-weight: bold; text-decoration: none; }
 
-.mail-icon {
-  width: 74px;
-  height: 74px;
-  object-fit: contain;
-}
-
-.contact h2 {
-  margin: 0 0 8px;
-  color: var(--maroon);
-}
-
-.contact p {
-  margin: 0 0 8px;
-  color: var(--muted);
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.contact a {
-  color: var(--maroon);
-  font-size: 18px;
-  font-style: italic;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-/* Mobile/tablet: sidebar becomes normal content and uses page scroll. */
-@media (max-width: 945px) {
-  .layout {
-    display: block;
-    min-height: 100vh;
-  }
-
-  .sidebar {
-    position: relative;
-    inset: auto;
-    width: 100%;
-    height: auto;
-    min-width: 0;
-    border-radius: 0;
-  }
-
-  .logo {
-    flex-basis: 160px;
-    height: 160px;
-  }
-
-  .sidebar-content {
-    max-height: none;
-    overflow: visible;
-  }
-
-  .main {
-    margin-left: 0;
-    padding: 15px;
-  }
-  .top-nav { grid-template-columns: 1fr 1fr; }
-  .header h1 { font-size: 42px; }
-  .header p { font-size: 28px; }
-  .lesson-complete-panel {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-}
-
-
-/* Permanent scrollbar guardrails:
-   - body/html handle the main page scroll
-   - fixed sidebar + .sidebar-content handle left navigation scroll
-   - lesson cards and iframe wrappers never create nested scrollbars */
-.card,
-.content,
-.main,
-#content-area {
-  overflow: visible;
-}
-
-body {
-  overflow-y: auto;
-}
-
-.sidebar-content {
-  overscroll-behavior: contain;
-}
-
-/* Iframe sizing: JS sets the exact height from the lesson content.
-   Keep the minimum modest so short pages do not create large blank areas. */
-.lesson-frame {
-  display: block;
-  width: 100%;
-  min-height: 420px;
-  height: auto;
-  border: 0;
-  overflow: hidden;
-}
-
-/* Quick-check quiz styles. These apply inside lesson content pages as long as
-   the page links to ../styles.css or ../../styles.css, depending on location. */
 .quick-check {
   margin-top: 3rem;
   padding: 1.5rem;
+  border: 1px solid rgba(75, 0, 0, 0.12);
   border-radius: 16px;
   background: #f7f3ed;
-  border: 1px solid rgba(75, 0, 0, 0.12);
 }
-
-.quick-check h2,
-.quick-check h3 {
-  margin-top: 0;
-  color: var(--maroon);
-}
-
-.quiz-question {
-  margin: 1.25rem 0;
-  padding: 1rem;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.7);
-}
-
+.quick-check h2, .quick-check h3 { margin-top: 0; color: var(--maroon); }
+.quiz-question { margin: 1.25rem 0; padding: 1rem; border-radius: 12px; background: rgba(255, 255, 255, 0.7); }
 .quiz-question button[data-answer] {
   display: block;
   width: 100%;
@@ -532,32 +280,21 @@ body {
   text-align: left;
   cursor: pointer;
 }
+.quiz-question button[data-answer]:hover { border-color: var(--maroon); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); }
+.quiz-question button[data-answer].correct { border-color: #2e7d32; background: #e8f5e9; }
+.quiz-question button[data-answer].incorrect { border-color: #b71c1c; background: #ffebee; }
+.feedback, .quick-check-status { margin-bottom: 0; font-weight: bold; }
+.feedback.correct { color: #2e7d32; }
+.feedback.incorrect { color: #b71c1c; }
 
-.quiz-question button[data-answer]:hover {
-  border-color: var(--maroon);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-}
-
-.quiz-question button[data-answer].correct {
-  border-color: #2e7d32;
-  background: #e8f5e9;
-}
-
-.quiz-question button[data-answer].incorrect {
-  border-color: #b71c1c;
-  background: #ffebee;
-}
-
-.feedback,
-.quick-check-status {
-  margin-bottom: 0;
-  font-weight: bold;
-}
-
-.feedback.correct {
-  color: #2e7d32;
-}
-
-.feedback.incorrect {
-  color: #b71c1c;
+@media (max-width: 945px) {
+  .layout { min-height: 100vh; }
+  .sidebar { position: relative; inset: auto; width: 100%; min-width: 0; height: auto; border-radius: 0; }
+  .logo { flex-basis: 160px; height: 160px; }
+  .sidebar-content { max-height: none; overflow: visible; }
+  .main { margin-left: 0; padding: 15px; }
+  .top-nav { grid-template-columns: 1fr 1fr; }
+  .header h1 { font-size: 42px; }
+  .header p { font-size: 28px; }
+  .lesson-complete-panel { align-items: flex-start; flex-direction: column; }
 }

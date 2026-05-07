@@ -15,16 +15,12 @@
         <div class="progress" id="printer-progress">0%</div>
         <div class="line"></div>
 
-        <div class="side-link active section-title">
+        <a class="side-link active" href="#" data-lesson-id="printer-overview" onclick="loadLesson('content/printer-overview.html', this); return false;">
           <img src="../images/printer.png" class="side-icon" alt="">
           <span>3D Printer<br><small id="printer-section-progress">0% complete</small></span>
-        </div>
-
-        <a class="side-overview" href="#" onclick="loadLesson('content/printer-overview.html', this); return false;">
-          Lesson Overview
         </a>
 
-        <details class="side-section" data-section="slicer">
+        <details class="side-section" data-section="slicer" open>
           <summary>PrusaSlicer</summary>
           <a href="#" data-lesson-id="slicer-introduction" onclick="loadLesson('content/slicer-introduction.html', this); return false;">Introduction</a>
           <a href="#" data-lesson-id="slicer-setup" onclick="loadLesson('content/slicer-setup.html', this); return false;">Initial Setup</a>
