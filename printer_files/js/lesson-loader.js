@@ -13,7 +13,7 @@
   }
 
   function setActiveLessonLink(filePath, clickedLink) {
-    document.querySelectorAll(".side-link, .side-section a").forEach(link => {
+    document.querySelectorAll(".side-overview, .side-link, .side-section a").forEach(link => {
       link.classList.remove("active");
     });
 
