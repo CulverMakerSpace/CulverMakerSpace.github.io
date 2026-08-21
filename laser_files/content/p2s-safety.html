@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<link href="content-style.css" rel="stylesheet"/>
+<title>xTool P2S: Safety</title>
+<style>
+.media-placeholder{margin:24px auto;padding:24px;border:2px dashed #b8aaa6;border-radius:12px;background:#faf7f6;color:#6a625e;text-align:center;font-size:16px;line-height:1.5;}
+.lesson-content strong{color:#4b403c;}
+</style>
+</head>
+<body>
+<main class="lesson-content">
+<h2>xTool P2S: Safety</h2>
+<p>Laser cutters are extremely useful tools, but they introduce hazards that are different from most other machines in the makerspace. For normal users, two of the most important concerns are <strong>fire</strong> and <strong>unsafe materials</strong>.</p>
+<h3>Never Leave the Laser Unattended</h3><p><strong>You must remain with the P2S whenever it is actively cutting or engraving.</strong> Laser processing deliberately heats material to very high temperatures, and many materials used in the machine are flammable.</p>
+<p>A small flame can develop into a serious fire quickly. If you need to leave the area, stop or pause the job as appropriate rather than leaving the machine running unattended.</p>
+<div class="media-placeholder"><strong>MEDIA PLACEHOLDER:</strong> Photo showing the emergency stop and the location of the nearby fire extinguisher.</div>
+<h3>Watch for Fire</h3><p>Brief flashes can occur during some cutting operations, but a sustained flame is not normal. If material catches fire or the machine appears to be operating unsafely, <strong>stop the machine immediately</strong>. Use the emergency stop if necessary and notify makerspace staff.</p>
+<h3>Only Use Approved Materials</h3><p><strong>Never put an unknown material into the laser cutter.</strong> Some plastics and composites can release toxic or corrosive gases when heated by a laser. PVC and vinyl are prohibited. Materials containing unknown coatings, adhesives, or chemical treatments should also be treated as unknown until approved.</p>
+<p>If you are unsure what a material is made from, <strong>do not use it</strong>. Ask makerspace staff before processing anything that is not already on the approved-material list.</p>
+<h3>Ventilation</h3><p>The exhaust system must be operating whenever the laser is processing material. If smoke is accumulating inside the machine or escaping into the room, stop the job and notify makerspace staff.</p>
+<h3>Keep the Machine Clean</h3><p>Small pieces of wood, paper, acrylic, and other debris can accumulate underneath the cutting area. These scraps can ignite during later jobs. Remove your stock, finished parts, and loose debris when you are finished.</p>
+<h3>Never Bypass Safety Systems</h3><p>Never defeat the lid interlock, sensors, enclosure, emergency stop, or any other safety system. Do not operate the machine with panels removed or attempt repairs yourself.</p>
+<h3>Before Every Job</h3><ol><li>Confirm that the material is approved.</li><li>Make sure the material is lying securely in the machine.</li><li>Confirm the correct material and settings are selected.</li><li>Make sure the exhaust system is operating.</li><li>Check that the machine is free from excessive debris.</li><li>Know where the emergency stop and fire extinguisher are located.</li><li>Be prepared to remain with the machine for the entire job.</li></ol>
+<section class="quick-check" data-lesson-id="p2s-safety">
+<h2>Quick Check</h2>
+<p class="quick-check-intro">Answer all questions correctly to mark this page complete.</p>
+<div class="quiz-question" data-correct="C">
+<p>1. You find a sheet of plastic in the makerspace, but you do not know what type it is. What should you do?</p>
+<button data-answer="A" type="button">Use a low-power test engraving</button>
+<button data-answer="B" type="button">Cut it if it looks similar to acrylic</button>
+<button data-answer="C" type="button">Do not process it until the material has been identified and approved</button>
+<p aria-live="polite" class="feedback"></p></div>
+<div class="quiz-question" data-correct="A">
+<p>2. What should you do if the material develops a sustained flame?</p>
+<button data-answer="A" type="button">Stop the machine immediately and follow the makerspace fire procedure</button>
+<button data-answer="B" type="button">Wait to see if it goes out on its own</button>
+<button data-answer="C" type="button">Open the lid and blow on it while the laser continues running</button>
+<p aria-live="polite" class="feedback"></p></div>
+</section>
+</main>
+<div class="image-overlay" id="overlay"><img id="overlay-img" src="" alt="Expanded lesson image"/></div>
+<script>
+const overlay=document.getElementById("overlay");const overlayImg=document.getElementById("overlay-img");document.querySelectorAll("img").forEach(img=>{img.addEventListener("click",()=>{overlayImg.src=img.src;overlay.classList.add("active");});});overlay.addEventListener("click",()=>overlay.classList.remove("active"));
+</script>
+<script src="../../printer_files/js/quiz-handler.js"></script>
+</body>
+</html>

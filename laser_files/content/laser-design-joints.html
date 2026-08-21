@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<link href="content-style.css" rel="stylesheet"/>
+<title>Material Thickness and Joint Design</title>
+<style>
+.media-placeholder{margin:24px auto;padding:24px;border:2px dashed #b8aaa6;border-radius:12px;background:#faf7f6;color:#6a625e;text-align:center;font-size:16px;line-height:1.5;}
+.lesson-content strong{color:#4b403c;}
+</style>
+</head>
+<body>
+<main class="lesson-content">
+<h2>Material Thickness and Joint Design</h2>
+<p>Sheet materials are usually sold using a <strong>nominal thickness</strong>. A sheet labeled as 3 mm plywood, for example, may not actually measure exactly 3.00 mm thick. Manufacturing variation, coatings, veneers, and moisture can all affect the real thickness.</p>
+<p>This becomes particularly important when designing parts that fit together.</p>
+<h3>Tabs and Slots</h3><p>A common laser-cut construction method uses tabs on one part that fit into slots on another.</p>
+<div class="media-placeholder"><strong>MEDIA PLACEHOLDER:</strong> Diagram or photo of a laser-cut tab-and-slot joint.</div>
+<p>If the slot is too small, the pieces will not fit. If it is too large, the joint will be loose. The correct dimensions depend on both the <strong>actual material thickness</strong> and the <strong>kerf</strong> produced by the laser.</p>
+<h3>For Projects Where Fit Matters</h3><ol><li>Measure the actual material.</li><li>Design the joint based on that measurement.</li><li>Cut a small test joint.</li><li>Adjust the dimensions if necessary.</li><li>Only then cut the complete project.</li></ol>
+<p>A few minutes spent making a test piece can prevent wasting an entire sheet of material.</p>
+<h3>Leave Enough Material</h3><p>Avoid placing holes, slots, or other features extremely close to the edge of a part. Very thin sections can become fragile, burn away, or break during assembly. If a feature looks delicate in the design, consider increasing the amount of material around it.</p>
+<section class="quick-check" data-lesson-id="laser-design-joints">
+<h2>Quick Check</h2>
+<p class="quick-check-intro">Answer all questions correctly to mark this page complete.</p>
+<div class="quiz-question" data-correct="A">
+<p>1. What is the best approach when designing a tight-fitting tab-and-slot joint?</p>
+<button data-answer="A" type="button">Measure the actual stock and make a small test joint before cutting the whole project</button>
+<button data-answer="B" type="button">Assume all material matches its labeled thickness exactly</button>
+<button data-answer="C" type="button">Make every slot much larger than the material thickness</button>
+<p aria-live="polite" class="feedback"></p></div>
+</section>
+</main>
+<div class="image-overlay" id="overlay"><img id="overlay-img" src="" alt="Expanded lesson image"/></div>
+<script>
+const overlay=document.getElementById("overlay");const overlayImg=document.getElementById("overlay-img");document.querySelectorAll("img").forEach(img=>{img.addEventListener("click",()=>{overlayImg.src=img.src;overlay.classList.add("active");});});overlay.addEventListener("click",()=>overlay.classList.remove("active"));
+</script>
+<script src="../../printer_files/js/quiz-handler.js"></script>
+</body>
+</html>

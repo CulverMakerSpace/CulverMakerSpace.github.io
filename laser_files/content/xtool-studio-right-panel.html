@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<link href="content-style.css" rel="stylesheet"/>
+<title>xTool Studio: Right Panel</title>
+<style>
+.media-placeholder{margin:24px auto;padding:24px;border:2px dashed #b8aaa6;border-radius:12px;background:#faf7f6;color:#6a625e;text-align:center;font-size:16px;line-height:1.5;}
+.lesson-content strong{color:#4b403c;}
+</style>
+</head>
+<body>
+<main class="lesson-content">
+<h2>xTool Studio: Right Panel</h2>
+<p>The right-side panel contains many of the most important settings for preparing a laser job. This is where you make decisions that directly affect how the project will be manufactured.</p>
+<div class="media-placeholder"><strong>MEDIA PLACEHOLDER:</strong> Screenshot of the right panel with Device, Processing Mode, Material, Process Type, Power, Speed, and Passes labeled.</div>
+<h3>Device</h3><p>First, confirm that the <strong>xTool P2S</strong> is selected and connected.</p>
+<h3>Processing Mode</h3><p>For normal flat material, use <strong>Process on Slats</strong>. Other modes are intended for special situations or accessories such as rotary engraving.</p>
+<h3>Material</h3><p>Select the material that matches what you have placed in the machine. Material selection is extremely important because appropriate settings for plywood may be very different from those for acrylic, cardboard, or another material.</p>
+<p><strong>Do not choose a material only because it has a similar thickness.</strong> If you are unsure what a material is, do not process it.</p>
+<h3>Processing Type</h3><p>After selecting an object, choose whether it will be <strong>Cut</strong>, <strong>Scored</strong>, or <strong>Engraved</strong>.</p>
+<h3>Power</h3><p>Power controls how much laser energy is delivered to the material. Increasing power generally increases how much material is affected or removed.</p>
+<h3>Speed</h3><p>Speed controls how quickly the laser moves. A slower speed exposes each location to the laser for a longer period of time and generally removes more material.</p>
+<p>Power and speed work together. For beginning users, established material presets are usually a better choice than changing these values independently.</p>
+<h3>Passes</h3><p>Some operations can be repeated multiple times. Additional passes allow the laser to travel over the same path again, but also increase processing time and heat. Do not add passes simply because a cut failed; an incorrect material, poor setup, or another issue may be the actual cause.</p>
+<h3>Process</h3><p>The <strong>Process</strong> button takes you to the final processing preview. Always inspect this preview before starting the machine.</p>
+<section class="quick-check" data-lesson-id="xtool-studio-right-panel">
+<h2>Quick Check</h2>
+<p class="quick-check-intro">Answer all questions correctly to mark this page complete.</p>
+<div class="quiz-question" data-correct="B">
+<p>1. If a cut does not go completely through the material, what is the best first response?</p>
+<button data-answer="A" type="button">Immediately double the number of passes</button>
+<button data-answer="B" type="button">Check the material, setup, focus/measurement, and settings before changing anything</button>
+<button data-answer="C" type="button">Run the same job repeatedly until it cuts through</button>
+<p aria-live="polite" class="feedback"></p></div>
+</section>
+</main>
+<div class="image-overlay" id="overlay"><img id="overlay-img" src="" alt="Expanded lesson image"/></div>
+<script>
+const overlay=document.getElementById("overlay");const overlayImg=document.getElementById("overlay-img");document.querySelectorAll("img").forEach(img=>{img.addEventListener("click",()=>{overlayImg.src=img.src;overlay.classList.add("active");});});overlay.addEventListener("click",()=>overlay.classList.remove("active"));
+</script>
+<script src="../../printer_files/js/quiz-handler.js"></script>
+</body>
+</html>

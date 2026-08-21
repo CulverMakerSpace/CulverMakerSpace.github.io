@@ -2,28 +2,65 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Laser Engraver | Pigott Center Training</title>
+  <title>Laser Cutter | Pigott Center Training</title>
   <link rel="stylesheet" href="../styles.css">
   <link rel="icon" type="image/png" href="../images/favicon.png">
 </head>
-
 <body>
   <div class="layout">
     <aside class="sidebar">
-      <div class="logo"><img src="../images/pigott_logo.png" alt=""></div>
+      <a class="logo" href="../index.html"><img src="../images/pigott_logo.png" alt=""></a>
 
       <div class="sidebar-content">
         <h2>Training Progress</h2>
-        <div class="progress">0%</div>
-
+        <div class="progress" id="laser-progress">0%</div>
         <div class="line"></div>
 
-          
-          
-          <a class="side-link active" href="#" onclick="loadLesson('content/laser-overview.html', this); return false;">
-            <img src="../images/laser.png" class="side-icon" alt="">
-            <span>Laser Engraver<br><small>xTool</small></span>
-          </a>
+        <a class="side-link active" href="#" data-lesson-id="laser-overview"
+           onclick="loadLesson('content/laser-overview.html', this); return false;">
+          <img src="../images/laser.png" class="side-icon" alt="">
+          <span>Laser Cutter<br><small id="laser-section-progress">0% complete</small></span>
+        </a>
+
+        <details class="side-section" data-section="studio" open>
+          <summary>xTool Studio</summary>
+          <a href="#" data-lesson-id="xtool-studio-introduction"
+             onclick="loadLesson('content/xtool-studio-introduction.html', this); return false;">Introduction</a>
+          <a href="#" data-lesson-id="xtool-studio-initial-setup"
+             onclick="loadLesson('content/xtool-studio-initial-setup.html', this); return false;">Initial Setup</a>
+          <a href="#" data-lesson-id="xtool-studio-basic-workflow"
+             onclick="loadLesson('content/xtool-studio-basic-workflow.html', this); return false;">Basic Workflow</a>
+          <a href="#" data-lesson-id="xtool-studio-left-toolbar"
+             onclick="loadLesson('content/xtool-studio-left-toolbar.html', this); return false;">Left Toolbar</a>
+          <a href="#" data-lesson-id="xtool-studio-right-panel"
+             onclick="loadLesson('content/xtool-studio-right-panel.html', this); return false;">Right Panel</a>
+        </details>
+
+        <details class="side-section" data-section="p2s">
+          <summary>P2S Cutter and Engraver</summary>
+          <a href="#" data-lesson-id="p2s-introduction"
+             onclick="loadLesson('content/p2s-introduction.html', this); return false;">Introduction</a>
+          <a href="#" data-lesson-id="p2s-main-components"
+             onclick="loadLesson('content/p2s-main-components.html', this); return false;">Main Components</a>
+          <a href="#" data-lesson-id="p2s-safety"
+             onclick="loadLesson('content/p2s-safety.html', this); return false;">Safety</a>
+          <a href="#" data-lesson-id="p2s-flat-stock"
+             onclick="loadLesson('content/p2s-flat-stock.html', this); return false;">Completing a Job on Flat Stock</a>
+          <a href="#" data-lesson-id="p2s-round-stock"
+             onclick="loadLesson('content/p2s-round-stock.html', this); return false;">Completing a Job on Round Stock</a>
+        </details>
+
+        <details class="side-section" data-section="design">
+          <summary>Design for Laser Cutting</summary>
+          <a href="#" data-lesson-id="laser-design-introduction"
+             onclick="loadLesson('content/laser-design-introduction.html', this); return false;">Introduction</a>
+          <a href="#" data-lesson-id="laser-design-kerf"
+             onclick="loadLesson('content/laser-design-kerf.html', this); return false;">Kerf and Dimensional Accuracy</a>
+          <a href="#" data-lesson-id="laser-design-joints"
+             onclick="loadLesson('content/laser-design-joints.html', this); return false;">Material Thickness and Joint Design</a>
+          <a href="#" data-lesson-id="laser-design-artwork"
+             onclick="loadLesson('content/laser-design-artwork.html', this); return false;">Preparing Designs for the Laser</a>
+        </details>
       </div>
     </aside>
 
@@ -31,37 +68,17 @@
       <header class="header">
         <h1>Culver Academies Makerspace</h1>
         <p>Learn. Create. Innovate.</p>
-
         <nav class="top-nav">
-          <a class="button" href="../index.html">
-            <img src="../images/home.png" class="button-icon" alt="">
-            <span>Home</span>
-          </a>
-
-          <a class="button" href="../cad_files/cad.html">
-            <img src="../images/cad.png" class="button-icon" alt="">
-            <span>CAD</span>
-          </a>
-
-          <a class="button" href="../printer_files/printer.html">
-            <img src="../images/printer.png" class="button-icon" alt="">
-            <span>3D Printer</span>
-          </a>
-
-          <a class="button active" href="../laser_files/laser.html">
-            <img src="../images/laser.png" class="button-icon" alt="">
-            <span>Laser Engraver</span>
-          </a>
-
-          <a class="button" href="../vinyl_files/vinyl.html">
-            <img src="../images/vinyl.png" class="button-icon" alt="">
-            <span>Vinyl Cutter</span>
-          </a>
+          <a class="button" href="../index.html"><img src="../images/home.png" class="button-icon" alt=""><span>Home</span></a>
+          <a class="button" href="../cad_files/cad.html"><img src="../images/cad.png" class="button-icon" alt=""><span>CAD</span></a>
+          <a class="button" href="../printer_files/printer.html"><img src="../images/printer.png" class="button-icon" alt=""><span>3D Printer</span></a>
+          <a class="button active" href="../laser_files/laser.html"><img src="../images/laser.png" class="button-icon" alt=""><span>Laser Engraver</span></a>
+          <a class="button" href="../vinyl_files/vinyl.html"><img src="../images/vinyl.png" class="button-icon" alt=""><span>Vinyl Cutter</span></a>
         </nav>
       </header>
 
       <section class="card content" id="content-area">
-        <iframe id="lesson-frame" src="content/laser-overview.html" title="Lesson content"></iframe>
+        <iframe id="lesson-frame" class="lesson-frame" src="content/laser-overview.html" title="Lesson content"></iframe>
       </section>
 
       <footer class="card contact">
@@ -75,47 +92,252 @@
   </div>
 
   <script>
-    function clearActiveLinks() {
-      document.querySelectorAll(".side-link, .side-section a").forEach(function(link) {
-        link.classList.remove("active");
+  (function () {
+    const SECTION_LESSONS = {
+      overview: ["laser-overview"],
+      studio: [
+        "xtool-studio-introduction",
+        "xtool-studio-initial-setup",
+        "xtool-studio-basic-workflow",
+        "xtool-studio-left-toolbar",
+        "xtool-studio-right-panel"
+      ],
+      p2s: [
+        "p2s-introduction",
+        "p2s-main-components",
+        "p2s-safety",
+        "p2s-flat-stock",
+        "p2s-round-stock"
+      ],
+      design: [
+        "laser-design-introduction",
+        "laser-design-kerf",
+        "laser-design-joints",
+        "laser-design-artwork"
+      ]
+    };
+
+    const LASER_LESSONS = Object.values(SECTION_LESSONS).flat();
+    let currentLessonId = "laser-overview";
+    let iframeResizeObserver = null;
+    let iframeMutationObserver = null;
+    let iframeResizeTimer = null;
+
+    function getCompletedPages() {
+      try {
+        return JSON.parse(localStorage.getItem("completedPages")) || [];
+      } catch (error) {
+        return [];
+      }
+    }
+
+    function saveCompletedPages(completedPages) {
+      localStorage.setItem("completedPages", JSON.stringify(completedPages));
+    }
+
+    function isLessonComplete(lessonId) {
+      return getCompletedPages().includes(lessonId);
+    }
+
+    function getPercentComplete(lessonList) {
+      if (!lessonList || lessonList.length === 0) return 0;
+      const completed = getCompletedPages();
+      const completeCount = lessonList.filter(id => completed.includes(id)).length;
+      return Math.round((completeCount / lessonList.length) * 100);
+    }
+
+    function isSectionComplete(sectionKey) {
+      const lessons = SECTION_LESSONS[sectionKey] || [];
+      return lessons.length > 0 && lessons.every(isLessonComplete);
+    }
+
+    function updateLaserProgress() {
+      const percent = getPercentComplete(LASER_LESSONS);
+      const progress = document.getElementById("laser-progress");
+      const sectionProgress = document.getElementById("laser-section-progress");
+
+      if (progress) progress.textContent = `${percent}%`;
+      if (sectionProgress) sectionProgress.textContent = `${percent}% complete`;
+
+      document.querySelectorAll("[data-lesson-id]").forEach(link => {
+        link.classList.toggle("complete", isLessonComplete(link.dataset.lessonId));
+      });
+
+      document.querySelectorAll("[data-section]").forEach(section => {
+        section.classList.toggle("complete", isSectionComplete(section.dataset.section));
       });
     }
 
-    function openParentSection(link) {
-      const parentSection = link.closest("details");
-      if (parentSection) {
-        parentSection.open = true;
+    function markLessonComplete(lessonId) {
+      if (!lessonId) return;
+      const completed = getCompletedPages();
+      if (!completed.includes(lessonId)) {
+        completed.push(lessonId);
+        saveCompletedPages(completed);
+      }
+      updateLaserProgress();
+    }
+
+    function clearLessonComplete(lessonId) {
+      saveCompletedPages(getCompletedPages().filter(id => id !== lessonId));
+      updateLaserProgress();
+    }
+
+    function lessonIdFromPath(filePath) {
+      return filePath.split("/").pop().replace(".html", "");
+    }
+
+    function setActiveLessonLink(filePath, clickedLink) {
+      document.querySelectorAll(".side-link, .side-section a").forEach(link => {
+        link.classList.remove("active");
+      });
+
+      const lessonId = lessonIdFromPath(filePath);
+      const linkToActivate = clickedLink || document.querySelector(`[data-lesson-id="${lessonId}"]`);
+      if (linkToActivate) {
+        linkToActivate.classList.add("active");
+        const parentSection = linkToActivate.closest("details");
+        if (parentSection) parentSection.open = true;
       }
     }
 
     function loadLesson(filePath, clickedLink) {
-      document.getElementById("lesson-frame").src = filePath;
+      const frame = document.getElementById("lesson-frame");
+      if (frame) frame.src = filePath;
 
-      clearActiveLinks();
+      localStorage.setItem("lastLaserLesson", filePath);
+      currentLessonId = lessonIdFromPath(filePath);
+      setActiveLessonLink(filePath, clickedLink);
+      updateLaserProgress();
+      queueLessonFrameResize();
+    }
 
-      if (clickedLink) {
-        clickedLink.classList.add("active");
-        openParentSection(clickedLink);
-      }
+    function queueLessonFrameResize() {
+      clearTimeout(iframeResizeTimer);
+      iframeResizeTimer = setTimeout(resizeLessonFrame, 50);
+    }
 
-      window.scrollTo({ top: 0, behavior: "smooth" });
+    function getLessonContentHeight(doc) {
+      const body = doc.body;
+      if (!body) return 0;
+      const bodyTop = body.getBoundingClientRect().top;
+      let bottom = 0;
+
+      Array.from(body.children).forEach(child => {
+        const rect = child.getBoundingClientRect();
+        const styles = doc.defaultView.getComputedStyle(child);
+        const marginBottom = parseFloat(styles.marginBottom) || 0;
+        bottom = Math.max(bottom, rect.bottom - bodyTop + marginBottom);
+      });
+
+      if (bottom === 0) bottom = Math.max(body.scrollHeight, body.offsetHeight);
+
+      const bodyStyles = doc.defaultView.getComputedStyle(body);
+      const paddingTop = parseFloat(bodyStyles.paddingTop) || 0;
+      const paddingBottom = parseFloat(bodyStyles.paddingBottom) || 0;
+      return Math.ceil(bottom + paddingTop + paddingBottom + 2);
     }
 
     function resizeLessonFrame() {
       const frame = document.getElementById("lesson-frame");
+      if (!frame) return;
+
+      const scroller = document.scrollingElement || document.documentElement || document.body;
+      const savedScrollTop = scroller ? scroller.scrollTop : window.scrollY;
+
       try {
-        const frameDoc = frame.contentDocument || frame.contentWindow.document;
-        frame.style.height = frameDoc.body.scrollHeight + 40 + "px";
+        const doc = frame.contentDocument || frame.contentWindow.document;
+        if (!doc || !doc.body) return;
+
+        frame.style.height = "0px";
+        const safeHeight = Math.max(getLessonContentHeight(doc), 420);
+        frame.style.height = `${safeHeight}px`;
+
+        requestAnimationFrame(() => {
+          if (scroller) scroller.scrollTop = savedScrollTop;
+          window.scrollTo({ top: savedScrollTop, left: 0, behavior: "auto" });
+        });
       } catch (error) {
         frame.style.height = "900px";
       }
     }
 
-    window.addEventListener("DOMContentLoaded", function() {
+    function prepareLessonFrameResize() {
       const frame = document.getElementById("lesson-frame");
-      frame.addEventListener("load", resizeLessonFrame);
-    });
-  </script>
+      if (!frame) return;
 
+      try {
+        const doc = frame.contentDocument || frame.contentWindow.document;
+        if (!doc || !doc.body) return;
+
+        doc.documentElement.style.overflow = "hidden";
+        doc.body.style.overflow = "hidden";
+        doc.body.style.minHeight = "0";
+        doc.body.style.height = "auto";
+
+        if (iframeResizeObserver) iframeResizeObserver.disconnect();
+        if (iframeMutationObserver) iframeMutationObserver.disconnect();
+
+        iframeResizeObserver = new ResizeObserver(queueLessonFrameResize);
+        iframeResizeObserver.observe(doc.body);
+        Array.from(doc.body.children).forEach(child => iframeResizeObserver.observe(child));
+
+        iframeMutationObserver = new MutationObserver(queueLessonFrameResize);
+        iframeMutationObserver.observe(doc.body, {
+          childList: true,
+          subtree: true,
+          attributes: true,
+          characterData: true
+        });
+
+        doc.querySelectorAll("img").forEach(img => {
+          img.addEventListener("load", queueLessonFrameResize);
+          img.addEventListener("error", queueLessonFrameResize);
+        });
+
+        doc.querySelectorAll("video").forEach(video => {
+          video.addEventListener("loadedmetadata", queueLessonFrameResize);
+          video.addEventListener("loadeddata", queueLessonFrameResize);
+          video.addEventListener("canplay", queueLessonFrameResize);
+        });
+
+        if (doc.fonts && doc.fonts.ready) doc.fonts.ready.then(queueLessonFrameResize);
+      } catch (error) {
+        // Keep the default iframe behavior if access is blocked.
+      }
+
+      requestAnimationFrame(resizeLessonFrame);
+      setTimeout(resizeLessonFrame, 100);
+      setTimeout(resizeLessonFrame, 350);
+      setTimeout(resizeLessonFrame, 900);
+    }
+
+    window.loadLesson = loadLesson;
+    window.markLessonComplete = markLessonComplete;
+    window.clearLessonComplete = clearLessonComplete;
+    window.TrainingProgress = {
+      markLessonComplete,
+      clearLessonComplete,
+      updateLaserProgress,
+      isLessonComplete,
+      getCompletedPages
+    };
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const frame = document.getElementById("lesson-frame");
+      if (!frame) return;
+
+      frame.setAttribute("scrolling", "no");
+      frame.addEventListener("load", prepareLessonFrameResize);
+      window.addEventListener("resize", queueLessonFrameResize);
+
+      const savedLesson = localStorage.getItem("lastLaserLesson") || "content/laser-overview.html";
+      frame.src = savedLesson;
+      currentLessonId = lessonIdFromPath(savedLesson);
+      setActiveLessonLink(savedLesson, null);
+      updateLaserProgress();
+    });
+  })();
+  </script>
 </body>
 </html>

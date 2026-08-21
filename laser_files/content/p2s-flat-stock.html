@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<link href="content-style.css" rel="stylesheet"/>
+<title>xTool P2S: Completing a Job on Flat Stock</title>
+<style>
+.media-placeholder{margin:24px auto;padding:24px;border:2px dashed #b8aaa6;border-radius:12px;background:#faf7f6;color:#6a625e;text-align:center;font-size:16px;line-height:1.5;}
+.lesson-content strong{color:#4b403c;}
+</style>
+</head>
+<body>
+<main class="lesson-content">
+<h2>xTool P2S: Completing a Job on Flat Stock</h2>
+<p>This page walks through the complete procedure for a basic job using a flat sheet of approved material.</p>
+<h3>1. Inspect the Machine</h3><p>Before beginning, inspect the inside of the P2S. Remove scraps left by previous users and make sure nothing is obstructing the work area.</p>
+<h3>2. Place the Material</h3><p>Place your approved material flat on the slats. The material should be stable and should not rock, bend significantly, or move easily.</p>
+<div class="media-placeholder"><strong>MEDIA PLACEHOLDER:</strong> Video showing proper placement of a sheet on the slats.</div>
+<h3>3. Close the Lid</h3><p>Close the P2S lid before preparing to process the material.</p>
+<h3>4. Connect xTool Studio</h3><p>Open your project, confirm the correct P2S is connected, and select <strong>Process on Slats</strong>.</p>
+<h3>5. Select the Material</h3><p>Choose the appropriate material from the material list. Do not substitute a similar-looking material without knowing what it actually is.</p>
+<h3>6. Measure and Capture the Material</h3><p>Use the appropriate P2S measurement tools to determine the workpiece position and thickness, then update the camera image of the processing area as needed.</p>
+<h3>7. Position the Design</h3><p>Place the design over the desired location on the material. Make sure the entire design fits within the available stock and processing area.</p>
+<h3>8. Assign Operations</h3><p>Check every object and make sure it has the correct operation: Engrave, Score, or Cut. If the project contains several operations, verify that none have accidentally been left out.</p>
+<h3>9. Preview</h3><p>Click <strong>Process</strong> and inspect the final preview. Pay particular attention to the position of the design, the processing operations, and any unexpected paths.</p>
+<h3>10. Start Processing</h3><p>Send the project to the P2S and follow the machine prompts to begin. Remain with the machine throughout the entire job.</p>
+<h3>11. Monitor the Job</h3><p>Watch for sustained flames, material movement, excessive smoke, unusual noises, or unexpected machine motion. If anything appears unsafe, stop the job.</p>
+<h3>12. Remove the Finished Project</h3><p>After the job has completely stopped, open the lid and remove the material. Recently processed areas may still be warm. Remove cut pieces and loose scraps so the machine is clean and ready for the next user.</p>
+<p><strong>Your job is not finished until the machine is clean and ready for the next person.</strong></p>
+<section class="quick-check" data-lesson-id="p2s-flat-stock">
+<h2>Quick Check</h2>
+<p class="quick-check-intro">Answer all questions correctly to mark this page complete.</p>
+<div class="quiz-question" data-correct="C">
+<p>1. When is a flat-stock laser job finished?</p>
+<button data-answer="A" type="button">As soon as the laser stops moving</button>
+<button data-answer="B" type="button">As soon as the finished part is removed</button>
+<button data-answer="C" type="button">After the job stops and the finished material and loose scraps have been removed</button>
+<p aria-live="polite" class="feedback"></p></div>
+</section>
+</main>
+<div class="image-overlay" id="overlay"><img id="overlay-img" src="" alt="Expanded lesson image"/></div>
+<script>
+const overlay=document.getElementById("overlay");const overlayImg=document.getElementById("overlay-img");document.querySelectorAll("img").forEach(img=>{img.addEventListener("click",()=>{overlayImg.src=img.src;overlay.classList.add("active");});});overlay.addEventListener("click",()=>overlay.classList.remove("active"));
+</script>
+<script src="../../printer_files/js/quiz-handler.js"></script>
+</body>
+</html>

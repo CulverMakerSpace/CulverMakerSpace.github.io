@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<link href="content-style.css" rel="stylesheet"/>
+<title>xTool Studio: Basic Workflow</title>
+<style>
+.media-placeholder{margin:24px auto;padding:24px;border:2px dashed #b8aaa6;border-radius:12px;background:#faf7f6;color:#6a625e;text-align:center;font-size:16px;line-height:1.5;}
+.lesson-content strong{color:#4b403c;}
+</style>
+</head>
+<body>
+<main class="lesson-content">
+<h2>xTool Studio: Basic Workflow</h2>
+<p>The following pages explore xTool Studio's individual tools and settings. Before looking at those features one at a time, it is useful to understand how they fit together. Most laser projects follow the same general workflow.</p>
+<h3>1. Create or Import the Design</h3><p>Begin by creating a design in xTool Studio or importing a design created elsewhere. Precisely dimensioned mechanical parts will often begin in CAD software, while decorative artwork may be created in graphic-design software or directly in xTool Studio.</p>
+<div class="media-placeholder"><strong>MEDIA PLACEHOLDER:</strong> Video showing a simple SVG or DXF being imported.</div>
+<h3>2. Place the Material</h3><p>Place an approved material flat on the slats inside the P2S. Make sure the material is stable and will not move while the machine is operating.</p>
+<h3>3. Select the Processing Mode and Material</h3><p>For normal flat stock, select <strong>Process on Slats</strong>. Then select the material that matches the stock you placed in the machine. Different materials require different processing settings.</p>
+<h3>4. Measure and Capture the Work Area</h3><p>Use the P2S measurement and camera tools as appropriate so the software has an accurate representation of the material and working area.</p>
+<h3>5. Position the Design</h3><p>Move the design over the portion of the material where you want it to be processed. The camera image is an important reference, but you should still verify that the entire design fits on the material.</p>
+<h3>6. Assign Operations</h3><p>Select each object and assign the appropriate operation: <strong>Cut</strong>, <strong>Score</strong>, or <strong>Engrave</strong>. A project may contain several different operations.</p>
+<h3>7. Check the Settings</h3><p>Confirm the material preset, processing type, and other settings. Beginning users should use established material presets whenever possible rather than experimenting with power and speed.</p>
+<h3>8. Preview the Job</h3><p>Click <strong>Process</strong> and inspect the final preview. Make sure all intended objects appear, the correct operations are assigned, the design fits on the stock, and there are no unexpected duplicate lines.</p>
+<h3>9. Send the Job</h3><p>Once the preview has been checked, the project is ready to be sent to the P2S. The complete machine procedure is covered later in this training.</p>
+<section class="quick-check" data-lesson-id="xtool-studio-basic-workflow">
+<h2>Quick Check</h2>
+<p class="quick-check-intro">Answer all questions correctly to mark this page complete.</p>
+<div class="quiz-question" data-correct="B">
+<p>1. What should you do immediately before sending a prepared project to the P2S?</p>
+<button data-answer="A" type="button">Increase the laser power</button>
+<button data-answer="B" type="button">Inspect the processing preview</button>
+<button data-answer="C" type="button">Open the machine lid</button>
+<p aria-live="polite" class="feedback"></p></div>
+</section>
+</main>
+<div class="image-overlay" id="overlay"><img id="overlay-img" src="" alt="Expanded lesson image"/></div>
+<script>
+const overlay=document.getElementById("overlay");const overlayImg=document.getElementById("overlay-img");document.querySelectorAll("img").forEach(img=>{img.addEventListener("click",()=>{overlayImg.src=img.src;overlay.classList.add("active");});});overlay.addEventListener("click",()=>overlay.classList.remove("active"));
+</script>
+<script src="../../printer_files/js/quiz-handler.js"></script>
+</body>
+</html>

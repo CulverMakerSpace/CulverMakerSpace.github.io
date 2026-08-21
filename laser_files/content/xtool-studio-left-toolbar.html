@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<link href="content-style.css" rel="stylesheet"/>
+<title>xTool Studio: Left Toolbar</title>
+<style>
+.media-placeholder{margin:24px auto;padding:24px;border:2px dashed #b8aaa6;border-radius:12px;background:#faf7f6;color:#6a625e;text-align:center;font-size:16px;line-height:1.5;}
+.lesson-content strong{color:#4b403c;}
+</style>
+</head>
+<body>
+<main class="lesson-content">
+<h2>xTool Studio: Left Toolbar</h2>
+<p>The toolbar on the left side of the xTool Studio workspace contains tools for adding and creating objects in your project. You will not need every tool in this panel for normal projects, so this training focuses on the most common ones.</p>
+<div class="media-placeholder"><strong>MEDIA PLACEHOLDER:</strong> Screenshot of the left toolbar with the tools below labeled.</div>
+<h3>Import</h3><p>Use the import tool to add an existing design from your computer. Common files used for laser work include vector files such as SVG and DXF and bitmap images such as PNG and JPG.</p>
+<h3>Text</h3><p>The Text tool allows you to create text directly in xTool Studio. After creating the text, you can change its font, size, alignment, and other properties. Text is commonly engraved, but it can also be incorporated into vector designs.</p>
+<h3>Shape</h3><p>The Shape tool provides basic geometric objects such as rectangles, circles, and polygons. For simple projects, these tools may eliminate the need to create a separate CAD file.</p>
+<h3>Vector and Drawing Tools</h3><p>Vector tools allow you to create or modify paths directly inside xTool Studio. Vector paths are especially important for <strong>Cut</strong> and <strong>Score</strong> operations because they define the path the laser will follow.</p>
+<h3>Other Tools</h3><p>xTool Studio contains additional design and editing tools. You are encouraged to explore them, but they are not required for completing a basic laser-cutting job.</p>
+<section class="quick-check" data-lesson-id="xtool-studio-left-toolbar">
+<h2>Quick Check</h2>
+<p class="quick-check-intro">Answer all questions correctly to mark this page complete.</p>
+<div class="quiz-question" data-correct="C">
+<p>1. Why are vector paths especially important for Cut and Score operations?</p>
+<button data-answer="A" type="button">They automatically select the safest material</button>
+<button data-answer="B" type="button">They turn every image into a photograph</button>
+<button data-answer="C" type="button">They define the path the laser will follow</button>
+<p aria-live="polite" class="feedback"></p></div>
+</section>
+</main>
+<div class="image-overlay" id="overlay"><img id="overlay-img" src="" alt="Expanded lesson image"/></div>
+<script>
+const overlay=document.getElementById("overlay");const overlayImg=document.getElementById("overlay-img");document.querySelectorAll("img").forEach(img=>{img.addEventListener("click",()=>{overlayImg.src=img.src;overlay.classList.add("active");});});overlay.addEventListener("click",()=>overlay.classList.remove("active"));
+</script>
+<script src="../../printer_files/js/quiz-handler.js"></script>
+</body>
+</html>

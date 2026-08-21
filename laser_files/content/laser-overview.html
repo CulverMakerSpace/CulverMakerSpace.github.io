@@ -1,14 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="content-style.css">
+<meta charset="utf-8"/>
+<link href="content-style.css" rel="stylesheet"/>
+<title>Laser Cutting and Engraving Training</title>
+<style>
+.media-placeholder{margin:24px auto;padding:24px;border:2px dashed #b8aaa6;border-radius:12px;background:#faf7f6;color:#6a625e;text-align:center;font-size:16px;line-height:1.5;}
+.lesson-content strong{color:#4b403c;}
+</style>
 </head>
 <body>
-  <h2>Laser Engraver Training</h2>
-  <p>This is the splash page for laser engraver training.</p>
-  <div class="placeholder">
-    <p>This is a placeholder content file. Edit this file inside the content folder when you are ready.</p>
-  </div>
+<main class="lesson-content">
+<h2>Laser Cutting and Engraving Training</h2>
+<p>Laser cutting and engraving is a manufacturing process that uses a focused beam of light to remove material from the surface of an object. Depending on the material and the settings used, the laser can mark the surface, engrave into it, or cut completely through it.</p>
+<p>Unlike a 3D printer, which creates an object by adding material layer by layer, a laser cutter usually begins with an existing piece of material and removes material from it. This makes laser cutting a form of <strong>subtractive manufacturing</strong>.</p>
+<div class="media-placeholder"><strong>MEDIA PLACEHOLDER:</strong> Photo of several completed laser-cut and laser-engraved projects.</div>
+<h3>Training Preview</h3>
+<p>In this unit, you will be introduced to the <strong>xTool P2S CO₂ Laser Cutter and Engraver</strong> used in the makerspace. You will learn the major components of the machine, how to safely prepare it for use, and how to complete basic cutting and engraving jobs.</p>
+<p>You will also learn how to use <strong>xTool Studio</strong>, the software used to prepare designs and send jobs to the laser cutter. xTool Studio allows you to import or create designs, position them on your material, and control how each part of the design will be processed.</p>
+<p>Finally, you will learn several basic principles for designing parts specifically for laser cutting. Factors such as material thickness, kerf, vector paths, and joint design can significantly affect the final dimensions and quality of your project.</p>
+<h3>What You Will Learn</h3>
+<ul><li>How cutting, scoring, and engraving differ</li><li>How to prepare a design in xTool Studio</li><li>How to identify the major components of the P2S</li><li>How to operate the machine safely</li><li>How to complete jobs on flat and round stock</li><li>How to design parts that account for the limitations of laser cutting</li></ul>
+<section class="quick-check" data-lesson-id="laser-overview">
+<h2>Quick Check</h2>
+<p class="quick-check-intro">Answer all questions correctly to mark this page complete.</p>
+<div class="quiz-question" data-correct="A">
+<p>1. Which description best matches laser cutting?</p>
+<button data-answer="A" type="button">A subtractive process that removes material with a focused laser beam</button>
+<button data-answer="B" type="button">An additive process that deposits plastic layer by layer</button>
+<button data-answer="C" type="button">A process that only prints ink on a surface</button>
+<p aria-live="polite" class="feedback"></p></div>
+</section>
+</main>
+<div class="image-overlay" id="overlay"><img id="overlay-img" src="" alt="Expanded lesson image"/></div>
+<script>
+const overlay=document.getElementById("overlay");const overlayImg=document.getElementById("overlay-img");document.querySelectorAll("img").forEach(img=>{img.addEventListener("click",()=>{overlayImg.src=img.src;overlay.classList.add("active");});});overlay.addEventListener("click",()=>overlay.classList.remove("active"));
+</script>
+<script src="../../printer_files/js/quiz-handler.js"></script>
 </body>
 </html>

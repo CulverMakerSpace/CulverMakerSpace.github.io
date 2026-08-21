@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<link href="content-style.css" rel="stylesheet"/>
+<title>xTool P2S: Main Components</title>
+<style>
+.media-placeholder{margin:24px auto;padding:24px;border:2px dashed #b8aaa6;border-radius:12px;background:#faf7f6;color:#6a625e;text-align:center;font-size:16px;line-height:1.5;}
+.lesson-content strong{color:#4b403c;}
+</style>
+</head>
+<body>
+<main class="lesson-content">
+<h2>xTool P2S: Main Components</h2>
+<p>Before operating the P2S, you should be able to identify its major components. We will describe these parts in greater detail as you use the machine, but you should know where they are before beginning your first job.</p>
+<div class="media-placeholder"><strong>MEDIA PLACEHOLDER:</strong> Labeled photo of the P2S identifying the components below.</div>
+<h3>Lid and Enclosure</h3><p>The enclosure surrounds the laser-processing area and prevents normal access to the beam while the machine is operating. Never defeat or modify the lid or its safety mechanisms.</p>
+<h3>Laser Head</h3><p>The laser head directs and focuses the beam onto the material. It moves across the work area during processing. Do not manually force or reposition the laser head unless you have been instructed to do so.</p>
+<h3>Slats</h3><p>The removable metal slats support flat material while allowing the laser beam, smoke, and debris to pass below the workpiece. Most basic flat-stock cutting jobs will be completed with the material resting on these slats.</p>
+<h3>Cameras</h3><p>The P2S uses cameras to help locate the material and position designs within the work area. The resulting image appears in xTool Studio and provides a reference for positioning the digital design.</p>
+<h3>Exhaust System</h3><p>Laser processing creates smoke and gases. The exhaust system removes these products from the machine and sends them through the makerspace ventilation system.</p>
+<h3>Air Assist</h3><p>Air is directed toward the processing area during operation. This helps move smoke and debris away from the laser path and improves cutting performance.</p>
+<h3>Emergency Stop</h3><p>The emergency stop is used to stop the machine during an unsafe situation. You should know where it is located <strong>before starting any job</strong>.</p>
+<h3>Machine Controls</h3><p>The machine's physical controls are used to confirm or start jobs after they have been prepared in xTool Studio.</p>
+<section class="quick-check" data-lesson-id="p2s-main-components">
+<h2>Quick Check</h2>
+<p class="quick-check-intro">Answer all questions correctly to mark this page complete.</p>
+<div class="quiz-question" data-correct="B">
+<p>1. Which component removes smoke and gases produced during laser processing?</p>
+<button data-answer="A" type="button">Slats</button>
+<button data-answer="B" type="button">Exhaust system</button>
+<button data-answer="C" type="button">Camera</button>
+<p aria-live="polite" class="feedback"></p></div>
+</section>
+</main>
+<div class="image-overlay" id="overlay"><img id="overlay-img" src="" alt="Expanded lesson image"/></div>
+<script>
+const overlay=document.getElementById("overlay");const overlayImg=document.getElementById("overlay-img");document.querySelectorAll("img").forEach(img=>{img.addEventListener("click",()=>{overlayImg.src=img.src;overlay.classList.add("active");});});overlay.addEventListener("click",()=>overlay.classList.remove("active"));
+</script>
+<script src="../../printer_files/js/quiz-handler.js"></script>
+</body>
+</html>

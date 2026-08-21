@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<link href="content-style.css" rel="stylesheet"/>
+<title>Kerf and Dimensional Accuracy</title>
+<style>
+.media-placeholder{margin:24px auto;padding:24px;border:2px dashed #b8aaa6;border-radius:12px;background:#faf7f6;color:#6a625e;text-align:center;font-size:16px;line-height:1.5;}
+.lesson-content strong{color:#4b403c;}
+</style>
+</head>
+<body>
+<main class="lesson-content">
+<h2>Kerf and Dimensional Accuracy</h2>
+<h3>Kerf</h3><p>A laser beam is very narrow, but it does not have zero width. When the laser cuts through material, it removes a narrow strip along the cutting path. The width of material removed is called the <strong>kerf</strong>.</p>
+<div class="media-placeholder"><strong>MEDIA PLACEHOLDER:</strong> Diagram showing a vector line, laser beam, and the material removed on both sides of the path.</div>
+<p>Imagine drawing a 50 mm square and telling the laser to follow its outline. Because the laser removes material along the cutting path, the finished square may be slightly smaller than the dimensions in the digital design, while the opening left behind may be slightly larger.</p>
+<p>For decorative projects, this difference may not matter. For parts that need to fit together precisely, it can be extremely important.</p>
+<h3>Kerf Compensation</h3><p>When precise dimensions are required, the design can be adjusted to compensate for the material removed by the laser. The appropriate compensation depends on the actual kerf.</p>
+<p>Kerf can change with material type, material thickness, laser settings, focus, and other processing conditions. There is therefore no single kerf value that works for every project.</p>
+<h3>Test Before Cutting the Whole Project</h3><p>If a project depends on a precise fit, create a small test piece first. Measure the result and adjust the design before cutting a large or expensive sheet of material.</p>
+<section class="quick-check" data-lesson-id="laser-design-kerf">
+<h2>Quick Check</h2>
+<p class="quick-check-intro">Answer all questions correctly to mark this page complete.</p>
+<div class="quiz-question" data-correct="C">
+<p>1. What is kerf?</p>
+<button data-answer="A" type="button">The labeled thickness of the sheet material</button>
+<button data-answer="B" type="button">The amount a bitmap image is stretched</button>
+<button data-answer="C" type="button">The width of material removed by the laser as it follows a cutting path</button>
+<p aria-live="polite" class="feedback"></p></div>
+</section>
+</main>
+<div class="image-overlay" id="overlay"><img id="overlay-img" src="" alt="Expanded lesson image"/></div>
+<script>
+const overlay=document.getElementById("overlay");const overlayImg=document.getElementById("overlay-img");document.querySelectorAll("img").forEach(img=>{img.addEventListener("click",()=>{overlayImg.src=img.src;overlay.classList.add("active");});});overlay.addEventListener("click",()=>overlay.classList.remove("active"));
+</script>
+<script src="../../printer_files/js/quiz-handler.js"></script>
+</body>
+</html>

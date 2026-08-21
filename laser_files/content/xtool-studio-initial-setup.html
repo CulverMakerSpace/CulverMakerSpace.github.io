@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<link href="content-style.css" rel="stylesheet"/>
+<title>xTool Studio: Initial Setup</title>
+<style>
+.media-placeholder{margin:24px auto;padding:24px;border:2px dashed #b8aaa6;border-radius:12px;background:#faf7f6;color:#6a625e;text-align:center;font-size:16px;line-height:1.5;}
+.lesson-content strong{color:#4b403c;}
+</style>
+</head>
+<body>
+<main class="lesson-content">
+<h2>xTool Studio: Initial Setup</h2>
+<p>Before preparing a project, xTool Studio needs to be connected to the correct machine and set to the appropriate processing mode.</p>
+<h3>Connect to the P2S</h3>
+<p>Open xTool Studio and create a new project. In the device area, select or connect to the <strong>xTool P2S</strong>. Always confirm the correct machine before changing material or process settings.</p>
+<div class="media-placeholder"><strong>MEDIA PLACEHOLDER:</strong> Screenshot or short video showing how to connect xTool Studio to the P2S.</div>
+<h3>Select the Processing Mode</h3>
+<p>For most projects in this introductory training, you will use one of two modes:</p>
+<ul><li><strong>Process on Slats</strong> — used for most jobs involving flat sheet material.</li><li><strong>Rotary Processing</strong> — used when engraving cylindrical or round objects with the rotary attachment.</li></ul>
+<p>The P2S supports additional processing modes and accessories. Those options can be useful for specialized projects, but they are not necessary for normal operation and are not part of this introductory training.</p>
+<h3>Before You Continue</h3>
+<p>Confirm that the P2S is connected, the correct processing mode is selected, and the machine is ready before importing and positioning your final design.</p>
+<section class="quick-check" data-lesson-id="xtool-studio-initial-setup">
+<h2>Quick Check</h2>
+<p class="quick-check-intro">Answer all questions correctly to mark this page complete.</p>
+<div class="quiz-question" data-correct="A">
+<p>1. Which processing mode should be used for a normal sheet of plywood resting on the laser bed?</p>
+<button data-answer="A" type="button">Process on Slats</button>
+<button data-answer="B" type="button">Rotary Processing</button>
+<button data-answer="C" type="button">Either mode works the same</button>
+<p aria-live="polite" class="feedback"></p></div>
+</section>
+</main>
+<div class="image-overlay" id="overlay"><img id="overlay-img" src="" alt="Expanded lesson image"/></div>
+<script>
+const overlay=document.getElementById("overlay");const overlayImg=document.getElementById("overlay-img");document.querySelectorAll("img").forEach(img=>{img.addEventListener("click",()=>{overlayImg.src=img.src;overlay.classList.add("active");});});overlay.addEventListener("click",()=>overlay.classList.remove("active"));
+</script>
+<script src="../../printer_files/js/quiz-handler.js"></script>
+</body>
+</html>
