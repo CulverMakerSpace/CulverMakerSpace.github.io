@@ -10,19 +10,17 @@
   <div class="layout">
     <aside class="sidebar">
       <a class="logo" href="../index.html"><img src="../images/pigott_logo.png" alt=""></a>
+      
       <div class="sidebar-content">
         <h2>Training Progress</h2>
         <div class="progress" id="printer-progress">0%</div>
         <div class="line"></div>
 
-        <div class="side-link active section-title">
+        <a class="side-link active" href="#" data-lesson-id="printer-overview" onclick="loadLesson('content/printer-overview.html', this); return false;">
           <img src="../images/printer.png" class="side-icon" alt="">
           <span>3D Printer<br><small id="printer-section-progress">0% complete</small></span>
-        </div>
-
-        <a class="side-overview" href="#" onclick="loadLesson('content/printer-overview.html', this); return false;">
-          Lesson Overview
         </a>
+
 
         <details class="side-section" data-section="slicer">
           <summary>PrusaSlicer</summary>
