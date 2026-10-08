@@ -91,7 +91,7 @@ body {
 
 .controls-panel {
     min-width: 0;
-    max-height: var(--available-height);
+    height: var(--available-height);
     overflow-y: auto;
     overflow-wrap: anywhere;
     padding: 12px 15px;
@@ -152,6 +152,9 @@ kbd {
    ============================================================================= */
 
 .simulator-panel {
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
     position: relative;
     width: var(--display-width, 1200px);
     height: var(--display-height, 800px);
