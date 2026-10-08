@@ -91,7 +91,7 @@ body {
 
 .controls-panel {
     min-width: 0;
-    max-height: var(--available-height, 800px);
+    max-height: var(--available-height);
     overflow-y: auto;
     overflow-wrap: anywhere;
     padding: 12px 15px;
@@ -159,8 +159,8 @@ kbd {
     padding: 0;
     margin: 0;
     overflow: hidden;
-    border: 0;
-    border-radius: 0;
+    border: 1px solid var(--panel-border);
+    border-radius: 8px;
     background: transparent;
 }
 
