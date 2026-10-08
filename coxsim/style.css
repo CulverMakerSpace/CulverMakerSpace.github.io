@@ -1,0 +1,198 @@
+/* =============================================================================
+   COXSWAIN SIMULATOR — TRAINING PAGE
+   Change the values in this section to adjust the entire layout.
+   ============================================================================= */
+
+:root {
+    /* Original Pygame simulation resolution (do not change unless Python changes). */
+    --simulator-width: 1200px;
+    --simulator-height: 800px;
+
+    /* Desktop proportions when there isn't room for the full 1200px simulator. */
+    --controls-share: 1fr;
+    --simulator-share: 3fr;
+
+    --page-gap: 12px;
+    --page-padding: 12px;
+
+    --page-background: #101924;
+    --header-background: #172435;
+    --panel-background: #202f40;
+    --panel-border: #34485e;
+    --text-color: #f3f6f8;
+    --muted-text-color: #c5d3df;
+    --accent-color: #afd3e8;
+
+    font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+    color-scheme: dark;
+}
+
+/* =============================================================================
+   BASIC PAGE STYLING
+   ============================================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--page-background);
+    color: var(--text-color);
+}
+
+/* =============================================================================
+   HEADER
+   ============================================================================= */
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 20px;
+    background: var(--header-background);
+    border-bottom: 1px solid var(--panel-border);
+}
+
+.page-header h1 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.page-header a {
+    color: #a8d9ff;
+    font-size: 0.88rem;
+    text-decoration: none;
+}
+
+/* =============================================================================
+   PAGE COLUMNS
+
+   On wide screens, the simulation gets its full 1200px and the controls
+   fill everything left over.
+
+   When space is tight, the simulator gets 75% of the content width and the
+   controls get 25% (after gaps). Neither column forces horizontal scrolling.
+   ============================================================================= */
+
+.training-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, var(--simulator-width));
+    align-items: start;
+    gap: var(--page-gap);
+    padding: var(--page-padding);
+}
+
+@media (max-width: 1650px) {
+    .training-layout {
+        grid-template-columns: minmax(0, var(--controls-share)) minmax(0, var(--simulator-share));
+    }
+}
+
+/* =============================================================================
+   CONTROL PANEL
+   ============================================================================= */
+
+.controls-panel {
+    min-width: 0;
+    max-height: 800px;
+    overflow-y: auto;
+    overflow-wrap: anywhere;
+    padding: 15px 17px;
+    border: 1px solid var(--panel-border);
+    border-radius: 10px;
+    background: var(--panel-background);
+}
+
+.controls-panel h2 {
+    margin: 3px 0 15px;
+    font-size: 1.2rem;
+}
+
+.controls-panel h3 {
+    margin: 22px 0 9px;
+    color: var(--accent-color);
+    font-size: 0.83rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+}
+
+.control {
+    display: grid;
+    grid-template-columns: minmax(0, 90px) minmax(0, 1fr);
+    gap: 12px;
+    align-items: center;
+    padding: 6px 0;
+    font-size: 0.93rem;
+}
+
+kbd {
+    display: inline-block;
+    width: fit-content;
+    max-width: 100%;
+    padding: 5px 8px;
+    border: 1px solid #778da5;
+    border-radius: 5px;
+    background: #344a62;
+    font-family: inherit;
+    font-size: 0.83rem;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.tip {
+    margin-top: 19px;
+    color: var(--muted-text-color);
+    font-size: 0.83rem;
+    line-height: 1.5;
+}
+
+/* =============================================================================
+   SIMULATOR
+
+   The frame stays 1200x800 internally. JavaScript sets --frame-scale to
+   fit it into this responsive container without cropping its edges.
+   ============================================================================= */
+
+.simulator-panel {
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+    aspect-ratio: 3 / 2;
+    border: 1px solid var(--panel-border);
+    border-radius: 10px;
+    background: #070c12;
+}
+
+.simulator-frame {
+    display: block;
+    width: var(--simulator-width);
+    height: var(--simulator-height);
+    border: none;
+    transform: scale(var(--frame-scale, 1));
+    transform-origin: top left;
+}
+
+/* Keep the same side-by-side layout on smaller screens. Narrow control labels
+   wrap naturally instead of widening the page. */
+@media (max-width: 700px) {
+    .page-header {
+        padding: 10px 12px;
+    }
+
+    .page-header h1 {
+        font-size: 0.95rem;
+    }
+
+    .controls-panel {
+        padding: 10px 8px;
+    }
+
+    .control {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+}
