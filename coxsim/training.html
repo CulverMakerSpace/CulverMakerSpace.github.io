@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Coxswain Simulator — Training View</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="page-header">
+    <h1>Coxswain Training Simulator</h1>
+    <a href="./" target="_blank" rel="noopener noreferrer">Open simulator separately ↗</a>
+  </header>
+  <div class="training-layout" id="training-layout">
+    <aside class="controls-panel" aria-label="Simulator keyboard controls">
+      <h2>Controls</h2>
+      <h3>Rowing</h3>
+      <div class="control"><kbd>W</kbd><span>All forward</span></div>
+      <div class="control"><kbd>S</kbd><span>All reverse</span></div>
+      <div class="control"><kbd>A</kbd><span>Port forward</span></div>
+      <div class="control"><kbd>Z</kbd><span>Port reverse</span></div>
+      <div class="control"><kbd>D</kbd><span>Starboard forward</span></div>
+      <div class="control"><kbd>X</kbd><span>Starboard reverse</span></div>
+      <div class="control"><kbd>Space</kbd><span>Hold water</span></div>
+      <h3>Steering</h3>
+      <div class="control"><kbd>←</kbd><span>Rudder to port</span></div>
+      <div class="control"><kbd>→</kbd><span>Rudder to starboard</span></div>
+      <h3>Oars</h3>
+      <div class="control"><kbd>U</kbd><span>Raise oars</span></div>
+      <div class="control"><kbd>J</kbd><span>Lower oars</span></div>
+      <h3>Simulation</h3>
+      <div class="control"><kbd>R</kbd><span>Reset</span></div>
+      <p class="tip">Click inside the simulator before using keyboard controls. The controls listed here are a quick reference; course selection and additional controls remain in the simulator.</p>
+    </aside>
+    <main class="simulator-panel" id="simulator-panel">
+      <iframe class="simulator-frame" src="./" title="Interactive Coxswain Simulator" scrolling="no" allow="fullscreen" allowfullscreen loading="eager"></iframe>
+    </main>
+  </div>
+
+  <script>
+    // =========================================================================
+    // RESPONSIVE SIMULATOR SCALING
+    // =========================================================================
+    // The simulator remains 1200 x 800 internally. Scaling changes only how
+    // large it appears on the training page, not its physics or coordinates.
+
+    const layout = document.getElementById("training-layout");
+    const simulatorPanel = document.getElementById("simulator-panel");
+    const pageHeader = document.querySelector(".page-header");
+
+    const simulatorWidth = 1200;
+    const simulatorHeight = 800;
+
+    function resizeSimulator() {
+        const layoutStyles = getComputedStyle(layout);
+        const horizontalPadding = parseFloat(layoutStyles.paddingLeft) + parseFloat(layoutStyles.paddingRight);
+        const verticalPadding = parseFloat(layoutStyles.paddingTop) + parseFloat(layoutStyles.paddingBottom);
+        const columnGap = parseFloat(layoutStyles.columnGap);
+
+        const availablePageWidth = Math.max(0, window.innerWidth - horizontalPadding - columnGap);
+        const availableHeight = Math.max(0, window.innerHeight - pageHeader.getBoundingClientRect().height - verticalPadding);
+
+        // On a wide display keep the simulator at its native width.
+        // On a narrow display reserve 25% for controls and 75% for simulation.
+        const wideLayout = availablePageWidth >= simulatorWidth + 300;
+        layout.classList.toggle("narrow-layout", !wideLayout);
+
+        const widthLimit = wideLayout ? simulatorWidth : availablePageWidth * 0.75;
+
+        // Fit the full 1200 x 800 image both horizontally and vertically.
+        const scale = Math.min(1, widthLimit / simulatorWidth, availableHeight / simulatorHeight);
+        const displayWidth = Math.max(0, simulatorWidth * scale);
+        const displayHeight = Math.max(0, simulatorHeight * scale);
+
+        simulatorPanel.style.setProperty("--frame-scale", String(scale));
+        simulatorPanel.style.setProperty("--display-width", `${displayWidth}px`);
+        simulatorPanel.style.setProperty("--display-height", `${displayHeight}px`);
+        layout.style.setProperty("--available-height", `${availableHeight}px`);
+    }
+
+    // No observer feedback loops: read the viewport, not the panel's own size.
+    window.addEventListener("resize", resizeSimulator);
+    resizeSimulator();
+  </script>
+</body>
+</html>

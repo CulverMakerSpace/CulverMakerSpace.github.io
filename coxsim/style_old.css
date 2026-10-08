@@ -1,20 +1,23 @@
 /* =============================================================================
    COXSWAIN SIMULATOR — TRAINING PAGE
+   Change the values in this section to adjust the entire layout.
    ============================================================================= */
 
 :root {
-    /* The Python/Pygame canvas resolution. */
+    /* Original Pygame simulation resolution (do not change unless Python changes). */
     --simulator-width: 1200px;
     --simulator-height: 800px;
 
-    /* Layout spacing. */
-    --page-padding: 12px;
-    --panel-gap: 12px;
+    /* Desktop proportions when there isn't room for the full 1200px simulator. */
+    --controls-share: 1fr;
+    --simulator-share: 3fr;
 
-    /* Colors. */
+    --page-gap: 12px;
+    --page-padding: 12px;
+
     --page-background: #101924;
     --header-background: #172435;
-    --controls-background: #202f40;
+    --panel-background: #202f40;
     --panel-border: #34485e;
     --text-color: #f3f6f8;
     --muted-text-color: #c5d3df;
@@ -25,23 +28,22 @@
 }
 
 /* =============================================================================
-   PAGE AND HEADER
+   BASIC PAGE STYLING
    ============================================================================= */
 
 * {
     box-sizing: border-box;
 }
 
-html, body {
-    width: 100%;
-    min-height: 100%;
-    margin: 0;
-}
-
 body {
+    margin: 0;
     background: var(--page-background);
     color: var(--text-color);
 }
+
+/* =============================================================================
+   HEADER
+   ============================================================================= */
 
 .page-header {
     display: flex;
@@ -65,154 +67,132 @@ body {
 }
 
 /* =============================================================================
-   TWO-COLUMN LAYOUT
+   PAGE COLUMNS
 
-   JavaScript sets --available-height and --simulator-column-width.
-   Wide: simulator column is no more than 1200px; controls get the rest.
-   Narrow: controls receive 25%, simulator receives 75%.
+   On wide screens, the simulation gets its full 1200px and the controls
+   fill everything left over.
+
+   When space is tight, the simulator gets 75% of the content width and the
+   controls get 25% (after gaps). Neither column forces horizontal scrolling.
    ============================================================================= */
 
 .training-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1200px);
+    grid-template-columns: minmax(0, 1fr) minmax(0, var(--simulator-width));
     align-items: start;
-    gap: var(--panel-gap);
+    gap: var(--page-gap);
     padding: var(--page-padding);
-    min-width: 0;
 }
 
-.training-layout.narrow-layout {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
+@media (max-width: 1650px) {
+    .training-layout {
+        grid-template-columns: minmax(0, var(--controls-share)) minmax(0, var(--simulator-share));
+    }
 }
 
 /* =============================================================================
-   CONTROLS PANEL
+   CONTROL PANEL
    ============================================================================= */
 
 .controls-panel {
     min-width: 0;
-    max-height: var(--available-height, 800px);
+    max-height: 800px;
     overflow-y: auto;
     overflow-wrap: anywhere;
-    padding: 12px 15px;
+    padding: 15px 17px;
     border: 1px solid var(--panel-border);
-    border-radius: 8px;
-    background: var(--controls-background);
+    border-radius: 10px;
+    background: var(--panel-background);
 }
 
 .controls-panel h2 {
-    margin: 2px 0 10px;
-    font-size: 1.15rem;
+    margin: 3px 0 15px;
+    font-size: 1.2rem;
 }
 
 .controls-panel h3 {
-    margin: 13px 0 5px;
+    margin: 22px 0 9px;
     color: var(--accent-color);
-    font-size: 0.8rem;
-    letter-spacing: 0.06em;
+    font-size: 0.83rem;
+    letter-spacing: 0.07em;
     text-transform: uppercase;
 }
 
 .control {
     display: grid;
-    grid-template-columns: minmax(0, 75px) minmax(0, 1fr);
-    gap: 8px;
+    grid-template-columns: minmax(0, 90px) minmax(0, 1fr);
+    gap: 12px;
     align-items: center;
-    padding: 3px 0;
-    font-size: 0.9rem;
-    line-height: 1.25;
+    padding: 6px 0;
+    font-size: 0.93rem;
 }
 
 kbd {
     display: inline-block;
     width: fit-content;
     max-width: 100%;
-    padding: 4px 7px;
+    padding: 5px 8px;
     border: 1px solid #778da5;
     border-radius: 5px;
     background: #344a62;
     font-family: inherit;
-    font-size: 0.8rem;
+    font-size: 0.83rem;
     text-align: center;
     white-space: nowrap;
 }
 
 .tip {
-    margin: 12px 0 0;
+    margin-top: 19px;
     color: var(--muted-text-color);
-    font-size: 0.8rem;
-    line-height: 1.35;
+    font-size: 0.83rem;
+    line-height: 1.5;
 }
 
 /* =============================================================================
-   SIMULATOR PANEL
+   SIMULATOR
 
-   The outer panel has exactly the scaled iframe's width and height.
-   This avoids blank space around the simulator and scrollbars within the frame.
+   The frame stays 1200x800 internally. JavaScript sets --frame-scale to
+   fit it into this responsive container without cropping its edges.
    ============================================================================= */
 
 .simulator-panel {
-    position: relative;
-    width: var(--display-width, 1200px);
-    height: var(--display-height, 800px);
+    width: 100%;
     min-width: 0;
-    padding: 0;
-    margin: 0;
     overflow: hidden;
-    border: 0;
-    border-radius: 0;
-    background: transparent;
+    aspect-ratio: 3 / 2;
+    border: 1px solid var(--panel-border);
+    border-radius: 10px;
+    background: #070c12;
 }
 
 .simulator-frame {
     display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
     width: var(--simulator-width);
     height: var(--simulator-height);
-    margin: 0;
-    padding: 0;
-    border: 0;
-    overflow: hidden;
+    border: none;
     transform: scale(var(--frame-scale, 1));
     transform-origin: top left;
 }
 
-/* =============================================================================
-   SMALL SCREEN TYPOGRAPHY
-   Keep the same 25/75 side-by-side layout.
-   ============================================================================= */
-
+/* Keep the same side-by-side layout on smaller screens. Narrow control labels
+   wrap naturally instead of widening the page. */
 @media (max-width: 700px) {
-    :root {
-        --page-padding: 6px;
-        --panel-gap: 6px;
-    }
-
     .page-header {
-        padding: 9px 10px;
+        padding: 10px 12px;
     }
 
     .page-header h1 {
-        font-size: 0.9rem;
-    }
-
-    .page-header a {
-        font-size: 0.73rem;
+        font-size: 0.95rem;
     }
 
     .controls-panel {
-        padding: 8px 6px;
+        padding: 10px 8px;
     }
 
     .control {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 2px;
-        font-size: 0.78rem;
-    }
-
-    .controls-panel h3 {
-        font-size: 0.7rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
     }
 }
