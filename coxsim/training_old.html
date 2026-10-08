@@ -4,36 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Coxswain Simulator — Training View</title>
-  <style>
-    :root { color-scheme: dark; font-family: system-ui, -apple-system, Segoe UI, Arial, sans-serif; }
-    * { box-sizing: border-box; }
-    body { margin: 0; color: #f3f6f8; background: #101924; }
-    header { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 13px 20px; background: #172435; border-bottom: 1px solid #304155; }
-    header h1 { font-size: 1.1rem; margin: 0; }
-    header a { color: #a8d9ff; text-decoration: none; font-size: .88rem; }
-    .layout { display: grid; grid-template-columns: minmax(245px, 25%) minmax(0, 1fr); gap: 12px; padding: 12px; height: calc(100vh - 56px); min-height: 650px; }
-    aside { overflow-y: auto; background: #202f40; border: 1px solid #34485e; border-radius: 10px; padding: 15px 17px; }
-    aside h2 { margin: 3px 0 15px; font-size: 1.2rem; }
-    aside h3 { margin: 22px 0 9px; font-size: .83rem; text-transform: uppercase; color: #afd3e8; letter-spacing: .07em; }
-    .control { display: grid; grid-template-columns: 90px 1fr; gap: 12px; align-items: center; padding: 6px 0; font-size: .93rem; }
-    kbd { display: inline-block; width: fit-content; min-width: 35px; padding: 5px 8px; border: 1px solid #778da5; border-radius: 5px; background: #344a62; font-family: inherit; font-size: .83rem; text-align: center; white-space: nowrap; }
-    .tip { color: #c5d3df; line-height: 1.5; font-size: .83rem; margin-top: 19px; }
-    main { overflow: hidden; border: 1px solid #34485e; border-radius: 10px; background: #070c12; min-width: 0; min-height: 0; }
-    iframe { display: block; width: 100%; height: 100%; border: 0; }
-    @media (max-width: 850px) {
-      .layout { grid-template-columns: 1fr; height: auto; }
-      aside { max-height: 350px; }
-      main { height: min(74vh, 800px); min-height: 460px; }
-    }
-  </style>
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-  <header>
+  <header class="page-header">
     <h1>Coxswain Training Simulator</h1>
     <a href="./" target="_blank" rel="noopener noreferrer">Open simulator separately ↗</a>
   </header>
-  <div class="layout">
-    <aside aria-label="Simulator keyboard controls">
+  <div class="training-layout">
+    <aside class="controls-panel" aria-label="Simulator keyboard controls">
       <h2>Controls</h2>
 
       <h3>Prep Commands</h3>
@@ -57,9 +36,26 @@
       <div class="control"><kbd>M</kbd><span>Toggle map/boat views</span></div>
       <div class="control"><kbd>+/-</kbd><span>Zoom in/out</span></div>
     </aside>
-    <main>
-      <iframe src="./" title="Interactive Coxswain Simulator" allow="fullscreen" allowfullscreen loading="eager"></iframe>
+    <main class="simulator-panel" id="simulator-panel">
+      <iframe class="simulator-frame" src="./" title="Interactive Coxswain Simulator" allow="fullscreen" allowfullscreen loading="eager"></iframe>
     </main>
   </div>
+
+  <script>
+    // Keep Pygbag's internal window at 1200 x 800, even when the page is narrow.
+    // Only the displayed size changes; the simulator's own coordinate system does not.
+    const simulatorPanel = document.getElementById("simulator-panel");
+    const nativeWidth = 1200;
+
+    function resizeSimulator() {
+        const availableWidth = simulatorPanel.clientWidth;
+        const scale = Math.min(1, availableWidth / nativeWidth);
+        simulatorPanel.style.setProperty("--frame-scale", scale);
+    }
+
+    const sizeObserver = new ResizeObserver(resizeSimulator);
+    sizeObserver.observe(simulatorPanel);
+    resizeSimulator();
+  </script>
 </body>
 </html>
