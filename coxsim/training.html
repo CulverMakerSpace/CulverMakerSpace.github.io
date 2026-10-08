@@ -35,21 +35,27 @@
   <div class="layout">
     <aside aria-label="Simulator keyboard controls">
       <h2>Controls</h2>
-      <h3>Rowing</h3>
+
+      <h3>Prep Commands</h3>
       <div class="control"><kbd>Shift</kbd><span>All</span></div>
       <div class="control"><kbd>Q</kbd><span>Port</span></div>
       <div class="control"><kbd>P</kbd><span>Starboard</span></div>
+      <h3>Execution Commands</h3>
       <div class="control"><kbd>W</kbd><span>Forward</span></div>
       <div class="control"><kbd>S</kbd><span>Reverse</span></div>
       <div class="control"><kbd>Space</kbd><span>Coast/Let it run</span></div>
       <div class="control"><kbd>Enter</kbd><span>Hold water</span></div>
-      <div class="control"><kbd>↕</kbd><span>Increase/Decrease stroke rate 1</span></div>
-      <h3>Steering</h3>
-      <div class="control"><kbd>↔</kbd><span>Adjust rudder by 10°</span></div>
-      <h3>Oars</h3>
       <div class="control"><kbd>U</kbd><span>Raise oars</span></div>
       <div class="control"><kbd>J</kbd><span>Lower oars</span></div>
-      <p class="tip">Click inside the simulator before using keyboard controls. The controls listed here are a quick reference; course selection and additional controls remain in the simulator.</p>
+      <p class="tip">All of the above controls require a prep key followed by an execution key. Pressing a second prep key changes the selected rowers.</p>
+     
+      <h3>Coxswain Controls</h3>
+      <div class="control"><kbd>↕</kbd><span>Increase/Decrease stroke rate 1</span></div>
+      <div class="control"><kbd>↔</kbd><span>Adjust rudder by 10°</span></div>
+      
+      <h3>Camera Controls</h3>
+      <div class="control"><kbd>M</kbd><span>Toggle map/boat views</span></div>
+      <div class="control"><kbd>+/-</kbd><span>Zoom in/out</span></div>
     </aside>
     <main>
       <iframe src="./" title="Interactive Coxswain Simulator" allow="fullscreen" allowfullscreen loading="eager"></iframe>
