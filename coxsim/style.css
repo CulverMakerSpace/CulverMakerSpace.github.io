@@ -1,221 +1,146 @@
-/* =============================================================================
-   COXSWAIN SIMULATOR — TRAINING PAGE
-   ============================================================================= */
+:root {--simulator-width: 1200px;
+      --simulator-height: 800px;
+      --page-padding: 12px;
+      --panel-gap: 12px;
+      --page-background: #101924;
+      --header-background: #172435;
+      --controls-background: #202f40;
+      --panel-border: #34485e;
+      --text-color: #f3f6f8;
+      --muted-text-color: #c5d3df;
+      --accent-color: #afd3e8;
+      font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+      color-scheme: dark;}
 
-:root {
-    /* The Python/Pygame canvas resolution. */
-    --simulator-width: 1200px;
-    --simulator-height: 800px;
 
-    /* Layout spacing. */
-    --page-padding: 12px;
-    --panel-gap: 12px;
+* {box-sizing: border-box;}
 
-    /* Colors. */
-    --page-background: #101924;
-    --header-background: #172435;
-    --controls-background: #202f40;
-    --panel-border: #34485e;
-    --text-color: #f3f6f8;
-    --muted-text-color: #c5d3df;
-    --accent-color: #afd3e8;
 
-    font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
-    color-scheme: dark;
-}
+html, body {width: 100%;
+            min-height: 100%;
+            margin: 0;}
 
-/* =============================================================================
-   PAGE AND HEADER
-   ============================================================================= */
+body {background: var(--page-background);
+      color: var(--text-color);}
 
-* {
-    box-sizing: border-box;
-}
+.page-header {display: flex;
+              justify-content: space-between;
+              align-items: center;
+              gap: 12px;
+              padding: 13px 20px;
+              background: var(--header-background);
+              border-bottom: 1px solid var(--panel-border);}
 
-html, body {
-    width: 100%;
-    min-height: 100%;
-    margin: 0;
-}
+.page-header h1 {margin: 0;
+                 font-size: 1.1rem;}
 
-body {
-    background: var(--page-background);
-    color: var(--text-color);
-}
+.page-header a {color: #a8d9ff;
+                font-size: 0.88rem;
+                text-decoration: none;}
 
-.page-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12px;
-    padding: 13px 20px;
-    background: var(--header-background);
-    border-bottom: 1px solid var(--panel-border);
-}
+.training-layout {display: grid;
+                  grid-template-columns: minmax(0, 1fr) minmax(0, 1200px);
+                  align-items: stretch;
+                  gap: var(--panel-gap);
+                  padding: var(--page-padding);
+                  width: 100%;
+                  min-width: 0;
+                  height: calc(var(--available-height, 800px) + 2 * var(--page-padding));}
 
-.page-header h1 {
-    margin: 0;
-    font-size: 1.1rem;
-}
+.training-layout.narrow-layout {grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);}
 
-.page-header a {
-    color: #a8d9ff;
-    font-size: 0.88rem;
-    text-decoration: none;
-}
+.controls-panel {min-width: 0;
+                 height: 100%;
+                 overflow-y: auto;
+                 overflow-wrap: anywhere;
+                 padding: 12px 15px;
+                 border: 1px solid var(--panel-border);
+                 border-radius: 8px;
+                 background: var(--controls-background);}
 
-/* =============================================================================
-   TWO-COLUMN LAYOUT
+.controls-panel h2 {margin: 2px 0 10px;
+                    font-size: 1.15rem;}
 
-   JavaScript sets --available-height and --simulator-column-width.
-   Wide: simulator column is no more than 1200px; controls get the rest.
-   Narrow: controls receive 25%, simulator receives 75%.
-   ============================================================================= */
+.controls-panel h3 {margin: 13px 0 5px;
+                    color: var(--accent-color);
+                    font-size: 0.8rem;
+                    letter-spacing: 0.06em;
+                    text-transform: uppercase;}
 
-.training-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1200px);
-    align-items: start;
-    gap: var(--panel-gap);
-    padding: var(--page-padding);
-    min-width: 0;
-}
+.control {display: grid;
+          grid-template-columns: minmax(0, 75px) minmax(0, 1fr);
+          gap: 8px;
+          align-items: center;
+          padding: 3px 0;
+          font-size: 0.9rem;
+          line-height: 1.25;}
 
-.training-layout.narrow-layout {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
-}
+kbd {display: inline-block;
+      width: fit-content;
+      max-width: 100%;
+      padding: 4px 7px;
+      border: 1px solid #778da5;
+      border-radius: 5px;
+      background: #344a62;
+      font-family: inherit;
+      font-size: 0.8rem;
+      text-align: center;
+      white-space: nowrap;}
 
-/* =============================================================================
-   CONTROLS PANEL
-   ============================================================================= */
+.tip {margin: 12px 0 0;
+      color: var(--muted-text-color);
+      font-size: 0.8rem;
+      line-height: 1.35;}
 
-.controls-panel {
-    min-width: 0;
-    height: var(--available-height);
-    overflow-y: auto;
-    overflow-wrap: anywhere;
-    padding: 12px 15px;
-    border: 1px solid var(--panel-border);
-    border-radius: 8px;
-    background: var(--controls-background);
-}
+.simulator-panel {position: relative;
+                  justify-self: center;
+                  align-self: center;
+                  width: var(--display-width, 1200px);
+                  height: var(--display-height, 800px);
+                  min-width: 0;
+                  padding: 0;
+                  margin: 0;
+                  overflow: hidden;
+                  border: 1px solid var(--panel-border);
+                  border-radius: 8px;
+                  background: transparent;}
 
-.controls-panel h2 {
-    margin: 2px 0 10px;
-    font-size: 1.15rem;
-}
+.simulator-frame {display: block;
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: var(--simulator-width);
+                  height: var(--simulator-height);
+                  margin: 0;
+                  padding: 0;
+                  border: 0;
+                  overflow: hidden;
+                  transform: scale(var(--frame-scale, 1));
+                  transform-origin: top left;}
 
-.controls-panel h3 {
-    margin: 13px 0 5px;
-    color: var(--accent-color);
-    font-size: 0.8rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-}
-
-.control {
-    display: grid;
-    grid-template-columns: minmax(0, 75px) minmax(0, 1fr);
-    gap: 8px;
-    align-items: center;
-    padding: 3px 0;
-    font-size: 0.9rem;
-    line-height: 1.25;
-}
-
-kbd {
-    display: inline-block;
-    width: fit-content;
-    max-width: 100%;
-    padding: 4px 7px;
-    border: 1px solid #778da5;
-    border-radius: 5px;
-    background: #344a62;
-    font-family: inherit;
-    font-size: 0.8rem;
-    text-align: center;
-    white-space: nowrap;
-}
-
-.tip {
-    margin: 12px 0 0;
-    color: var(--muted-text-color);
-    font-size: 0.8rem;
-    line-height: 1.35;
-}
-
-/* =============================================================================
-   SIMULATOR PANEL
-
-   The outer panel has exactly the scaled iframe's width and height.
-   This avoids blank space around the simulator and scrollbars within the frame.
-   ============================================================================= */
-
-.simulator-panel {
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-    position: relative;
-    width: var(--display-width, 1200px);
-    height: var(--display-height, 800px);
-    min-width: 0;
-    padding: 0;
-    margin: 0;
-    overflow: hidden;
-    border: 1px solid var(--panel-border);
-    border-radius: 8px;
-    background: transparent;
-}
-
-.simulator-frame {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: var(--simulator-width);
-    height: var(--simulator-height);
-    margin: 0;
-    padding: 0;
-    border: 0;
-    overflow: hidden;
-    transform: scale(var(--frame-scale, 1));
-    transform-origin: top left;
-}
-
-/* =============================================================================
-   SMALL SCREEN TYPOGRAPHY
-   Keep the same 25/75 side-by-side layout.
-   ============================================================================= */
 
 @media (max-width: 700px) {
-    :root {
-        --page-padding: 6px;
-        --panel-gap: 6px;
-    }
+    :root {--page-padding: 6px; 
+           --panel-gap: 6px;}
 
-    .page-header {
-        padding: 9px 10px;
-    }
+    .page-header {padding: 9px 10px;}
 
-    .page-header h1 {
-        font-size: 0.9rem;
-    }
+    .page-header h1 {font-size: 0.9rem;}
 
-    .page-header a {
-        font-size: 0.73rem;
-    }
+    .page-header a {font-size: 0.73rem;}
 
-    .controls-panel {
-        padding: 8px 6px;
-    }
+    .controls-panel {padding: 8px 6px;}
 
-    .control {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 2px;
-        font-size: 0.78rem;
-    }
+    .controls-panel h2 {font-size: 0.95rem;}
 
-    .controls-panel h3 {
-        font-size: 0.7rem;
-    }
-}
+    .controls-panel h3 {margin: 10px 0 4px; 
+                        font-size: 0.7rem;}
+
+    .control {grid-template-columns: minmax(0, 1fr);
+              gap: 2px;
+              padding: 3px 0;
+              font-size: 0.78rem;}
+    kbd {padding: 3px 5px;
+         font-size: 0.72rem;}
+
+    .tip {font-size: 0.72rem;}}
